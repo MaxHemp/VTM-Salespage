@@ -1,119 +1,203 @@
 # Konzept · VTM Salespage
 
 **Leitsatz:** „Wir machen Ihr Thema in der Versicherungswelt sichtbar."
-**Design-Grundlage:** VTM Design System 5.0 · Signal (`tokens.css` unverändert übernommen)
 **Stand:** 11.08.2026
 
 ---
 
-## 1 · Aufgabe und Zielgruppe
+## 1 · Design Read
 
-Die Seite verkauft keine Anzeigenplätze, sondern **fachliche Sichtbarkeit in einer
-Branche, die Werbung ignoriert und Einordnung liest**.
+> B2B-Media-Kit-Landingpage für Versicherungs-Entscheider und Technologieanbieter,
+> in redaktioneller Publikationssprache, umgesetzt als monochromes Editorial-System
+> auf den markeneigenen Schriften.
 
-| Zielgruppe | Situation | Was die Seite leisten muss |
+**Dials:** Variance 8 · Motion 5 · Density 4 · Modus: Overhaul.
+Inhalt, Informationsarchitektur und Markenakzent bleiben, die visuelle Sprache ist neu.
+
+**Zielgruppe.** Technologieanbieter, InsurTechs, Beratungen und Versicherer-Marketing.
+Alle drei kaufen dasselbe: Glaubwürdigkeit. Deshalb steht Vertrauen vor Conversion.
+
+---
+
+## 2 · Der rote Faden
+
+Ein einziger Gedanke trägt Inhalt, Layout und Technik:
+
+> **Neben jeder Behauptung steht ihr Beleg.**
+
+Das ist die redaktionelle Grundhaltung von VTM, und auf dieser Seite ist es keine
+Aussage über die Marke, sondern die Bauform der Seite selbst.
+
+### Inhaltlich
+
+Die Seite ist der Laufweg eines Themas, nicht ein Katalog von Leistungen.
+Jeder Abschnitt beantwortet genau eine Frage, in der Reihenfolge, in der sie im
+Kopf der Leserin entsteht:
+
+| # | Abschnitt | Frage, die er beantwortet |
 |---|---|---|
-| Technologieanbieter, InsurTechs | Gutes Produkt, kein Zugang zu Versicherern | Zeigen, dass VTM dort steht, wo entschieden wird |
-| Beratungen | Austauschbare Expertise-Behauptungen | Belegtes redaktionelles Umfeld statt Selbstlob |
-| Versicherer (Marketing/Innovation) | Interne Themen nach außen tragen | Seriöses Umfeld, sichtbare Kennzeichnung |
+| 1 | Auftakt | Worum geht es hier? |
+| 2 | Partner | Wer arbeitet mit denen? |
+| 3 | Versicherer lesen Fachmedien | Warum geht mein Thema sonst unter? |
+| 4 | Sechs Kanäle, eine Redaktion | Wo genau taucht es auf? |
+| 5 | Was daraus wird | Was bekomme ich, was kostet es? |
+| 6 | Wie wir arbeiten | Wie viel Aufwand ist das für mich? |
+| 7 | Was wir zusagen, und was nicht | Wo ist der Haken? |
+| 8 | Menschen | Mit wem rede ich? |
+| 9 | Fragen | Und die Sache, die ich noch nicht gefragt habe? |
+| 10 | Anfangen | Wie fange ich an? |
 
-Alle drei kaufen **Glaubwürdigkeit**. Deshalb steht Vertrauen vor Conversion —
-so, wie es Kapitel 12 des Design Systems verlangt.
+### Visuell
 
-## 2 · Kernbotschaft: Plattform statt Fachmagazin
+Der Satzspiegel ist zweigeteilt. Links läuft eine schmale Marginalspalte mit, die
+**ausschließlich Belege** trägt: Quelle, Stand, Preisbasis, Einschränkung.
+Rechts steht die Aussage. Das ist ein echtes redaktionelles Mittel aus dem
+Buch- und Zeitungssatz, keine Dekoration, und es zieht sich durch jeden Abschnitt.
 
-Die zentrale Umdeutung der Seite: VTM ist **nicht ein Magazin mit Werbeplätzen**,
-sondern eine Plattform mit sechs Kanälen aus einer Redaktion.
+Belege stehen dabei durchgehend in Mono und in Gold. Gold erscheint auf der ganzen
+Seite an keiner anderen Stelle. Wer die Seite überfliegt, sieht die Beleglage,
+bevor er ein Wort gelesen hat.
 
-1. **Magazin & App** — versicherungstech-magazin.de plus eigener App-Startbildschirm
-2. **VTM Briefing** — Newsletter, 6.000+ Empfänger, rund 50 % Öffnungsrate
-3. **Insurance Monday** — Podcast, ca. 35.000 Downloads/Monat
-4. **LinkedIn-Netzwerk** — VTM-Kanal und Führungskräfte-Profile
-5. **Entscheider-Panel & Webinare** — zitierfähige Zahlen, Teilnehmerlisten
-6. **Bühne & Netzwerk** — Hamburger Insurance Innovation Day, Partner der Branche
+### Technisch
 
-Dieser Block ist bewusst die erste inhaltliche Sektion nach der Argumentation —
-er trägt die Hauptbotschaft „viele Stärken, nicht nur ein Fachmagazin".
+Ein Raster für die ganze Seite: zwölf Spalten, Marginalie 1 bis 3, Aussage 4 bis 11,
+volle Breite 1 bis 12. Kein zweites Layoutsystem, keine Sonderfälle.
+Beleg und Aussage liegen erzwungen in derselben Rasterzeile, damit die
+Auto-Platzierung die Marginalie nicht nach unten schiebt.
 
-## 3 · Conversion-Logik
+---
 
-**Eine Hauptaktion auf der ganzen Seite:** „Thema besprechen" (Anker `#kontakt`).
-Alles andere ist Nebenweg (Konfigurator, Telefon, E-Mail).
+## 3 · Gestaltung
 
-Vier Conversion-Hebel, in dieser Reihenfolge:
+### Farbe
 
-1. **Selbst-Qualifizierung durch Preistransparenz.** Alle Preise stehen offen auf
-   der Seite — Einzelbausteine ab 750 €, Pakete ab 9.975 €, Jahresprogramme ab
-   12.000 €. B2B-Entscheider brechen ab, wenn Preise fehlen; wer weiterliest, ist
-   vorqualifiziert.
-2. **Einstiegsleiter statt Alles-oder-nichts.** Drei Preisstufen (Start ·
-   Thought-Leader · Marktführer) plus Einzelbausteine für den kleinen Test.
-3. **Einwandbehandlung vor dem Formular.** Der FAQ-Block räumt die vier realen
-   Kaufeinwände ab: Kosten, Einfluss auf Redaktion, Erfolgsmessung, Aufwand.
-4. **Risikoumkehr durch Ehrlichkeit.** Die Sektion „Was wir zusagen — und was
-   nicht" nennt ausdrücklich, was VTM *nicht* verspricht. Das ist in einer Branche
-   voller Reichweiten-Versprechen der stärkste Trust-Hebel — und zugleich
-   verbindliche Regel des Design Systems (keine Lead- und Erfolgsversprechen).
+Monochrom plus ein gesättigter Akzent. Keine getönten Abschnittsflächen,
+kein zweiter Akzent, kein Verlauf.
 
-**Bewusst nicht eingesetzt:** künstliche Verknappung, Countdown, „Gamechanger"-
-Rhetorik, Lead-Versprechen. Alles davon steht auf der Verbotsliste des Systems
-und würde die Glaubwürdigkeit zerstören, die hier das eigentliche Produkt ist.
-
-## 4 · Dramaturgie und Rhythmus
-
-Die Seite folgt der Blickführung des Systems — *Was sehe ich? → Warum relevant? →
-Warum vertrauen? → Was tun?* — und dem vorgeschriebenen Wechselrhythmus
-Text → Bild → Daten → Menschen. Keine Reihe gleicher Karten.
-
-| # | Sektion | Layout | Funktion |
+| Rolle | Hell | Dunkel | Verwendung |
 |---|---|---|---|
-| 1 | Hero | 7/5 asymmetrisch, linksbündig | Leitsatz, Hauptaktion, Motiv „Signal" |
-| 2 | Kennzahlen | Beleg-Streifen, 12 | Erster sichtbarer Beleg mit Quelle |
-| 3 | Argumentation | 5/7 | Warum Sichtbarkeit ≠ Lautstärke, Datenbild Rauschen → Signal |
-| 4 | Die Plattform | 5/7 | Kernbotschaft: sechs Kanäle, eine Redaktion |
-| 5 | Pakete | Preisleiter, Zeilen | Einstieg, mittlere Stufe markiert |
-| 6 | Einzelbausteine | `details` + Tabellen | Progressive Offenlegung, volle Preisliste |
-| 7 | Jahresprogramme | Zeilen | Große Abschlüsse |
-| 8 | Ablauf | 4 Schritte, nummeriert | Aufwandssorge nehmen |
-| 9 | Zusagen / keine Zusagen | 7/5 | Risikoumkehr, Kennzeichnungsgrundsatz |
-| 10 | Menschen | 7/5, echte Fotos | „Menschen vor abstrakter Marke" |
-| 11 | Weitere Geschäftsfelder | Definitionsliste | Plattformbreite über Medien hinaus |
-| 12 | FAQ | `details` | Einwandbehandlung |
-| 13 | Kontakt | Nachtblau-Anker, 7/5 | Einzige Hauptaktion, Formular + Mensch |
+| Papier | `#FBFBFD` | `#081226` | Grundfläche |
+| Tinte | `#0D1C3C` | `#EDF0F6` | Text, invertierter Block |
+| Still | `#55617A` | `#A6B0C4` | Fließtext zweiter Ordnung |
+| Signal | `#1F4EFF` | `#8FA6FF` | Aktion, Link, Reichweite. Sonst nichts. |
+| Beleg | `#8A6512` | `#E7C878` | Ausschließlich Quellen und Marginalien |
 
-Der Hero ist linksbündig und asymmetrisch; das zentrierte
-Badge-Headline-CTA-Muster ist im System ausdrücklich unzulässig.
-Nachtblau erscheint nur als **ein** kompakter Anker (Kontakt) — nie als langer
-Seitenhintergrund.
+Alle Textpaare sind auf WCAG 2.2 AA nachgerechnet (Werte in Abschnitt 6).
 
-## 5 · Sprache
+### Schrift
 
-Deutsch, „Sie", aktiv, belegt. Buttons tragen das Verb der Handlung
-(„Thema besprechen", „Konfigurator öffnen"). Zahlen tragen Quelle und Stand
-direkt bei sich. Unsicherheit wird benannt statt kaschiert.
+Alle drei Schnitte stammen aus dem VTM Design System, aber mit vertauschten Rollen.
+Das ist die zentrale gestalterische Entscheidung.
 
-Nicht verwendet: „revolutionieren", „zukunftsweisend", „innovative Lösungen",
-„Gamechanger", „360-Grad", „maßgeschneidert", unbelegte Superlative.
+- **Newsreader Light** trägt jede Überschrift. Im Design System ist Newsreader die
+  redaktionelle Stimme des Magazins. Hier wird sie zur Verkaufsstimme: Das Medium
+  spricht auf seiner eigenen Salespage so, wie es im Heft spricht.
+  Ein Serif-Display ist an dieser Stelle nicht Geschmack, sondern Sachlage. VTM ist
+  eine Publikation.
+- **Schibsted Grotesk** trägt Oberfläche und Fließtext. Eine echte Zeitungsgrotesk,
+  entwickelt für einen Medienkonzern. Sie ersetzt Inter vollständig.
+- **IBM Plex Mono** trägt ausschließlich Belege, Preise und Kennzahlen.
 
-## 6 · Technik und Barrierefreiheit
+**Überschriften laufen durchgehend in 300 und 400. Auf der gesamten Seite ist keine
+Überschrift fett.** Größe und Weißraum stellen die Hierarchie her, nicht Fettung.
 
-- Statisches HTML, `tokens.css` als einzige Wertequelle, ein `<style>`-Block
-- **Kern ohne JavaScript funktionsfähig** — JS steuert nur Nav-Hervorhebung und
-  das Zusammenfalten von Detailgruppen
-- WCAG 2.2 AA: Skip-Link, sichtbare Fokusringe (`--sem-fokus-ring`), semantisches
-  HTML, `scope` an Tabellenköpfen, 44-px-Touchflächen, Reflow ab 320 px,
-  Status nie nur über Farbe
-- Bilder mit `width`/`height` gegen Layoutsprünge, `loading="lazy"` unter dem Fold
-- Generierte Motive tragen die Mono-Caption „Illustration"
-- `prefers-reduced-motion` global über `tokens.css` erzwungen
+### Form
+
+Radius 0 auf allem: Knöpfe, Eingaben, Bilder, Flächen. Keine Karten, keine Schatten,
+keine Rahmen um Inhalte. Getrennt wird durch Haarlinien, Maß und Leerraum.
+Ein einziger invertierter Block, ganz am Ende, dort wo gehandelt wird.
+
+### Bewegung
+
+Abschnitte laufen entlang der Leserichtung ein, gestaffelt, über IntersectionObserver.
+Das ordnet die Aufmerksamkeit in der Reihenfolge der Argumentation.
+Kein Scroll-Listener, kein Parallax, kein Scroll-Hijacking.
+Bei `prefers-reduced-motion` und ohne JavaScript steht alles sofort da.
+
+---
+
+## 4 · Conversion-Logik
+
+Eine Hauptaktion auf der ganzen Seite: **„Thema besprechen"**, gleicher Wortlaut in
+Kopfzeile, Auftakt und Abschluss. Alles andere ist Nebenweg.
+
+Vier Hebel, in dieser Reihenfolge:
+
+1. **Preistransparenz zur Selbstqualifizierung.** Alle Preise stehen offen, von
+   750 € bis 70.000 € im Jahr. Wer weiterliest, ist vorqualifiziert.
+2. **Einstiegsleiter statt Alles-oder-nichts.** Drei Kombinationen, drei
+   Jahresprogramme, und die vollständige Einzelpreisliste hinter einer Aufklappung.
+   Zuerst das Entscheidbare, dann das Nachschlagbare.
+3. **Einwandbehandlung vor dem Formular.** Kosten, Einfluss auf die Redaktion,
+   Erfolgsmessung, Unentschlossenheit.
+4. **Risikoumkehr durch Ehrlichkeit.** Der Abschnitt „Was wir zusagen, und was nicht"
+   nennt ausdrücklich, was VTM nicht verspricht. In einer Branche voller
+   Reichweitenversprechen ist das der stärkste Vertrauenshebel, und zugleich die
+   verbindliche Regel des Design Systems.
+
+Bewusst nicht eingesetzt: künstliche Verknappung, Countdown, Lead-Versprechen,
+Zähler, Testimonial-Karussell.
+
+---
+
+## 5 · Abweichungen vom Design System 5.0
+
+Vom Herausgeber freigegeben, hier dokumentiert:
+
+| Regel im System | Abweichung | Begründung |
+|---|---|---|
+| Schibsted Grotesk als Display, Newsreader nur als Zitatstimme | Newsreader trägt alle Überschriften | Die Seite verkauft ein Magazin. Die Leseschrift ist hier das stärkste Argument. |
+| Inter für UI und Fließtext | Schibsted Grotesk übernimmt beides | Inter ist die Standardschrift jeder generischen Landingpage. Schibsted Grotesk ist markeneigen und trägt Fließtext ebenso. |
+| Radien `--vtm-radius-*` | Durchgehend 0 | Ein Formsystem statt vier. Presse statt Produkt-UI. |
+| Eisblaue Abschnittsflächen | Entfallen | Flächenwechsel ersetzen Hierarchie durch Streifen. Getrennt wird durch Maß. |
+| Kicker-Label über jedem Abschnitt | Entfallen | Wiederholte Versal-Labels sind das deutlichste Merkmal generischer Seiten. |
+| Nur helle Fläche vorgesehen | Vollständiger Dunkelmodus | `prefers-color-scheme` ist heute eine Erwartung, keine Zusatzleistung. |
+
+Unverändert übernommen: Nachtblau und Electric als Marken- und Aktionsfarbe,
+Gold ausschließlich als Belegfarbe, sichtbare Kennzeichnung bezahlter Inhalte,
+Deklaration generierter Motive als Illustration, keine Lead- oder Erfolgsversprechen,
+WCAG 2.2 AA über allen Markenregeln.
+
+---
+
+## 6 · Nachgerechnet
+
+**Kontraste (WCAG 2.2 AA, gemessen)**
+
+| Paar | Hell | Dunkel |
+|---|---|---|
+| Tinte auf Papier | 16,3 | 16,4 |
+| Still auf Papier | 6,0 | 8,6 |
+| Gedämpft auf Papier | 4,5 | 5,0 |
+| Signal auf Papier | 5,7 | 8,1 |
+| Beleg auf Papier | 5,1 | 11,5 |
+| Knopftext auf Signal | 5,9 | 8,1 |
+| Formularlabel im Anker | 11,2 | 10,0 |
+| Platzhalter im Anker | 7,3 | 5,4 |
+
+**Weitere geprüfte Punkte**
+
+- Kein horizontales Scrollen bei 320, 390, 768, 860, 1024, 1280, 1440 und 1920 px
+- Titelzeile zweizeilig ab 768 px, Hauptaktion in jeder Breite ohne Scrollen sichtbar
+- Keine fette Überschrift auf der Seite (maschinell geprüft: `font-weight` ≥ 600 = 0 Treffer)
+- Null Geviertstriche im gesamten Dokument
+- Ein `h1`, Überschriftenebenen ohne Sprünge
+- Touchflächen 44 px, Fokusringe sichtbar, Tastaturweg vollständig
+- Ohne JavaScript vollständig sichtbar und bedienbar
+- Ein Radiussystem (0), ein Akzent, ein invertierter Block
+
+---
 
 ## 7 · Offene Punkte für die Freigabe
 
-1. **Kennzahlen prüfen.** 6.000+ Empfänger, ~50 % Öffnungsrate, ca. 35.000
-   Downloads/Monat stammen aus dem Angebotsdokument. Vor Livegang mit den
-   aktuellen Messwerten abgleichen und den Stand in der Quellenzeile anpassen.
-2. **Preis „VTM Category Presence"** (ab 35.000 €/Jahr) war in der Vorlage nur
-   teilweise lesbar — im Konfigurator gegenprüfen. Im Quelltext markiert.
-3. **Formular-Endpunkt.** Das Formular sendet ohne Backend per `mailto`.
-   Für den Produktivbetrieb eine echte Empfangsadresse eintragen (siehe README).
+1. **Kennzahlen prüfen.** 6.000+ Empfänger, rund 50 % Öffnungsrate und
+   ca. 35.000 Downloads im Monat stammen aus dem Angebotsdokument vom 11.08.2026.
+   Vor Livegang mit aktuellen Messwerten abgleichen und den Stand in der
+   Marginalie anpassen.
+2. **Preis „VTM Category Presence"** (ab 35.000 € im Jahr) war in der Vorlage nur
+   teilweise lesbar. Im Quelltext mit `<!-- PRÜFEN -->` markiert.
+3. **Formular-Endpunkt.** Ohne Backend sendet das Formular per `mailto`.
 4. **Impressum und Datenschutzerklärung** sind als Platzhalter verlinkt.
+5. **Eigene Bildstrecke.** Die Seite nutzt die freigegebenen Motive aus dem
+   Design-System-Repository. Motive, die speziell für diese Seite entstehen,
+   würden den Auftakt weiter stärken.

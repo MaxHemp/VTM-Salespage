@@ -1,21 +1,25 @@
 # VTM Salespage
 
-Conversion-optimierte Landingpage des **VersicherungsTech Magazins** für
-Technologieanbieter, Beratungen und Versicherer.
+Landingpage des **VersicherungsTech Magazins** für Technologieanbieter, Beratungen
+und Versicherer.
 
 **Leitsatz:** „Wir machen Ihr Thema in der Versicherungswelt sichtbar."
 
-Das Konzept hinter der Seite — Zielgruppen, Conversion-Logik, Dramaturgie —
-steht in [`KONZEPT.md`](KONZEPT.md).
+Das Konzept, die Gestaltungsentscheidungen und die dokumentierten Abweichungen vom
+Design System stehen in [`KONZEPT.md`](KONZEPT.md).
 
 ## Dateien
 
 | Pfad | Inhalt |
 |---|---|
-| `index.html` | Die vollständige Landingpage. Ein einziges HTML mit eingebettetem CSS, kein Build-Schritt. |
-| `tokens.css` | Unveränderte Kopie aus dem [VTM Design System 5.0 · Signal](https://github.com/MaxHemp/vtm-design-system). Einzige Wertequelle. |
-| `KONZEPT.md` | Konzept und Begründung der Struktur |
-| `assets/` | Logos, deklarierte Illustrationsmotive, freigegebene Teamfotos, Partnerlogos |
+| `index.html` | Die vollständige Seite. Ein HTML mit eingebettetem CSS, kein Build-Schritt. |
+| `KONZEPT.md` | Konzept, roter Faden, Farb- und Schriftsystem, Nachrechnung |
+| `assets/` | Logos, freigegebene Illustrationsmotive, Teamfotos, Partnerlogos |
+
+Die Seite bringt ihre Token selbst mit und hängt nicht mehr an `tokens.css`.
+Werte und Regeln stammen weiterhin aus dem
+[VTM Design System 5.0 · Signal](https://github.com/MaxHemp/vtm-design-system),
+die Abweichungen sind in `KONZEPT.md` einzeln begründet.
 
 ## Lokal ansehen
 
@@ -27,49 +31,59 @@ python3 -m http.server 8000
 ## Vor dem Livegang zu erledigen
 
 1. **Kennzahlen prüfen.** 6.000+ Newsletter-Empfänger, rund 50 % Öffnungsrate und
-   ca. 35.000 Podcast-Downloads pro Monat stammen aus dem Angebotsdokument vom
-   11.08.2026. Aktuelle Messwerte einsetzen und den Stand in der Quellenzeile
-   (Abschnitt „Kennzahlen") anpassen.
-2. **Preis „VTM Category Presence"** (ab 35.000 €/Jahr) gegen den Konfigurator
-   prüfen — im Quelltext mit `<!-- PRÜFEN -->` markiert.
+   ca. 35.000 Podcast-Downloads im Monat stammen aus dem Angebotsdokument vom
+   11.08.2026. Aktuelle Werte einsetzen und den Stand in der Marginalie anpassen.
+2. **Preis „VTM Category Presence"** (ab 35.000 € im Jahr) gegen den Konfigurator
+   prüfen. Im Quelltext mit `<!-- PRÜFEN -->` markiert.
 3. **Formular-Endpunkt setzen.** Ohne Backend öffnet das Formular das
-   E-Mail-Programm der Besucherin. Für den Produktivbetrieb im `<form>`-Element
-   `action`, `method` und `enctype` ersetzen:
+   E-Mail-Programm. Für den Produktivbetrieb im `<form>`-Element `action`, `method`
+   und `enctype` ersetzen:
 
    ```html
-   <form class="formular" action="https://ihr-endpunkt.example/anfrage" method="post">
+   <form class="bogen" action="https://ihr-endpunkt.example/anfrage" method="post">
    ```
 
-   Die Feldnamen (`Name`, `Unternehmen`, `E-Mail`, `Telefon`, `Thema`,
-   `Interesse`, `Nachricht`, `Einwilligung`) bleiben dabei unverändert.
-4. **Impressum und Datenschutzerklärung** verlinken — aktuell Platzhalter-Anker
+   Die Feldnamen (`Name`, `Unternehmen`, `E-Mail`, `Telefon`, `Thema`, `Interesse`,
+   `Nachricht`, `Einwilligung`) bleiben dabei unverändert.
+4. **Impressum und Datenschutzerklärung** verlinken. Aktuell Platzhalter-Anker
    (`#impressum`, `#datenschutz`).
-5. **Schriften selbst hosten.** Die Seite lädt Schibsted Grotesk, Inter,
-   Newsreader und IBM Plex Mono über Google Fonts. Für die Produktion als
-   subgesetzte WOFF2 mit `font-display: swap` selbst ausliefern — so verlangt es
-   Kapitel 22 des Design Systems, und es hilft zugleich der Datenschutzlage.
+5. **Schriften selbst hosten.** Die Seite lädt Newsreader, Schibsted Grotesk und
+   IBM Plex Mono über Google Fonts. Für die Produktion als subgesetzte WOFF2 mit
+   `font-display: swap` selbst ausliefern. Benötigt werden genau sechs Schnitte:
+   Newsreader 300 und 400, Schibsted Grotesk 400 und 500, IBM Plex Mono 400 und 500.
 
-## Regeln, an die sich die Seite hält
+## Gestaltungsregeln dieser Seite
 
-Aus dem Design System 5.0 „Signal", verbindlich:
+Wer hier weiterarbeitet, hält diese sechs Regeln ein. Sie tragen den roten Faden.
 
-- Hero linksbündig und asymmetrisch (7/5) — kein zentriertes
-  Badge-Headline-CTA-Muster
-- **Eine** Hauptaktion auf der ganzen Seite: „Thema besprechen"
-- Mindestens ein sichtbarer Beleg mit Quelle und Stand
-- Nachtblau nur als **ein** kompakter Anker (Kontakt), nie als langer
-  Seitenhintergrund; Gold ausschließlich für Beleg und Quelle
-- Wechselnder Rhythmus Text → Bild → Daten → Menschen, keine Reihen gleicher
-  Karten
-- Keine Erfolgs- oder Lead-Versprechen; Kennzeichnung bezahlter Formate im Layout
-- WCAG 2.2 AA: Skip-Link, sichtbare Fokusringe, semantisches HTML, `scope` an
-  Tabellenköpfen, 44-px-Touchflächen, Reflow ab 320 px, Status nie nur über Farbe
-- Kern ohne JavaScript funktionsfähig; das einzige Skript hebt den aktuellen
-  Navigationspunkt hervor
+1. **Marginalie trägt nur Belege.** Quelle, Stand, Preisbasis, Einschränkung.
+   Niemals Werbetext, niemals ein Label über einer Überschrift.
+2. **Keine fetten Überschriften.** Newsreader 300 und 400, sonst nichts.
+   Hierarchie entsteht über Größe und Weißraum.
+3. **Ein Akzent.** Electric markiert Aktion, Link und Reichweite. Gold markiert
+   ausschließlich Belege. Sonst gibt es keine Farbe.
+4. **Radius 0.** Überall.
+5. **Kein Flächenwechsel zwischen Abschnitten.** Getrennt wird durch Maß und Linie.
+   Genau ein invertierter Block, am Ende.
+6. **Keine Geviertstriche.** Statt `—` einen Punkt, ein Komma oder einen Doppelpunkt.
+
+## Barrierefreiheit und Technik
+
+- WCAG 2.2 AA: alle Textpaare nachgerechnet (Tabelle in `KONZEPT.md`), Skip-Link,
+  sichtbare Fokusringe, semantisches HTML, 44-px-Touchflächen, ein `h1`,
+  Überschriften ohne Ebenensprünge
+- Vollständiger Dunkelmodus über `prefers-color-scheme`
+- Ohne JavaScript vollständig sichtbar und bedienbar. Das einzige Skript blendet
+  Abschnitte beim Scrollen ein und markiert den aktuellen Navigationspunkt,
+  beides über IntersectionObserver, kein Scroll-Listener
+- `prefers-reduced-motion` schaltet jede Bewegung ab
+- Bilder mit `width`/`height` gegen Layoutsprünge, `loading="lazy"` unter dem Fold
+- Kein horizontales Scrollen von 320 bis 1920 px
 
 ## Herkunft der Inhalte
 
 Leistungen und Preise stammen aus der VTM-Leistungsübersicht vom 11.08.2026
 (Quelle: Live-Konfigurator `angebote.versicherungstech-magazin.de`).
 Bilder, Logos und Teamfotos stammen aus dem Design-System-Repository.
-Die generierten Motive tragen — wie vorgeschrieben — die Caption „Illustration".
+Die generierten Motive tragen, wie vorgeschrieben, die Bildlegende „Illustration".
+Piktogramme stammen aus [Phosphor Icons](https://phosphoricons.com) (MIT).

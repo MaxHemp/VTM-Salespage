@@ -4,1280 +4,1044 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ihr Thema sichtbar machen · VersicherungsTech Magazin</title>
-<meta name="description" content="Das VersicherungsTech Magazin macht Ihr Thema in der DACH-Versicherungswelt sichtbar: Magazin, App, Newsletter, Podcast, LinkedIn, Panel und Bühne aus einer unabhängigen Fachredaktion. Alle Leistungen und Preise transparent.">
-<meta name="robots" content="index, follow">
+<meta name="description" content="Sechs Kanäle, eine unabhängige Fachredaktion: Magazin, App, Newsletter, Podcast, LinkedIn und Bühne. Wir bringen Ihr Thema dorthin, wo Versicherer ihre Entscheidungen treffen. Alle Formate und Preise offen.">
+<meta name="theme-color" content="#FBFBFD" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#081226" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
 <meta property="og:title" content="Wir machen Ihr Thema in der Versicherungswelt sichtbar">
-<meta property="og:description" content="Sechs Kanäle, eine unabhängige Fachredaktion. Fachartikel, Newsletter, Podcast, LinkedIn, Entscheider-Panel und Bühne — mit sichtbarer Kennzeichnung und ohne Lead-Versprechen.">
-<meta property="og:image" content="assets/bilder/motiv-datenstrom.jpg">
+<meta property="og:description" content="Sechs Kanäle, eine unabhängige Fachredaktion. Formate, Reichweiten und Preise offen einsehbar.">
+<meta property="og:image" content="assets/bilder/motiv-architektur.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Schibsted+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="tokens.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Schibsted+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* =========================================================
-   VTM Salespage · Design System 5.0 „Signal“
-   Alle Werte stammen aus tokens.css. Keine Rohfarben.
-   Aufbau: 13 Sektionen mit wechselndem Rhythmus
-   (Text → Bild → Daten → Menschen), Hero linksbündig
-   asymmetrisch, genau ein Nachtblau-Anker (Kontakt).
-   ========================================================= */
+/* ============================================================
+   VTM Salespage
+   ------------------------------------------------------------
+   KONZEPT. Die Seite ist ein Satzspiegel. Links läuft eine
+   schmale Marginalspalte mit, die ausschließlich Belege trägt:
+   Quellen, Stand, Preise, Einschränkungen. Rechts steht die
+   Aussage. Damit wird das redaktionelle Prinzip „Beleg neben
+   Behauptung“ zum Layout selbst. Das ist der rote Faden, den
+   man sieht, bevor man ihn liest, und er hält über jeden
+   Abschnitt.
 
+   SCHRIFT. Newsreader Light trägt die Stimme des Magazins,
+   Schibsted Grotesk die Oberfläche, IBM Plex Mono die Belege.
+   Überschriften laufen durchgehend in 300 und 400, nie fett.
+
+   FORM. Radius 0 auf allem. Trennung entsteht durch Maß und
+   Weißraum, nicht durch Kacheln, Kästen oder Flächenwechsel.
+   Genau ein invertierter Block, am Ende, wo gehandelt wird.
+   ============================================================ */
+
+/* --- Token: Hell ------------------------------------------- */
+:root {
+  --papier: #FBFBFD;
+  --tinte: #0D1C3C;
+  --tinte-still: #55617A;
+  --tinte-leise: #69758A;
+  --signal: #1F4EFF;
+  --signal-tief: #143BD1;
+  --beleg: #8A6512;
+  --linie: rgb(13 28 60 / 0.14);
+  --linie-stark: rgb(13 28 60 / 0.42);
+
+  --tat-grund: var(--signal);
+  --tat-grund-hover: var(--signal-tief);
+  --tat-schrift: #FFFFFF;
+  --partner-platte: transparent;
+  --partner-deckung: 0.75;
+
+  --schrift-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --schrift-ui: "Schibsted Grotesk", "Segoe UI", Helvetica, Arial, sans-serif;
+  --schrift-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+
+  --rand: clamp(1.25rem, 5vw, 4.5rem);
+  --satz-max: 88rem;
+  --spur: 560ms;
+  --kurve: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Token: Dunkel, wenn das System es will ---------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --papier: #081226;
+    --tinte: #EDF0F6;
+    --tinte-still: #A6B0C4;
+    --tinte-leise: #78849B;
+    --signal: #8FA6FF;
+    --signal-tief: #B6C6FF;
+    --beleg: #E7C878;
+    --linie: rgb(237 240 246 / 0.16);
+    --linie-stark: rgb(237 240 246 / 0.44);
+    --tat-schrift: #081226;
+    --partner-platte: #FFFFFF;
+    --partner-polster: 0.4rem 0.6rem;
+    --partner-deckung: 1;
+  }
+}
+/* --- Token: Dunkel, ausdrücklich gewählt ------------------- */
+:root[data-theme="dark"] {
+  --papier: #081226;
+  --tinte: #EDF0F6;
+  --tinte-still: #A6B0C4;
+  --tinte-leise: #78849B;
+  --signal: #8FA6FF;
+  --signal-tief: #B6C6FF;
+  --beleg: #E7C878;
+  --linie: rgb(237 240 246 / 0.16);
+  --linie-stark: rgb(237 240 246 / 0.44);
+  --tat-schrift: #081226;
+  --partner-platte: #FFFFFF;
+  --partner-polster: 0.4rem 0.6rem;
+  --partner-deckung: 1;
+}
+
+/* --- Grundlage --------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; background: var(--papier); }
 body {
   margin: 0;
-  font-family: var(--vtm-font-text);
-  font-size: var(--vtm-size-m);
-  line-height: var(--vtm-leading-text);
-  color: var(--sem-text);
-  background: var(--sem-flaeche-seite);
+  background: var(--papier);
+  color: var(--tinte);
+  font-family: var(--schrift-ui);
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
-img { max-width: 100%; height: auto; display: block; }
-h1, h2, h3, h4 { margin: 0; font-family: var(--vtm-font-display); letter-spacing: var(--vtm-tracking-heading); }
-p, ul, ol, dl, dd, figure, table { margin: 0; }
-ul { padding: 0; list-style: none; }
-a { color: var(--sem-text-link); text-underline-offset: 0.18em; }
-a:hover { color: var(--sem-aktion); }
-:where(a, button, input, textarea, select, summary, details):focus-visible {
-  outline: none;
-  box-shadow: var(--sem-fokus-ring);
-  border-radius: var(--vtm-radius-s);
+img { display: block; max-width: 100%; height: auto; }
+p, h1, h2, h3, h4, h5, ul, ol, figure, fieldset, blockquote { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--schrift-display);
+  font-weight: 300;
+  letter-spacing: -0.012em;
+  line-height: 1.1;
+  text-wrap: balance;
 }
-.anker-invers :where(a, button, input, textarea, summary):focus-visible { box-shadow: var(--sem-fokus-ring-invers); }
+h3, h4, h5 { font-weight: 400; }
 
-/* --------------------------------------------------------
-   Wiederkehrende Bausteine
-   -------------------------------------------------------- */
-.shell { width: 100%; max-width: 82rem; margin-inline: auto; padding-inline: clamp(1.25rem, 4vw, 3rem); }
-.sektion { padding-block: clamp(3.5rem, 8vw, 8rem); }
-.sektion--eng { padding-block: clamp(2.5rem, 5vw, 4rem); }
-.sektion--soft { background: var(--sem-flaeche-soft); }
-
-.raster { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 2.75rem); }
-.sp-4 { grid-column: span 4; }
-.sp-5 { grid-column: span 5; }
-.sp-6 { grid-column: span 6; }
-.sp-7 { grid-column: span 7; }
-.sp-8 { grid-column: span 8; }
-.sp-12 { grid-column: span 12; }
-
-.kicker {
-  font-family: var(--vtm-font-mono);
-  font-weight: 600;
-  font-size: var(--vtm-size-xs);
-  letter-spacing: var(--vtm-tracking-label);
-  text-transform: uppercase;
-  color: var(--sem-text-gedaempft);
-  margin-bottom: var(--vtm-space-16);
+a { color: var(--signal); text-decoration-thickness: 1px; text-underline-offset: 0.22em; }
+a:hover { color: var(--signal-tief); }
+:where(a, button, input, textarea, summary):focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
 }
+
 .mono {
-  font-family: var(--vtm-font-mono);
-  font-size: var(--vtm-size-xs);
-  letter-spacing: var(--vtm-tracking-mono);
+  font-family: var(--schrift-mono);
+  font-size: 0.75rem;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
   font-variant-numeric: tabular-nums;
-  color: var(--sem-text-gedaempft);
-}
-.h1 {
-  /* Display statt Display XL: Der Hero läuft über 7 von 12 Spalten —
-     bei 7xl bräche „Versicherungswelt“ mitten im Kernwort um. */
-  font-size: var(--vtm-size-6xl);
-  font-weight: 800;
-  line-height: var(--vtm-leading-display);
-  letter-spacing: var(--vtm-tracking-display);
-  max-width: var(--vtm-measure-display);
-  hyphens: auto;
-  overflow-wrap: break-word;
-}
-.h2 {
-  font-size: var(--vtm-size-4xl);
-  font-weight: 700;
-  line-height: var(--vtm-leading-heading);
-  max-width: var(--vtm-measure-display);
-}
-.h3 { font-size: var(--vtm-size-2xl); font-weight: 700; line-height: var(--vtm-leading-heading); }
-.h4 { font-size: var(--vtm-size-xl); font-weight: 700; line-height: var(--vtm-leading-heading); }
-.strich { display: block; width: 3rem; height: 2px; background: var(--sem-auswahl-linie); margin-bottom: var(--vtm-space-16); }
-.lead {
-  font-size: var(--vtm-size-l);
-  line-height: var(--vtm-leading-text);
-  color: var(--sem-text-sekundaer);
-  max-width: var(--vtm-measure-lead);
-}
-.fliess { color: var(--sem-text-sekundaer); max-width: var(--vtm-measure-text); }
-.fliess + .fliess { margin-top: var(--vtm-space-16); }
-.quelle {
-  font-family: var(--vtm-font-mono);
-  font-size: var(--vtm-size-xs);
-  line-height: 1.5;
-  color: var(--sem-beleg-text);
-  display: flex;
-  gap: var(--vtm-space-8);
-  align-items: flex-start;
-}
-.quelle::before {
-  content: "";
-  flex: none;
-  width: 24px; height: 3px;
-  background: var(--sem-beleg-marke);
-  margin-top: 0.5em;
+  color: var(--tinte-still);
 }
 
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--vtm-space-8);
-  min-height: var(--btn-hoehe);
-  padding: 0 var(--btn-pad-x);
-  border-radius: var(--btn-radius);
-  font: var(--btn-font);
-  text-decoration: none;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: background-color var(--vtm-dauer-micro) var(--vtm-ease-standard),
-              border-color var(--vtm-dauer-micro) var(--vtm-ease-standard),
-              transform var(--vtm-dauer-micro) var(--vtm-ease-standard);
-}
-.btn--primaer { background: var(--btn-primaer-bg); color: var(--btn-primaer-text); }
-.btn--primaer:hover { background: var(--btn-primaer-bg-hover); color: var(--btn-primaer-text); }
-.btn--sekundaer { border: var(--btn-sekundaer-linie); color: var(--btn-sekundaer-text); background: transparent; }
-.btn--sekundaer:hover { background: var(--btn-sekundaer-bg-hover); color: var(--btn-sekundaer-text); }
-.btn--invers { background: var(--vtm-weiss); color: var(--vtm-nacht-900); }
-.btn--invers:hover { background: var(--vtm-electric-100); color: var(--vtm-nacht-900); }
-.btn--invers-linie { border: var(--vtm-linie-invers); color: var(--sem-text-invers); }
-.btn--invers-linie:hover { background: rgb(255 255 255 / 0.10); color: var(--sem-text-invers); }
-.btn:active { transform: translateY(1px); }
-.btn-gruppe { display: flex; flex-wrap: wrap; gap: var(--vtm-space-12); }
-
-.skiplink {
-  position: absolute; left: var(--vtm-space-16); top: -4rem;
-  z-index: var(--vtm-ebene-toast);
-  background: var(--sem-aktion); color: var(--sem-aktion-text-auf);
-  padding: var(--vtm-space-12) var(--vtm-space-16);
-  border-radius: var(--vtm-radius-m); font-weight: 600; text-decoration: none;
-  transition: top var(--vtm-dauer-kurz) var(--vtm-ease-eintritt);
-}
-.skiplink:focus { top: var(--vtm-space-16); color: var(--sem-aktion-text-auf); }
-
-/* --------------------------------------------------------
-   Navigation
-   -------------------------------------------------------- */
-.nav {
-  position: sticky; top: 0; z-index: var(--vtm-ebene-sticky);
-  background: var(--nav-bg);
-  backdrop-filter: saturate(180%) blur(12px);
-  border-bottom: var(--nav-linie);
-}
-.nav__inner { display: flex; align-items: center; gap: var(--vtm-space-24); min-height: var(--nav-hoehe); }
-.nav__logo { display: flex; align-items: center; flex: none; min-height: var(--btn-hoehe); }
-.nav__logo img { height: 30px; width: auto; }
-.nav__links { display: flex; gap: var(--vtm-space-24); margin-left: auto; flex-wrap: wrap; }
-.nav__links a {
-  display: flex; align-items: center; min-height: var(--btn-hoehe);
-  color: var(--nav-text); text-decoration: none;
-  font-size: var(--vtm-size-s); font-weight: 500;
-  border-bottom: 2px solid transparent;
-}
-.nav__links a:hover, .nav__links a.ist-aktiv { color: var(--nav-aktiv); border-bottom-color: var(--sem-auswahl-linie); }
-.nav__cta { flex: none; }
-@media (max-width: 60rem) {
-  .nav__links { display: none; }
-  .nav__cta { margin-left: auto; }
-}
-
-/* --------------------------------------------------------
-   1 · Hero
-   -------------------------------------------------------- */
-.hero { padding-block: clamp(2.5rem, 6vw, 5.5rem) clamp(2rem, 4vw, 3.5rem); }
-.hero__raster { align-items: center; }
-.hero .h1 { margin-bottom: var(--vtm-space-24); }
-.hero__lead { margin-bottom: var(--vtm-space-32); }
-.hero__vertrauen {
-  display: flex; flex-wrap: wrap; gap: var(--vtm-space-8) var(--vtm-space-16);
-  margin-top: var(--vtm-space-32);
-  padding-top: var(--vtm-space-16);
-  border-top: var(--vtm-linie-haar);
-}
-.hero__vertrauen li { display: flex; align-items: center; gap: var(--vtm-space-8); }
-.hero__vertrauen li::before {
-  content: ""; width: 6px; height: 6px; border-radius: var(--vtm-radius-rund);
-  background: var(--sem-erfolg-linie); flex: none;
-}
-.bildkarte { position: relative; }
-.bildkarte img { border-radius: var(--vtm-radius-xl); }
-.bildkarte figcaption { margin-top: var(--vtm-space-8); }
-
-/* --------------------------------------------------------
-   2 · Kennzahlen-Streifen (Beleg)
-   -------------------------------------------------------- */
-.kennzahlen { background: var(--datenbox-bg); border-block: var(--vtm-linie-haar); }
-.kennzahlen__liste {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-  gap: var(--vtm-space-32);
-  padding-block: var(--vtm-space-32);
-}
-.kennzahl dt { font-size: var(--vtm-size-s); color: var(--sem-text-sekundaer); order: 2; margin-top: var(--vtm-space-4); }
-.kennzahl dd { font: var(--datenbox-wert-font); order: 1; color: var(--sem-text); margin: 0; }
-.kennzahl { display: flex; flex-direction: column; }
-.kennzahlen .quelle { padding-bottom: var(--vtm-space-32); max-width: 60rem; }
-
-/* --------------------------------------------------------
-   3 · Argumentation + Signal-Grafik
-   -------------------------------------------------------- */
-.argumente { margin-top: var(--vtm-space-32); display: grid; gap: var(--vtm-space-16); }
-.argumente li { display: grid; grid-template-columns: auto 1fr; gap: var(--vtm-space-12); align-items: start; }
-.argumente li::before {
-  content: ""; width: 10px; height: 10px; margin-top: 0.45em; flex: none;
-  border: 2px solid var(--sem-auswahl-linie); border-radius: var(--vtm-radius-rund);
-}
-.signalbild { background: var(--vtm-nacht-900); border-radius: var(--vtm-radius-xl); padding: var(--vtm-space-24); }
-.signalbild svg { width: 100%; height: auto; display: block; }
-
-/* --------------------------------------------------------
-   4 · Plattform / Kanäle
-   -------------------------------------------------------- */
-.kanaele { border-top: var(--vtm-linie-mittel); }
-.kanal {
-  display: grid;
-  grid-template-columns: 1.75rem minmax(0, 1fr) auto;
-  gap: var(--vtm-space-16);
-  align-items: start;
-  padding-block: var(--vtm-space-24);
-  border-bottom: var(--vtm-linie-haar);
-}
-.kanal__icon { color: var(--sem-aktion); margin-top: 0.15rem; }
-.kanal__icon svg { display: block; }
-.kanal h3 { font-size: var(--vtm-size-l); font-weight: 700; font-family: var(--vtm-font-display); }
-.kanal p { color: var(--sem-text-sekundaer); font-size: var(--vtm-size-s); margin-top: var(--vtm-space-4); }
-.kanal__wert {
-  font-family: var(--vtm-font-mono); font-size: var(--vtm-size-xs);
-  font-variant-numeric: tabular-nums; color: var(--sem-text);
-  background: var(--sem-flaeche-eis); border-radius: var(--vtm-radius-s);
-  padding: 0.3rem 0.55rem; white-space: nowrap; align-self: start; margin-top: 0.1rem;
-}
-.partnerzeile { margin-top: var(--vtm-space-32); padding-top: var(--vtm-space-24); border-top: var(--vtm-linie-haar); }
-.partnerlogos { display: flex; flex-wrap: wrap; align-items: center; gap: var(--vtm-space-24); margin-top: var(--vtm-space-12); }
-.partnerlogos img { height: 34px; width: auto; opacity: 0.85; }
-
-/* --------------------------------------------------------
-   5 · Preisleiter
-   -------------------------------------------------------- */
-.paket {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--vtm-space-24);
-  align-items: center;
-  padding: var(--vtm-space-24);
-  border: var(--karte-linie);
-  border-radius: var(--karte-radius);
-  background: var(--karte-bg);
-  transition: box-shadow var(--vtm-dauer-kurz) var(--vtm-ease-standard);
-}
-.paket + .paket { margin-top: var(--vtm-space-16); }
-.paket:hover { box-shadow: var(--karte-schatten-hover); }
-.paket--markiert { border-color: var(--sem-auswahl-linie); background: var(--vtm-electric-050); box-shadow: var(--vtm-schatten-s); }
-.paket__kopf { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--vtm-space-12); }
-.marker {
-  font-family: var(--vtm-font-mono); font-size: var(--vtm-size-2xs); font-weight: 600;
-  text-transform: uppercase; letter-spacing: var(--vtm-tracking-label);
-  background: var(--sem-auswahl-flaeche); color: var(--sem-auswahl-text);
-  border-radius: var(--status-radius); padding: var(--status-pad);
-}
-.paket__inhalt { color: var(--sem-text-sekundaer); font-size: var(--vtm-size-s); margin-top: var(--vtm-space-8); }
-.paket__nutzen { font-size: var(--vtm-size-s); margin-top: var(--vtm-space-8); color: var(--sem-text); }
-.paket__preis { text-align: right; }
-.paket__preis b { display: block; font-family: var(--vtm-font-display); font-size: var(--vtm-size-3xl); font-weight: 700; line-height: 1.05; font-variant-numeric: tabular-nums; }
-.paket__preis span { display: block; }
-.preishinweis { margin-top: var(--vtm-space-24); }
-
-/* --------------------------------------------------------
-   6 · Einzelbausteine (Details + Tabellen)
-   -------------------------------------------------------- */
-.gruppe { border-bottom: var(--vtm-linie-haar); }
-.gruppe:first-of-type { border-top: var(--vtm-linie-mittel); }
-.gruppe > summary {
-  display: flex; align-items: center; justify-content: space-between; gap: var(--vtm-space-16);
-  padding-block: var(--vtm-space-24);
-  cursor: pointer; list-style: none;
-  font-family: var(--vtm-font-display); font-size: var(--vtm-size-xl); font-weight: 700;
-  min-height: var(--btn-hoehe);
-}
-.gruppe > summary::-webkit-details-marker { display: none; }
-.gruppe > summary::after {
-  content: "+"; font-family: var(--vtm-font-mono); font-size: var(--vtm-size-2xl);
-  color: var(--sem-aktion); line-height: 1; flex: none;
-}
-.gruppe[open] > summary::after { content: "–"; }
-.gruppe > summary:hover { color: var(--sem-auswahl-text); }
-.gruppe__inhalt { padding-bottom: var(--vtm-space-32); }
-.tabellenrahmen { overflow-x: auto; }
-table.preise { width: 100%; border-collapse: collapse; min-width: 34rem; }
-table.preise caption { text-align: left; color: var(--sem-text-sekundaer); font-size: var(--vtm-size-s); padding-bottom: var(--vtm-space-12); }
-table.preise th, table.preise td { text-align: left; padding: var(--vtm-space-12) var(--vtm-space-16) var(--vtm-space-12) 0; border-bottom: var(--tabelle-zeile-linie); vertical-align: top; }
-table.preise thead th { font: var(--tabelle-kopf-font); background: var(--tabelle-kopf-bg); padding-inline: var(--vtm-space-16); }
-table.preise thead th:first-child { border-top-left-radius: var(--vtm-radius-s); }
-table.preise thead th:last-child { border-top-right-radius: var(--vtm-radius-s); }
-table.preise tbody th { font-weight: 600; padding-left: var(--vtm-space-16); width: 30%; }
-table.preise td.beschreibung { color: var(--sem-text-sekundaer); font-size: var(--vtm-size-s); }
-table.preise td.preis { font: var(--tabelle-zahl-font); white-space: nowrap; text-align: right; padding-right: var(--vtm-space-16); }
-table.preise tbody tr:hover { background: var(--tabelle-zeile-hover); }
-.anfrage-liste { display: grid; gap: var(--vtm-space-16); }
-.anfrage-liste li { padding-left: var(--vtm-space-16); border-left: 2px solid var(--sem-auswahl-linie); }
-.anfrage-liste b { font-family: var(--vtm-font-display); }
-.anfrage-liste span { display: block; color: var(--sem-text-sekundaer); font-size: var(--vtm-size-s); }
-
-/* --------------------------------------------------------
-   7 · Jahresprogramme
-   -------------------------------------------------------- */
-.programm {
-  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--vtm-space-24);
-  padding-block: var(--vtm-space-24); border-bottom: var(--vtm-linie-haar); align-items: start;
-}
-.programme { border-top: var(--vtm-linie-mittel); }
-.programm__ziel { font-family: var(--vtm-font-mono); font-size: var(--vtm-size-xs); text-transform: uppercase; letter-spacing: var(--vtm-tracking-label); color: var(--sem-auswahl-text); }
-.programm h3 { font-size: var(--vtm-size-2xl); margin-top: var(--vtm-space-4); }
-.programm p { color: var(--sem-text-sekundaer); font-size: var(--vtm-size-s); margin-top: var(--vtm-space-8); max-width: var(--vtm-measure-text); }
-.programm__preis { font-family: var(--vtm-font-display); font-weight: 700; font-size: var(--vtm-size-xl); white-space: nowrap; font-variant-numeric: tabular-nums; text-align: right; }
-
-/* --------------------------------------------------------
-   8 · Ablauf
-   -------------------------------------------------------- */
-.schritte { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--vtm-space-32); counter-reset: schritt; }
-.schritt { border-top: 2px solid var(--sem-auswahl-linie); padding-top: var(--vtm-space-16); }
-.schritt__nr { font-family: var(--vtm-font-mono); font-size: var(--vtm-size-xs); font-weight: 600; color: var(--sem-auswahl-text); letter-spacing: var(--vtm-tracking-label); }
-.schritt h3 { font-size: var(--vtm-size-xl); margin-top: var(--vtm-space-8); }
-.schritt p { color: var(--sem-text-sekundaer); font-size: var(--vtm-size-s); margin-top: var(--vtm-space-8); }
-
-/* --------------------------------------------------------
-   9 · Zusagen
-   -------------------------------------------------------- */
-.zusagen { display: grid; gap: var(--vtm-space-12); margin-top: var(--vtm-space-24); }
-.zusagen li { display: grid; grid-template-columns: auto 1fr; gap: var(--vtm-space-12); align-items: start; }
-.zusagen li > span:first-child { flex: none; margin-top: 0.15em; }
-.zusagen--ja li > span:first-child { color: var(--sem-erfolg-text); }
-.zusagen--nein li > span:first-child { color: var(--sem-fehler-text); }
-.kennzeichnungsbox {
-  margin-top: var(--vtm-space-32);
-  background: var(--sem-beleg-flaeche);
-  border-left: 3px solid var(--sem-beleg-linie);
-  border-radius: var(--vtm-radius-m);
-  padding: var(--vtm-space-24);
-}
-.kennzeichnungsbox p { font-size: var(--vtm-size-s); color: var(--sem-text-sekundaer); margin-top: var(--vtm-space-8); }
-.kennz-label {
-  display: inline-block;
-  font-family: var(--vtm-font-mono); font-size: var(--vtm-size-2xs); font-weight: 600;
-  text-transform: uppercase; letter-spacing: var(--vtm-tracking-label);
-  color: var(--sem-beleg-text); border: 1px solid var(--sem-beleg-linie);
-  border-radius: var(--vtm-radius-s); padding: 0.25rem 0.5rem;
-  margin-right: var(--vtm-space-8); margin-bottom: var(--vtm-space-8);
-}
-
-/* --------------------------------------------------------
-   10 · Menschen
-   -------------------------------------------------------- */
-.zitat {
-  font-family: var(--vtm-font-serif); font-size: var(--vtm-size-2xl);
-  line-height: 1.4; border-left: var(--artikel-zitat-linie);
-  padding-left: var(--vtm-space-24); margin-bottom: var(--vtm-space-24);
-}
-.person { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--vtm-space-16); align-items: center; }
-.person img { border-radius: var(--vtm-radius-l); width: 88px; height: 110px; object-fit: cover; }
-.person--gross img { width: 132px; height: 165px; }
-.person b { display: block; font-family: var(--vtm-font-display); font-size: var(--vtm-size-l); }
-.person .mono { display: block; margin-top: var(--vtm-space-4); }
-.person a { font-size: var(--vtm-size-s); display: inline-block; margin-top: var(--vtm-space-8); }
-.personen-neben { display: grid; gap: var(--vtm-space-24); align-content: center; }
-
-/* --------------------------------------------------------
-   11 · Weitere Geschäftsfelder
-   -------------------------------------------------------- */
-.felder { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr)); gap: 0 var(--vtm-space-48); }
-.felder div { padding-block: var(--vtm-space-16); border-bottom: var(--vtm-linie-haar); }
-.felder dt { font-family: var(--vtm-font-display); font-weight: 700; font-size: var(--vtm-size-l); }
-.felder dd { color: var(--sem-text-sekundaer); font-size: var(--vtm-size-s); margin-top: var(--vtm-space-4); }
-
-/* --------------------------------------------------------
-   12 · FAQ
-   -------------------------------------------------------- */
-.faq { border-top: var(--vtm-linie-mittel); }
-.faq details { border-bottom: var(--vtm-linie-haar); }
-.faq summary {
-  cursor: pointer; list-style: none; padding-block: var(--vtm-space-16);
-  font-weight: 600; font-size: var(--vtm-size-l);
-  display: flex; gap: var(--vtm-space-16); justify-content: space-between; align-items: center;
-  min-height: var(--btn-hoehe);
-}
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; font-family: var(--vtm-font-mono); color: var(--sem-aktion); flex: none; }
-.faq details[open] summary::after { content: "–"; }
-.faq summary:hover { color: var(--sem-auswahl-text); }
-.faq p { color: var(--sem-text-sekundaer); padding-bottom: var(--vtm-space-24); max-width: var(--vtm-measure-text); }
-
-/* --------------------------------------------------------
-   13 · Kontakt-Anker (einziger Nachtblau-Block)
-   -------------------------------------------------------- */
-.anker-invers { background: var(--sem-flaeche-anker); color: var(--sem-text-invers); }
-.anker-invers .h2, .anker-invers .h3 { color: var(--sem-text-invers); }
-.anker-invers .lead, .anker-invers .fliess { color: var(--sem-text-invers-sekundaer); }
-.anker-invers .kicker { color: var(--vtm-electric-400); }
-.anker-invers .strich { background: var(--vtm-electric-400); }
-.anker-invers a { color: var(--sem-text-link-invers); }
-.anker-invers .quelle { color: var(--sem-beleg-marke-invers); }
-.anker-invers .quelle::before { background: var(--sem-beleg-marke-invers); }
-.anker-invers .mono { color: var(--sem-text-invers-sekundaer); }
-
-.formular { display: grid; gap: var(--vtm-space-16); margin-top: var(--vtm-space-32); }
-.feld { display: grid; gap: var(--vtm-space-8); }
-.feld label, .feldsatz legend { font: var(--input-label-font); color: var(--sem-text-invers); }
-.feld input, .feld textarea, .feld select {
+/* --- Satzspiegel: Beleg links, Aussage rechts --------------- */
+.satz {
   width: 100%;
-  min-height: var(--input-hoehe);
-  padding: var(--vtm-space-12);
-  border-radius: var(--input-radius);
-  border: var(--vtm-linie-invers);
-  background: rgb(255 255 255 / 0.06);
-  color: var(--sem-text-invers);
-  font-family: var(--vtm-font-text);
-  font-size: var(--vtm-size-m);
+  max-width: var(--satz-max);
+  margin-inline: auto;
+  padding-inline: var(--rand);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+  row-gap: clamp(1.75rem, 3vw, 2.75rem);
 }
-.feld textarea { min-height: 6rem; resize: vertical; }
-.feld input::placeholder, .feld textarea::placeholder { color: rgb(255 255 255 / 0.5); }
-.feld input:focus, .feld textarea:focus { border-color: var(--vtm-electric-400); }
-.feld .hilfe { font-family: var(--vtm-font-mono); font-size: var(--vtm-size-xs); color: var(--sem-text-invers-sekundaer); }
-.feld-paar { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: var(--vtm-space-16); }
-.feldsatz { border: 0; padding: 0; margin: 0; display: grid; gap: var(--vtm-space-8); }
-.feldsatz legend { padding: 0; margin-bottom: var(--vtm-space-4); }
-.chips { display: flex; flex-wrap: wrap; gap: var(--vtm-space-8); }
-.chip { display: inline-flex; align-items: center; gap: var(--vtm-space-8); min-height: var(--btn-hoehe); border: var(--vtm-linie-invers); border-radius: var(--vtm-radius-rund); padding: 0.5rem 0.875rem; font-size: var(--vtm-size-s); cursor: pointer; }
-.chip:hover { background: rgb(255 255 255 / 0.08); }
-.chip input { accent-color: var(--vtm-electric-400); width: 1rem; height: 1rem; }
-.zustimmung { display: grid; grid-template-columns: auto 1fr; gap: var(--vtm-space-12); align-items: start; font-size: var(--vtm-size-s); color: var(--sem-text-invers-sekundaer); }
-.zustimmung input { margin-top: 0.25rem; accent-color: var(--vtm-electric-400); width: 1.1rem; height: 1.1rem; }
+.marginalie  { grid-column: 1 / 4; }
+.aussage     { grid-column: 4 / 12; }
+.voll        { grid-column: 1 / -1; }
+.halb-links  { grid-column: 1 / 7; }
+.halb-rechts { grid-column: 8 / -1; }
 
-.kontaktkarte { background: rgb(255 255 255 / 0.06); border: var(--vtm-linie-invers); border-radius: var(--vtm-radius-l); padding: var(--vtm-space-24); }
-.kontaktkarte .person img { width: 96px; height: 120px; }
-.kontaktkarte b { color: var(--sem-text-invers); }
-.direktweg { margin-top: var(--vtm-space-24); display: grid; gap: var(--vtm-space-12); }
-.direktweg a { display: flex; align-items: center; min-height: var(--btn-hoehe); gap: var(--vtm-space-12); color: var(--sem-text-invers); text-decoration: none; font-weight: 500; }
-.direktweg a:hover { color: var(--vtm-electric-400); }
-.direktweg svg { color: var(--vtm-electric-400); flex: none; }
+/* Beleg und Aussage stehen nebeneinander, nicht untereinander.
+   Ohne feste Zeile schiebt die Auto-Platzierung die Marginalie
+   nach unten, sobald sie im Quelltext hinter der Aussage steht. */
+.satz > .marginalie, .satz > .aussage { grid-row: 1; }
+.satz > .voll { grid-row: 2; }
 
-/* --------------------------------------------------------
-   Footer
-   -------------------------------------------------------- */
-.fuss { background: var(--sem-flaeche-soft); padding-block: var(--vtm-space-32); border-top: var(--vtm-linie-haar); }
-.fuss__inner { display: flex; flex-wrap: wrap; gap: var(--vtm-space-16) var(--vtm-space-32); align-items: center; justify-content: space-between; }
-.fuss img { height: 26px; width: auto; }
-.fuss__links { display: flex; flex-wrap: wrap; gap: var(--vtm-space-24); }
-.fuss__links a { display: flex; align-items: center; min-height: var(--btn-hoehe); font-size: var(--vtm-size-s); color: var(--sem-text-sekundaer); text-decoration: none; }
-.fuss__links a:hover { color: var(--sem-text-link); text-decoration: underline; }
+.marginalie .quelle,
+.marginalie .notiz {
+  font-family: var(--schrift-mono);
+  font-size: 0.75rem;
+  line-height: 1.65;
+  padding-top: 0.4rem;
+}
+.marginalie .quelle { color: var(--beleg); border-top: 1px solid var(--beleg); }
+.marginalie .notiz { color: var(--tinte-still); border-top: 1px solid var(--linie-stark); }
 
-/* --------------------------------------------------------
-   Responsive Kompositionen
-   -------------------------------------------------------- */
-@media (max-width: 64rem) {
-  .sp-4, .sp-5, .sp-6, .sp-7, .sp-8 { grid-column: span 12; }
-  .h1 { max-width: 18ch; }
-  .hero__bild { order: -1; }
-  .person--gross img { width: 108px; height: 135px; }
+.block { padding-block: clamp(3.25rem, 5.5vw, 5.5rem); }
+
+/* --- Typografische Stufen ---------------------------------- */
+.display {
+  /* So gestimmt, dass die Zeile ab Tablet zweizeilig bleibt. */
+  font-size: clamp(2.5rem, 0.6rem + 5.6vw, 5.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.026em;
+}
+.kapitel { font-size: clamp(1.95rem, 1.15rem + 3.1vw, 3.4rem); }
+.stimme {
+  font-family: var(--schrift-display);
+  font-weight: 400;
+  font-size: clamp(1.15rem, 1rem + 0.55vw, 1.375rem);
+  line-height: 1.55;
+  color: var(--tinte-still);
+  max-width: 34rem;
+}
+
+/* --- Aktion ------------------------------------------------- */
+.tat {
+  display: inline-flex; align-items: center; gap: 0.625rem;
+  min-height: 3rem; padding-inline: 1.5rem;
+  background: var(--tat-grund); color: var(--tat-schrift);
+  font-family: var(--schrift-ui); font-size: 1rem; font-weight: 500;
+  border: 1px solid var(--tat-grund); border-radius: 0;
+  text-decoration: none; cursor: pointer;
+  transition: background-color 180ms var(--kurve), border-color 180ms var(--kurve), transform 120ms var(--kurve);
+}
+.tat:hover { background: var(--tat-grund-hover); border-color: var(--tat-grund-hover); color: var(--tat-schrift); }
+.tat:active { transform: translateY(1px); }
+.tat svg { width: 1.05em; height: 1.05em; flex: none; }
+
+.weiter {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  min-height: 3rem; color: var(--tinte);
+  font-size: 0.9375rem; text-decoration: none;
+  border-bottom: 1px solid var(--linie-stark);
+}
+.weiter:hover { color: var(--signal); border-bottom-color: var(--signal); }
+.weiter svg { width: 0.9em; height: 0.9em; flex: none; }
+
+.sprung {
+  position: absolute; left: var(--rand); top: -4rem; z-index: 60;
+  background: var(--signal); color: #FFFFFF; padding: 0.75rem 1rem;
+  text-decoration: none; font-weight: 500;
+}
+.sprung:focus { top: 0.75rem; color: #FFFFFF; }
+
+/* --- Kopfzeile ---------------------------------------------- */
+.kopf {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--papier) 88%, transparent);
+  backdrop-filter: blur(10px) saturate(150%);
+  border-bottom: 1px solid var(--linie);
+}
+.kopf__satz {
+  max-width: var(--satz-max); margin-inline: auto; padding-inline: var(--rand);
+  height: 4.25rem; display: flex; align-items: center; gap: 2rem;
+}
+.marke { display: flex; align-items: center; min-height: 2.75rem; flex: none; }
+.marke img { height: 1.5rem; width: auto; }
+.wege { display: flex; gap: 1.75rem; margin-left: auto; }
+.wege a {
+  display: flex; align-items: center; min-height: 2.75rem;
+  color: var(--tinte-still); text-decoration: none; font-size: 0.9375rem;
+  border-bottom: 1px solid transparent;
+}
+.wege a:hover, .wege a.hier { color: var(--tinte); border-bottom-color: var(--signal); }
+.kopf .tat { min-height: 2.5rem; padding-inline: 1.125rem; font-size: 0.9375rem; }
+@media (max-width: 62rem) {
+  .wege { display: none; }
+  .kopf .tat { margin-left: auto; }
+}
+
+/* --- 01 Auftakt --------------------------------------------- */
+.auftakt { padding-block: clamp(3rem, 6vw, 5rem) clamp(3rem, 6vw, 6rem); }
+.auftakt .display { grid-column: 1 / 12; max-width: 28ch; }
+.auftakt__wort { grid-column: 1 / 6; }
+.auftakt__bild { grid-column: 6 / -1; align-self: end; }
+.auftakt__bild img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.auftakt__bild figcaption { margin-top: 0.6rem; }
+.auftakt .stimme { margin-bottom: 2rem; }
+.auftakt__tun { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; }
+
+/* --- 02 Partnerzeile ---------------------------------------- */
+.partner { border-block: 1px solid var(--linie); }
+.partner__satz {
+  max-width: var(--satz-max); margin-inline: auto; padding: 1.75rem var(--rand);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 3rem;
+}
+.partner h2 { font-family: var(--schrift-ui); font-weight: 400; font-size: 0.9375rem; color: var(--tinte-still); }
+.partner ul { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 2.5rem; }
+/* Partnermarken werden nicht eingefärbt. Im Dunkeln bekommen sie
+   eine helle Platte, damit sie so erscheinen, wie ihre Eigentümer
+   sie freigegeben haben. */
+.partner li { background: var(--partner-platte); padding: var(--partner-polster, 0); }
+.partner img { height: 1.9rem; width: auto; opacity: var(--partner-deckung); }
+
+/* --- 03 Zahlenband ------------------------------------------ */
+.zahlen { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+.zahl__wert {
+  font-family: var(--schrift-display); font-weight: 300;
+  font-size: clamp(2.4rem, 1.4rem + 2.6vw, 3.6rem);
+  line-height: 1; letter-spacing: -0.022em; font-variant-numeric: tabular-nums;
+}
+.zahl__was { margin-top: 0.5rem; font-size: 0.9375rem; color: var(--tinte-still); max-width: 15rem; }
+
+/* --- 04 Kanäle ---------------------------------------------- */
+.kanaele { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.75rem 3rem; margin-top: 3rem; }
+.kanal { padding-top: 1rem; border-top: 1px solid var(--linie-stark); }
+.kanal h3 { font-size: 1.375rem; }
+.kanal p { margin-top: 0.5rem; font-size: 0.9375rem; color: var(--tinte-still); }
+.kanal .reichweite {
+  display: block; margin-top: 0.75rem;
+  font-family: var(--schrift-mono); font-size: 0.75rem;
+  color: var(--signal); font-variant-numeric: tabular-nums;
+}
+.bleibild { margin-top: 3.5rem; }
+.bleibild img { width: 100%; aspect-ratio: 21 / 9; object-fit: cover; }
+.bleibild figcaption { margin-top: 0.6rem; }
+
+/* --- 05 Staffel und Jahre ----------------------------------- */
+.staffel { margin-top: 3rem; border-top: 1px solid var(--linie-stark); }
+.stufe {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem 2.5rem; align-items: start;
+  padding-block: 2.25rem; border-bottom: 1px solid var(--linie);
+}
+.stufe h3 { font-size: clamp(1.5rem, 1.1rem + 1.1vw, 2rem); }
+.stufe__marke { font-family: var(--schrift-mono); font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--signal); margin-bottom: 0.4rem; }
+.stufe__nutzen { margin-top: 0.5rem; color: var(--tinte-still); max-width: 32rem; }
+.stufe__teile { margin-top: 0.875rem; font-family: var(--schrift-mono); font-size: 0.75rem; line-height: 1.75; color: var(--tinte-leise); max-width: 34rem; }
+.stufe__preis {
+  font-family: var(--schrift-display); font-weight: 300;
+  font-size: clamp(1.9rem, 1.3rem + 1.6vw, 2.6rem);
+  line-height: 1; letter-spacing: -0.022em; white-space: nowrap;
+  font-variant-numeric: tabular-nums; text-align: right;
+}
+.stufe__preis small { display: block; margin-top: 0.55rem; font-family: var(--schrift-mono); font-size: 0.6875rem; color: var(--tinte-leise); }
+.stufe--gewaehlt { position: relative; }
+.stufe--gewaehlt::before {
+  content: ""; position: absolute; left: -1.25rem; top: 2.4rem;
+  width: 3px; height: calc(100% - 4.8rem); background: var(--signal);
+}
+
+.jahre { margin-top: 4rem; }
+.jahre > h3 { font-size: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--linie-stark); }
+.jahr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.75rem 2rem; padding-block: 1.5rem; border-bottom: 1px solid var(--linie); }
+.jahr h4 { font-size: 1.25rem; }
+.jahr p { margin-top: 0.4rem; font-size: 0.9375rem; color: var(--tinte-still); max-width: 40rem; }
+.jahr__preis { font-family: var(--schrift-mono); font-size: 0.8125rem; line-height: 1.6; white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; color: var(--tinte); }
+
+/* --- Aufklappen --------------------------------------------- */
+.klappe { border-top: 1px solid var(--linie-stark); }
+.klappe > summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  min-height: 3.5rem; padding-block: 1rem; cursor: pointer; list-style: none;
+  font-family: var(--schrift-display); font-weight: 400; font-size: 1.25rem;
+}
+.klappe > summary::-webkit-details-marker { display: none; }
+.klappe > summary:hover { color: var(--signal); }
+.zeichen { flex: none; width: 0.875rem; height: 0.875rem; color: var(--signal); }
+.klappe[open] .zeichen--auf { display: none; }
+.klappe:not([open]) .zeichen--zu { display: none; }
+.klappe__inhalt { padding-bottom: 2.5rem; }
+
+.preisgruppe + .preisgruppe { margin-top: 3rem; }
+.preisgruppe > h4 { font-size: 1.25rem; padding-bottom: 0.75rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--linie); }
+.posten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 3rem; }
+.posten h5 { font-size: 1.0625rem; line-height: 1.35; }
+.posten p { margin-top: 0.3rem; font-size: 0.875rem; color: var(--tinte-still); }
+.posten .preis { display: block; margin-top: 0.5rem; font-family: var(--schrift-mono); font-size: 0.8125rem; color: var(--tinte); font-variant-numeric: tabular-nums; }
+
+/* --- 06 Arbeitsweise ---------------------------------------- */
+.gaenge { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+.gang { padding-top: 1rem; border-top: 1px solid var(--tinte); }
+.gang h3 { font-size: 1.25rem; }
+.gang p { margin-top: 0.5rem; font-size: 0.9375rem; color: var(--tinte-still); }
+
+/* --- 07 Grenzen --------------------------------------------- */
+.waage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem; margin-top: 2rem; }
+.waage h3 { font-size: 1.375rem; padding-bottom: 0.875rem; border-bottom: 1px solid var(--tinte); }
+.waage ul { margin-top: 1.5rem; display: grid; gap: 1.125rem; }
+.waage li { font-size: 0.9375rem; color: var(--tinte-still); padding-left: 1.25rem; position: relative; }
+.waage li::before { content: ""; position: absolute; left: 0; top: 0.66em; width: 0.5rem; height: 1px; background: var(--tinte-leise); }
+.kennzeichen { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--beleg); }
+.kennzeichen p { font-family: var(--schrift-display); font-weight: 400; font-size: 1.25rem; line-height: 1.5; max-width: 38rem; }
+.kennzeichen ul { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+.kennzeichen li {
+  font-family: var(--schrift-mono); font-size: 0.6875rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--beleg);
+  border: 1px solid var(--beleg); padding: 0.3rem 0.55rem;
+}
+
+/* --- 08 Menschen -------------------------------------------- */
+.zitat { font-family: var(--schrift-display); font-weight: 300; font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.2rem); line-height: 1.3; max-width: 22ch; }
+.zeichnung { margin-top: 1.75rem; font-family: var(--schrift-mono); font-size: 0.8125rem; color: var(--tinte-still); }
+.portraet { margin-top: 2.5rem; }
+.portraet img { width: 100%; max-width: 15rem; aspect-ratio: 4 / 5; object-fit: cover; }
+.leute { display: grid; gap: 2rem; align-content: start; }
+.person { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 1.125rem; align-items: center; }
+.person img { width: 4.5rem; aspect-ratio: 4 / 5; object-fit: cover; }
+.person span { display: block; }
+.person .name { font-family: var(--schrift-display); font-weight: 400; font-size: 1.0625rem; }
+
+/* --- 09 Fragen ---------------------------------------------- */
+.fragen { margin-top: 2.5rem; }
+.fragen .klappe:last-of-type { border-bottom: 1px solid var(--linie-stark); }
+.fragen .klappe > summary { font-size: 1.125rem; }
+.fragen p { padding-bottom: 1.75rem; color: var(--tinte-still); max-width: 42rem; font-size: 0.9375rem; }
+
+/* --- 10 Anfang: der einzige invertierte Block --------------- */
+.anfang {
+  background: var(--tinte);
+  color: var(--papier);
+  --tat-grund: var(--papier);
+  --tat-grund-hover: var(--papier);
+  --tat-schrift: var(--tinte);
+}
+.anfang h2 { color: var(--papier); }
+.anfang .stimme { color: color-mix(in srgb, var(--papier) 74%, transparent); }
+.anfang a { color: var(--papier); }
+.anfang .notiz { color: color-mix(in srgb, var(--papier) 62%, transparent); border-top: 1px solid color-mix(in srgb, var(--papier) 38%, transparent); padding-top: 0.4rem; font-family: var(--schrift-mono); font-size: 0.75rem; line-height: 1.65; }
+.anfang :where(a, button, input, textarea):focus-visible { outline-color: var(--papier); }
+
+.bogen { margin-top: 2.5rem; display: grid; gap: 1.25rem; }
+.paar { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 1.25rem; }
+.feld { display: grid; gap: 0.4rem; }
+.feld label, .wahl legend { font-size: 0.8125rem; color: color-mix(in srgb, var(--papier) 82%, transparent); }
+.feld input, .feld textarea {
+  width: 100%; min-height: 3rem; padding: 0.7rem 0;
+  background: transparent; color: var(--papier);
+  border: 0; border-bottom: 1px solid color-mix(in srgb, var(--papier) 38%, transparent);
+  border-radius: 0; font-family: var(--schrift-ui); font-size: 1rem;
+}
+.feld textarea { min-height: 5rem; resize: vertical; }
+.feld input::placeholder, .feld textarea::placeholder { color: color-mix(in srgb, var(--papier) 64%, transparent); }
+.feld input:hover, .feld textarea:hover { border-bottom-color: color-mix(in srgb, var(--papier) 64%, transparent); }
+.feld input:focus, .feld textarea:focus { border-bottom-color: var(--papier); }
+.feld .hilfe { font-family: var(--schrift-mono); font-size: 0.6875rem; color: color-mix(in srgb, var(--papier) 66%, transparent); }
+.wahl { border: 0; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+.wahl ul { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.wahl label {
+  display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem;
+  padding: 0.35rem 0.85rem; font-size: 0.875rem; cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--papier) 38%, transparent);
+  color: color-mix(in srgb, var(--papier) 90%, transparent);
+}
+.wahl label:hover { border-color: var(--papier); color: var(--papier); }
+.wahl input { width: 0.95rem; height: 0.95rem; accent-color: var(--papier); }
+.zustimmen { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.75rem; align-items: start; font-size: 0.8125rem; color: color-mix(in srgb, var(--papier) 76%, transparent); }
+.zustimmen input { margin-top: 0.3rem; width: 1rem; height: 1rem; accent-color: var(--papier); }
+.draht { display: grid; gap: 0.875rem; }
+.draht a { display: inline-flex; align-items: center; gap: 0.75rem; min-height: 2.75rem; text-decoration: none; font-size: 0.9375rem; border-bottom: 1px solid color-mix(in srgb, var(--papier) 30%, transparent); }
+.draht a:hover { border-bottom-color: var(--papier); }
+.draht svg { width: 1.05rem; height: 1.05rem; flex: none; opacity: 0.72; }
+
+/* --- Fuß ---------------------------------------------------- */
+.fuss { border-top: 1px solid var(--linie); }
+.fuss__satz {
+  max-width: var(--satz-max); margin-inline: auto; padding: 2.25rem var(--rand);
+  display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; align-items: center; justify-content: space-between;
+}
+.fuss img { height: 1.25rem; width: auto; opacity: 0.8; }
+.fuss ul { display: flex; flex-wrap: wrap; gap: 1.75rem; }
+.fuss a { display: flex; align-items: center; min-height: 2.75rem; font-size: 0.875rem; color: var(--tinte-still); text-decoration: none; }
+.fuss a:hover { color: var(--signal); text-decoration: underline; }
+
+/* --- Bewegung: Einlauf entlang der Leserichtung -------------
+   Verborgen wird nur, wenn das Skript die Bewegung übernimmt
+   und sie auch wieder aufheben kann. Ohne JavaScript steht
+   jeder Abschnitt sofort da. */
+.bewegt .einlauf { opacity: 0; transform: translateY(1.25rem); }
+.bewegt .einlauf.da { opacity: 1; transform: none; transition: opacity var(--spur) var(--kurve), transform var(--spur) var(--kurve); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .bewegt .einlauf, .bewegt .einlauf.da { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }
+}
+
+/* --- Umbruch: eigene Kompositionen -------------------------- */
+@media (max-width: 60rem) {
+  .marginalie, .aussage, .halb-links, .halb-rechts,
+  .auftakt .display, .auftakt__wort, .auftakt__bild { grid-column: 1 / -1; }
+  .satz > .marginalie, .satz > .aussage, .satz > .voll { grid-row: auto; }
+  .aussage, .halb-links { order: 1; }
+  .marginalie, .halb-rechts { order: 2; }
+  .voll { order: 3; }
+  .auftakt .display { max-width: none; }
+  .auftakt__bild { order: 3; }
+  .kanaele, .gaenge, .waage, .posten { grid-template-columns: minmax(0, 1fr); }
+  .gaenge { gap: 1.75rem; }
+  .zitat { max-width: 26ch; }
+  .anfang .halb-rechts { margin-top: 1rem; }
 }
 @media (max-width: 40rem) {
-  /* Schmale Geräte sind eine eigene Komposition, keine Verkleinerung:
-     Display-Grad eine Stufe zurück, Kopfzeile auf das Nötigste. */
-  .h1 { font-size: var(--vtm-size-5xl); max-width: none; }
-  .shell { padding-inline: 1rem; }
-  .nav__inner { gap: var(--vtm-space-12); }
-  .nav__logo img { height: 22px; }
-  .nav__cta .btn { font-size: var(--vtm-size-s); padding-inline: 0.875rem; }
-  .paket { grid-template-columns: minmax(0, 1fr); }
-  .paket__preis { text-align: left; }
-  .programm { grid-template-columns: minmax(0, 1fr); }
-  .programm__preis { text-align: left; }
-  .kanal { grid-template-columns: 1.75rem minmax(0, 1fr); }
-  .kanal__wert { grid-column: 2; justify-self: start; align-self: start; }
-  .zitat { font-size: var(--vtm-size-xl); }
-  table.preise tbody th { width: auto; }
+  .stufe, .jahr { grid-template-columns: minmax(0, 1fr); }
+  .stufe__preis, .jahr__preis { text-align: left; }
+  .stufe--gewaehlt::before { left: -0.7rem; }
+  .portraet img { max-width: 11rem; }
+  .zitat { max-width: none; }
 }
 </style>
 </head>
 <body>
 
-<a class="skiplink" href="#inhalt">Zum Inhalt springen</a>
+<a class="sprung" href="#lesen">Zum Inhalt springen</a>
 
-<header class="nav">
-  <div class="shell nav__inner">
-    <a class="nav__logo" href="#top" aria-label="VersicherungsTech Magazin — Startseite">
-      <img src="assets/logo/vtm-logo-farbe.png" alt="VersicherungsTech Magazin" width="1007" height="177">
+<header class="kopf">
+  <div class="kopf__satz">
+    <a class="marke" href="#oben" aria-label="VersicherungsTech Magazin, Seitenanfang">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="assets/logo/vtm-logo-weiss.png">
+        <img src="assets/logo/vtm-logo-farbe.png" alt="VersicherungsTech Magazin" width="1007" height="177">
+      </picture>
     </a>
-    <nav class="nav__links" aria-label="Abschnitte dieser Seite">
-      <a href="#plattform">Plattform</a>
-      <a href="#leistungen">Leistungen</a>
-      <a href="#ablauf">Ablauf</a>
-      <a href="#zusagen">Zusagen</a>
-      <a href="#fragen">Fragen</a>
+    <nav class="wege" aria-label="Abschnitte">
+      <a href="#kanaele">Kanäle</a>
+      <a href="#formate">Formate</a>
+      <a href="#arbeit">Arbeitsweise</a>
+      <a href="#grenze">Grenzen</a>
     </nav>
-    <div class="nav__cta"><a class="btn btn--primaer" href="#kontakt">Thema besprechen</a></div>
+    <a class="tat" href="#anfang">Thema besprechen</a>
   </div>
 </header>
 
-<main id="inhalt">
+<main id="lesen">
 
-<!-- ==========================================================
-     1 · Hero — linksbündig, asymmetrisch 7/5
-     ========================================================== -->
-<section class="hero" id="top">
-  <div class="shell raster hero__raster">
-    <div class="sp-8">
-      <p class="kicker">Mediaangebot für Technologieanbieter, Beratungen und Versicherer</p>
-      <h1 class="h1">Wir machen Ihr Thema in der Versicherungs&shy;welt sichtbar.</h1>
-      <p class="lead hero__lead">
-        Das VersicherungsTech Magazin ist kein einzelnes Fachmagazin, sondern eine
-        Plattform: Redaktion, App, Newsletter, Podcast, LinkedIn-Netzwerk und Bühne.
-        Sie bringen das Thema — wir bringen es dorthin, wo Versicherer entscheiden.
-      </p>
-      <div class="btn-gruppe">
-        <a class="btn btn--primaer" href="#kontakt">Thema besprechen</a>
-        <a class="btn btn--sekundaer" href="#leistungen">Leistungen und Preise ansehen</a>
-      </div>
-      <ul class="hero__vertrauen mono">
-        <li>Unabhängige Fachredaktion</li>
-        <li>Jede bezahlte Platzierung gekennzeichnet</li>
-        <li>Keine Lead-Versprechen</li>
-      </ul>
-    </div>
-    <figure class="sp-4 bildkarte hero__bild">
-      <img src="assets/bilder/motiv-datenstrom.jpg" alt="Viele blaue Lichtfasern, durch die eine einzelne goldene Faser verläuft." width="1600" height="893" fetchpriority="high">
-      <figcaption class="mono">Motivklasse „Signal“ · Illustration</figcaption>
-    </figure>
-  </div>
-</section>
+<!-- ═══ 01 Auftakt ═══════════════════════════════════════════ -->
+<section class="auftakt satz" id="oben">
+  <h1 class="display">Wir machen Ihr Thema in der Versicherungswelt sichtbar.</h1>
 
-<!-- ==========================================================
-     2 · Kennzahlen — erster sichtbarer Beleg
-     ========================================================== -->
-<section class="kennzahlen" aria-label="Reichweite der Plattform">
-  <div class="shell">
-    <dl class="kennzahlen__liste">
-      <div class="kennzahl"><dd>6.000+</dd><dt>Empfänger VTM Briefing</dt></div>
-      <div class="kennzahl"><dd>rund 50 %</dd><dt>Öffnungsrate des Newsletters</dt></div>
-      <div class="kennzahl"><dd>ca. 35.000</dd><dt>Podcast-Downloads pro Monat</dt></div>
-      <div class="kennzahl"><dd>6</dd><dt>Kanäle aus einer Redaktion</dt></div>
-    </dl>
-    <p class="quelle">
-      <span>Eigene Messung, Stand 08/2026. Öffnungsrate als Durchschnitt der
-      zurückliegenden Ausgaben; Podcast-Downloads laut Hosting-Statistik von
-      Insurance&nbsp;Monday. Reichweitenzahlen schwanken — wir nennen sie im
-      Angebot mit dem jeweils aktuellen Stand.</span>
-    </p>
-  </div>
-</section>
-
-<!-- ==========================================================
-     3 · Argumentation 5/7 + Signal-Datenbild
-     ========================================================== -->
-<section class="sektion">
-  <div class="shell raster">
-    <div class="sp-5">
-      <h2 class="h2"><span class="strich" aria-hidden="true"></span>Sichtbarkeit entsteht nicht durch Lautstärke</h2>
-      <p class="fliess" style="margin-top: var(--vtm-space-24)">
-        Die Versicherungsbranche liest viel und glaubt wenig. Pressemitteilungen
-        erreichen Postfächer, aber selten Entscheidungen. Was wirkt, ist fachliche
-        Einordnung im redaktionellen Umfeld — von Menschen, denen die Branche zuhört.
-      </p>
-      <p class="fliess">
-        Genau dort setzt VTM an: Wir übersetzen Ihr Thema in Fachbeiträge, Gespräche
-        und Daten, die Vorstände, IT-Verantwortliche und Betriebsleiter tatsächlich
-        lesen — und zwar über mehrere Kanäle gleichzeitig.
-      </p>
-      <ul class="argumente">
-        <li><span>Ihr Thema wird <b>eingeordnet</b>, nicht angepriesen.</span></li>
-        <li><span>Es erscheint dort, wo die Branche <b>ohnehin liest</b>.</span></li>
-        <li><span>Jede bezahlte Platzierung ist <b>sichtbar gekennzeichnet</b> — das schützt Ihre Glaubwürdigkeit.</span></li>
-      </ul>
-    </div>
-
-    <div class="sp-7">
-      <figure class="signalbild">
-        <svg viewBox="0 0 660 380" role="img" aria-labelledby="signal-titel signal-text">
-          <title id="signal-titel">Aus Marktgeräusch wird ein Signal</title>
-          <desc id="signal-text">Links laufen viele graue Linien als Marktgeräusch. In der Mitte
-          bündelt die VTM-Redaktion sie. Rechts verlässt ein hervorgehobener Strang die Redaktion und
-          erreicht die vier Kanäle Magazin und App, Newsletter, Podcast und LinkedIn.</desc>
-
-          <!-- Rauschen -->
-          <g stroke="#5C6980" stroke-width="1.2" fill="none" opacity="0.55">
-            <path d="M8 34 C 90 40, 150 26, 232 66"/>
-            <path d="M8 62 C 96 58, 148 74, 232 90"/>
-            <path d="M8 90 C 88 96, 156 84, 232 112"/>
-            <path d="M8 118 C 100 110, 150 132, 232 134"/>
-            <path d="M8 146 C 92 152, 154 140, 232 158"/>
-            <path d="M8 174 C 104 168, 146 186, 232 180"/>
-            <path d="M8 202 C 90 208, 152 196, 232 202"/>
-            <path d="M8 230 C 98 224, 150 242, 232 224"/>
-            <path d="M8 258 C 94 264, 154 250, 232 246"/>
-            <path d="M8 286 C 100 280, 148 298, 232 268"/>
-            <path d="M8 314 C 92 320, 152 306, 232 290"/>
-            <path d="M8 342 C 98 336, 150 354, 232 312"/>
-          </g>
-          <g fill="#3A4763" opacity="0.8">
-            <circle cx="60" cy="48" r="2"/><circle cx="128" cy="106" r="2"/>
-            <circle cx="86" cy="196" r="2"/><circle cx="158" cy="268" r="2"/>
-            <circle cx="44" cy="300" r="2"/><circle cx="176" cy="150" r="2"/>
-          </g>
-          <text x="8" y="372" fill="#8791A3" font-family="IBM Plex Mono, monospace" font-size="12">Marktgeräusch</text>
-
-          <!-- Ihr Thema: der goldene Strang -->
-          <path d="M8 160 C 110 150, 170 176, 236 172" stroke="#C9A035" stroke-width="2.6" fill="none"/>
-          <circle cx="8" cy="160" r="4" fill="#C9A035"/>
-          <text x="18" y="146" fill="#E7C878" font-family="IBM Plex Mono, monospace" font-size="12">Ihr Thema</text>
-
-          <!-- Redaktion -->
-          <rect x="238" y="52" width="118" height="264" rx="12" fill="#142857" stroke="#1F4EFF" stroke-width="1.5"/>
-          <text x="297" y="176" fill="#FFFFFF" font-family="Schibsted Grotesk, sans-serif" font-weight="700" font-size="17" text-anchor="middle">VTM</text>
-          <text x="297" y="198" fill="#A9BAFF" font-family="IBM Plex Mono, monospace" font-size="12" text-anchor="middle">Redaktion</text>
-
-          <!-- Ausgabe: vier Kanäle -->
-          <g stroke="#1F4EFF" stroke-width="2.2" fill="none">
-            <path d="M356 184 C 420 184, 430 76, 496 76"/>
-            <path d="M356 184 C 420 184, 430 148, 496 148"/>
-            <path d="M356 184 C 420 184, 430 220, 496 220"/>
-            <path d="M356 184 C 420 184, 430 292, 496 292"/>
-          </g>
-          <g fill="#1F4EFF">
-            <circle cx="496" cy="76" r="5"/><circle cx="496" cy="148" r="5"/>
-            <circle cx="496" cy="220" r="5"/><circle cx="496" cy="292" r="5"/>
-          </g>
-          <g fill="#FFFFFF" font-family="Inter, sans-serif" font-size="14" font-weight="500">
-            <text x="512" y="81">Magazin &amp; App</text>
-            <text x="512" y="153">Newsletter</text>
-            <text x="512" y="225">Podcast</text>
-            <text x="512" y="297">LinkedIn</text>
-          </g>
-        </svg>
-        <figcaption class="mono" style="margin-top: var(--vtm-space-12); color: var(--sem-text-invers-sekundaer)">
-          Schema · aus Marktgeräusch wird ein belastbares Signal
-        </figcaption>
-      </figure>
+  <div class="auftakt__wort">
+    <p class="stimme">Sechs Kanäle, eine unabhängige Fachredaktion. Wir bringen Ihr Thema dorthin, wo Versicherer ihre Entscheidungen treffen.</p>
+    <div class="auftakt__tun">
+      <a class="tat" href="#anfang">
+        Thema besprechen
+        <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg>
+      </a>
+      <a class="weiter" href="#formate">Formate und Preise</a>
     </div>
   </div>
+
+  <figure class="auftakt__bild">
+    <img src="assets/bilder/motiv-architektur.jpg" alt="Foyer eines Bürogebäudes zur blauen Stunde, an der Wand eine große Medienfläche." width="1600" height="893" fetchpriority="high">
+    <figcaption class="mono">Illustration</figcaption>
+  </figure>
 </section>
 
-<!-- ==========================================================
-     4 · Die Plattform — Kernbotschaft
-     ========================================================== -->
-<section class="sektion sektion--soft" id="plattform">
-  <div class="shell raster">
-    <div class="sp-5">
-      <p class="kicker">Die Plattform</p>
-      <h2 class="h2">Sechs Kanäle, eine Redaktion</h2>
-      <p class="fliess" style="margin-top: var(--vtm-space-24)">
-        Ein Fachartikel allein bleibt ein Fachartikel. Wirkung entsteht, wenn dasselbe
-        Thema in derselben Woche im Magazin steht, im Newsletter auf dem Schreibtisch
-        landet, im Podcast besprochen wird und auf LinkedIn zirkuliert.
-      </p>
-      <p class="fliess">
-        Sie können jeden Kanal einzeln buchen — oder mehrere kombinieren, damit Ihr
-        Thema aus verschiedenen Richtungen dieselbe Zielgruppe erreicht.
-      </p>
-      <figure class="bildkarte" style="margin-top: var(--vtm-space-32)">
-        <img src="assets/bilder/motiv-buero-abend.jpg" alt="Arbeitsplatz mit Laptop und Tablet vor einer Skyline zur blauen Stunde, auf den Bildschirmen Auswertungen." width="1600" height="893" loading="lazy">
-        <figcaption class="mono">Motivklasse „Arbeit an der Sache“ · Illustration</figcaption>
-      </figure>
-    </div>
-
-    <div class="sp-7">
-      <ul class="kanaele">
-        <li class="kanal">
-          <span class="kanal__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11v14H4z"/><path d="M15 9h5v8a2 2 0 0 1-2 2h-3"/><path d="M7 9h5M7 12h5M7 15h3"/></svg>
-          </span>
-          <div>
-            <h3>Magazin &amp; App</h3>
-            <p>Fachbeiträge, Interviews und Case Studies auf versicherungstech-magazin.de — dazu ein eigener Startbildschirm in der VTM App.</p>
-          </div>
-          <span class="kanal__wert">Website + App</span>
-        </li>
-        <li class="kanal">
-          <span class="kanal__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
-          </span>
-          <div>
-            <h3>VTM Briefing</h3>
-            <p>Der Newsletter für Entscheider in der Versicherungsbranche. Exklusives Sponsoring — eine Marke pro Ausgabe, keine Anzeigenwand.</p>
-          </div>
-          <span class="kanal__wert">6.000+ · ~50 % Öffnung</span>
-        </li>
-        <li class="kanal">
-          <span class="kanal__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg>
-          </span>
-          <div>
-            <h3>Insurance Monday · Podcast</h3>
-            <p>Ganze Folgen zum eigenen Thema, Werbespots oder Quartalssponsoring — an echten Praxisfällen erzählt statt als Produktvortrag.</p>
-          </div>
-          <span class="kanal__wert">ca. 35.000 Downloads/Monat</span>
-        </li>
-        <li class="kanal">
-          <span class="kanal__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.5"/><circle cx="18" cy="7" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.5 7h7M7.2 9.2 10.5 16M16.8 9.2 13.5 16"/></svg>
-          </span>
-          <div>
-            <h3>LinkedIn-Netzwerk</h3>
-            <p>Beiträge über den VTM-Kanal und laufende Betreuung der Profile Ihrer Führungskräfte — dort, wo die Branche täglich diskutiert.</p>
-          </div>
-          <span class="kanal__wert">Redaktioneller Kanal</span>
-        </li>
-        <li class="kanal">
-          <span class="kanal__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
-          </span>
-          <div>
-            <h3>Entscheider-Panel &amp; Webinare</h3>
-            <p>Befragungen im Führungskräfte-Netzwerk liefern zitierfähige Zahlen für Presse und Vertrieb. Fach-Webinare unter VTM-Flagge inklusive Anmeldeliste.</p>
-          </div>
-          <span class="kanal__wert">Individuell kalkuliert</span>
-        </li>
-        <li class="kanal">
-          <span class="kanal__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M12 5h7l-2 3 2 3h-7"/><path d="M8 21h8"/></svg>
-          </span>
-          <div>
-            <h3>Bühne &amp; Netzwerk</h3>
-            <p>Sponsorslot, Tickets und Ausstellerpaket beim Hamburger Insurance Innovation Day — plus ein gewachsenes Partnernetzwerk der Branche.</p>
-          </div>
-          <span class="kanal__wert">Event &amp; Partner</span>
-        </li>
-      </ul>
-
-      <div class="partnerzeile">
-        <p class="kicker" style="margin-bottom: 0">Im Netzwerk unterwegs mit</p>
-        <div class="partnerlogos">
-          <img src="assets/partner/partner-insurance-monday.jpg" alt="Insurance Monday" width="640" height="640" loading="lazy">
-          <img src="assets/partner/partner-insurlab.png" alt="InsurLab Germany" width="640" height="245" loading="lazy">
-          <img src="assets/partner/partner-insurtech-werft.png" alt="InsurTech Werft" width="720" height="370" loading="lazy">
-          <img src="assets/partner/partner-frida.jpg" alt="Frida" width="516" height="323" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==========================================================
-     5 · Pakete — Preisleiter
-     ========================================================== -->
-<section class="sektion" id="leistungen">
-  <div class="shell">
-    <div class="raster" style="align-items: end">
-      <div class="sp-7">
-        <p class="kicker">Leistungen und Preise</p>
-        <h2 class="h2">Vom einzelnen Fachartikel bis zum Jahresprogramm</h2>
-      </div>
-      <p class="sp-5 fliess">
-        Drei vorkonfigurierte Kombinationen decken die häufigsten Ziele ab. Jede
-        lässt sich frei anpassen — die Bausteine darunter sind auch einzeln buchbar.
-      </p>
-    </div>
-
-    <div style="margin-top: clamp(2rem, 4vw, 3rem)">
-      <article class="paket">
-        <div>
-          <div class="paket__kopf"><h3 class="h3">Sichtbarkeits-Start</h3></div>
-          <p class="paket__nutzen">Für den ersten belastbaren Auftritt in der Branche.</p>
-          <p class="paket__inhalt">1 Fachartikel · 3 Monate Newsletter-Sponsoring · 5 Sponsored LinkedIn Posts</p>
-        </div>
-        <p class="paket__preis"><b>9.975&nbsp;€</b><span class="mono">gesamt, netto</span></p>
-      </article>
-
-      <article class="paket paket--markiert">
-        <div>
-          <div class="paket__kopf">
-            <h3 class="h3">Thought-Leader-Paket</h3>
-            <span class="marker">Meistgewählt</span>
-          </div>
-          <p class="paket__nutzen">Wenn Ihre Fachleute als Stimme der Branche wahrgenommen werden sollen.</p>
-          <p class="paket__inhalt">1 Podcast-Episode · 1 Executive Interview · 2 Fachartikel · 6 Monate LinkedIn as a Service</p>
-        </div>
-        <p class="paket__preis"><b>21.500&nbsp;€</b><span class="mono">gesamt, netto</span></p>
-      </article>
-
-      <article class="paket">
-        <div>
-          <div class="paket__kopf"><h3 class="h3">Marktführer-Paket</h3></div>
-          <p class="paket__nutzen">Dauerpräsenz über alle Hauptkanäle — für Anbieter, die ihre Kategorie besetzen wollen.</p>
-          <p class="paket__inhalt">1 Quartal Insurance-Monday-Sponsoring · 3 Monate Newsletter-Sponsoring · 3 Monate Werbebanner Website&nbsp;+&nbsp;App · 1 Case Study inkl. Kontaktliste der Interessenten</p>
-        </div>
-        <p class="paket__preis"><b>44.700&nbsp;€</b><span class="mono">gesamt, netto</span></p>
-      </article>
-
-      <p class="quelle preishinweis">
-        <span>Alle Preise netto zzgl. gesetzlicher USt. Die Paketpreise entsprechen
-        exakt der Summe der Einzelpositionen inklusive Mengenrabatt — nachgerechnet
-        gegen den Live-Konfigurator, Stand 11.08.2026.</span>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ==========================================================
-     6 · Einzelbausteine
-     ========================================================== -->
-<section class="sektion sektion--soft">
-  <div class="shell raster">
-    <div class="sp-4">
-      <h2 class="h2"><span class="strich" aria-hidden="true"></span>Alle Bausteine einzeln</h2>
-      <p class="fliess" style="margin-top: var(--vtm-space-24)">
-        Sie müssen nicht groß anfangen. Ein Fachartikel für 900&nbsp;€ ist ein
-        vollwertiger Test — und lässt sich jederzeit erweitern.
-      </p>
-      <p class="fliess">
-        Der Live-Konfigurator zeigt Ihnen die Summe direkt, inklusive Mengenrabatten.
-      </p>
-      <p style="margin-top: var(--vtm-space-24)">
-        <a class="btn btn--sekundaer" href="https://angebote.versicherungstech-magazin.de" target="_blank" rel="noopener">Konfigurator öffnen</a>
-      </p>
-    </div>
-
-    <div class="sp-8">
-      <details class="gruppe" open>
-        <summary>Magazin, Reichweite &amp; Sichtbarkeit</summary>
-        <div class="gruppe__inhalt tabellenrahmen">
-          <table class="preise">
-            <caption>Dauerhafte Präsenz im redaktionellen Umfeld</caption>
-            <thead><tr><th scope="col">Format</th><th scope="col">Umfang</th><th scope="col" style="text-align:right">Preis</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Website-Werbebanner</th><td class="beschreibung">Banner auf allen Seiten von versicherungstech-magazin.de, dauerhaft im redaktionellen Umfeld</td><td class="preis">1.200 €/Monat</td></tr>
-              <tr><th scope="row">Werbebanner Website + VTM App</th><td class="beschreibung">Banner auf allen Webseiten und zusätzlich im Startbildschirm der App</td><td class="preis">2.000 €/Monat</td></tr>
-              <tr><th scope="row">Newsletter-Sponsoring</th><td class="beschreibung">Exklusive Präsenz im VTM Briefing, 6.000+ Empfänger, rund 50 % Öffnungsrate</td><td class="preis">1.900 €/Monat</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-
-      <details class="gruppe">
-        <summary>Content &amp; Thought Leadership</summary>
-        <div class="gruppe__inhalt tabellenrahmen">
-          <table class="preise">
-            <caption>Redaktionell erarbeitete Formate — Freigabe liegt immer bei Ihnen</caption>
-            <thead><tr><th scope="col">Format</th><th scope="col">Umfang</th><th scope="col" style="text-align:right">Preis</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Fachartikel</th><td class="beschreibung">Redaktionell geschriebener Fachbeitrag auf Website, in der App und als Newsletter-Teaser</td><td class="preis">900 €/Artikel</td></tr>
-              <tr><th scope="row">Executive Interview</th><td class="beschreibung">Redaktionelles Interview mit einer Führungskraft</td><td class="preis">1.200 €/Interview</td></tr>
-              <tr><th scope="row">Case Study inkl. Kontaktliste</th><td class="beschreibung">Kundenprojekt als Erfolgsgeschichte, inklusive Kontaktliste aller Interessenten</td><td class="preis">3.000 €/Case Study</td></tr>
-              <tr><th scope="row">LinkedIn as a Service</th><td class="beschreibung">4 fertige LinkedIn-Beiträge pro Monat für Vertriebs- und Führungskräfte-Profile</td><td class="preis">2.500 €/Monat</td></tr>
-              <tr><th scope="row">Sponsored LinkedIn Post</th><td class="beschreibung">Beitrag über den VTM-Kanal; Mengenrabatt ab 5 Posts −10 %, ab 10 Posts −20 %</td><td class="preis">750 €/Post</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-
-      <details class="gruppe">
-        <summary>Podcast &amp; Audio</summary>
-        <div class="gruppe__inhalt tabellenrahmen">
-          <table class="preise">
-            <caption>Insurance Monday · ca. 35.000 Downloads pro Monat</caption>
-            <thead><tr><th scope="col">Format</th><th scope="col">Umfang</th><th scope="col" style="text-align:right">Preis</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Quartalssponsoring</th><td class="beschreibung">3 komplette Episoden zum eigenen Thema, LinkedIn- und Plattform-Bewerbung, eigener Audio-Werbespot in 30 weiteren Episoden, offizielle Sponsor-Nennung</td><td class="preis">30.000 €/Quartal</td></tr>
-              <tr><th scope="row">Einzelne Podcast-Episode</th><td class="beschreibung">Ganze Folge zum eigenen Thema, an echten Praxisfällen erzählt</td><td class="preis">3.500 €/Episode</td></tr>
-              <tr><th scope="row">Podcast-Werbespot (Pre-Roll)</th><td class="beschreibung">Werbespot am Anfang von 3 Episoden</td><td class="preis">2.500 €/Paket</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-
-      <details class="gruppe">
-        <summary>Programm-Bausteine auf Anfrage</summary>
-        <div class="gruppe__inhalt">
-          <ul class="anfrage-liste">
-            <li><b>Marktcheck im Entscheider-Panel</b><span>Befragung des Führungskräfte-Netzwerks — eine zitierfähige Zahl für Presse und Vertrieb.</span></li>
-            <li><b>Fach-Webinar mit Teilnehmerliste</b><span>45 Minuten unter VTM-Flagge, die komplette Anmeldeliste geht an Ihren Vertrieb.</span></li>
-            <li><b>Experten-Statements</b><span>Laufende Zitate und Einschätzungen in der VTM-Berichterstattung.</span></li>
-            <li><b>Kategorie-Exklusivität</b><span>Kein weiterer Werbepartner in Ihrer Kategorie.</span></li>
-          </ul>
-          <p class="mono" style="margin-top: var(--vtm-space-24)">Diese Bausteine werden individuell kalkuliert.</p>
-        </div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ==========================================================
-     7 · Jahresprogramme
-     ========================================================== -->
-<section class="sektion">
-  <div class="shell">
-    <div class="raster" style="align-items: end">
-      <div class="sp-7">
-        <p class="kicker">Jahresprogramme</p>
-        <h2 class="h2">Wenn Sichtbarkeit dauerhaft tragen soll</h2>
-      </div>
-      <p class="sp-5 fliess">
-        Individuell zugeschnitten und gemeinsam kalkuliert. Die genannten Werte sind
-        Einstiegspreise — den Umfang legen wir im Gespräch fest.
-      </p>
-    </div>
-
-    <ul class="programme" style="margin-top: clamp(2rem, 4vw, 3rem)">
-      <li class="programm">
-        <div>
-          <p class="programm__ziel">Für Start-ups</p>
-          <h3>VTM Startup Presence</h3>
-          <p>1× Podcast-Episode · 2× Fachartikel · 1× Gründerinterview und Startup-Porträt · 12× LinkedIn-Post über den VTM-Kanal.</p>
-        </div>
-        <p class="programm__preis">ab 12.000 €<br><span class="mono">pro Jahr, monatlich zahlbar</span></p>
-      </li>
-      <li class="programm">
-        <div>
-          <p class="programm__ziel">Für Kategorie-Präsenz</p>
-          <h3>VTM Category Presence</h3>
-          <p>Positionierungs-Workshop · 2× Podcast-Folge · 12 Monate Banner und Newsletter in der Kategorie · 2× Executive Interview · 1× Deep-Dive-Webinar · „sponsored by“-Logo für 12 Monate.</p>
-        </div>
-        <!-- PRÜFEN: Einstiegspreis war in der Angebotsvorlage nur teilweise lesbar. Vor Livegang gegen den Konfigurator abgleichen. -->
-        <p class="programm__preis">ab 35.000 €<br><span class="mono">pro Jahr</span></p>
-      </li>
-      <li class="programm">
-        <div>
-          <p class="programm__ziel">Für Branchenautorität</p>
-          <h3>VTM Authority Program</h3>
-          <p>Quartalsweiser Positionierungs-Workshop · 4× Podcast-Folge · 12 Monate Banner auf Startseite und in der App · 4× großes Fachformat (Studie, Whitepaper oder Case Study) · 2× Deep-Dive-Webinar · Sponsorslot, Tickets und Ausstellerpaket beim Hamburger Insurance Innovation Day · 12 Monate LinkedIn as a Service.</p>
-        </div>
-        <p class="programm__preis">ab 70.000 €<br><span class="mono">pro Jahr</span></p>
-      </li>
+<!-- ═══ 02 Partner ═══════════════════════════════════════════ -->
+<section class="partner" aria-labelledby="partner-titel">
+  <div class="partner__satz">
+    <h2 id="partner-titel">Partner und Netzwerk</h2>
+    <ul>
+      <li><img src="assets/partner/partner-insurance-monday.jpg" alt="Insurance Monday" width="640" height="640" loading="lazy"></li>
+      <li><img src="assets/partner/partner-insurlab.png" alt="InsurLab Germany" width="640" height="245" loading="lazy"></li>
+      <li><img src="assets/partner/partner-insurtech-werft.png" alt="InsurTech Werft" width="720" height="370" loading="lazy"></li>
+      <li><img src="assets/partner/partner-frida.jpg" alt="Frida Insurance Data Initiative" width="516" height="323" loading="lazy"></li>
     </ul>
   </div>
 </section>
 
-<!-- ==========================================================
-     8 · Ablauf
-     ========================================================== -->
-<section class="sektion sektion--soft" id="ablauf">
-  <div class="shell">
-    <div class="raster" style="align-items: end">
-      <div class="sp-7">
-        <p class="kicker">Ablauf</p>
-        <h2 class="h2">Vier Schritte bis zur Veröffentlichung</h2>
-      </div>
-      <p class="sp-5 fliess">
-        Der redaktionelle Aufwand liegt bei uns. Von Ihnen brauchen wir das Thema,
-        eine Ansprechperson und die Freigabe.
-      </p>
-    </div>
+<!-- ═══ 03 Warum es untergeht ════════════════════════════════ -->
+<section class="block satz">
+  <div class="aussage einlauf">
+    <h2 class="kapitel">Versicherer lesen Fachmedien.<br>Werbung lesen sie nicht.</h2>
+    <p class="stimme" style="margin-top: 1.75rem;">
+      Pressemitteilungen erreichen Postfächer, aber selten Entscheidungen. Was in dieser
+      Branche wirkt, ist fachliche Einordnung im redaktionellen Umfeld, geschrieben von
+      Menschen, denen die Branche zuhört.
+    </p>
+    <ul class="zahlen">
+      <li>
+        <p class="zahl__wert">6.000+</p>
+        <p class="zahl__was">Empfänger im VTM Briefing</p>
+      </li>
+      <li>
+        <p class="zahl__wert">rund 50 %</p>
+        <p class="zahl__was">Öffnungsrate des Newsletters</p>
+      </li>
+      <li>
+        <p class="zahl__wert">ca. 35.000</p>
+        <p class="zahl__was">Podcast-Downloads im Monat</p>
+      </li>
+    </ul>
+  </div>
+  <div class="marginalie einlauf">
+    <p class="quelle">
+      Eigene Messung, Stand 08/2026. Öffnungsrate als Durchschnitt der zurückliegenden
+      Ausgaben, Downloads laut Hosting-Statistik von Insurance Monday. Im Angebot nennen
+      wir die Werte mit dem jeweils aktuellen Stand.
+    </p>
+  </div>
+</section>
 
-    <ol class="schritte" style="margin-top: clamp(2rem, 4vw, 3rem)">
-      <li class="schritt">
-        <p class="schritt__nr">Schritt 01</p>
-        <h3>Gespräch</h3>
-        <p>30 Minuten. Sie schildern Ihr Thema und Ihr Ziel, wir sagen offen, was in der Branche trägt — und was nicht.</p>
+<!-- ═══ 04 Kanäle ════════════════════════════════════════════ -->
+<section class="block satz" id="kanaele">
+  <div class="aussage einlauf">
+    <h2 class="kapitel">Sechs Kanäle. Eine Redaktion.</h2>
+    <p class="stimme" style="margin-top: 1.75rem;">
+      VTM ist kein reines Fachmagazin. Ihr Thema kann in derselben Woche im Magazin stehen,
+      im Newsletter landen, im Podcast besprochen werden und auf LinkedIn zirkulieren.
+    </p>
+  </div>
+  <div class="marginalie einlauf">
+    <p class="notiz">Jeder Kanal ist einzeln buchbar. Wirkung entsteht, wenn mehrere zusammenlaufen.</p>
+  </div>
+
+  <div class="voll">
+    <ul class="kanaele einlauf">
+      <li class="kanal">
+        <h3>Magazin und App</h3>
+        <p>Fachbeiträge, Interviews und Case Studies auf versicherungstech-magazin.de, dazu ein eigener Startbildschirm in der VTM App.</p>
+        <span class="reichweite">Website und App</span>
       </li>
-      <li class="schritt">
-        <p class="schritt__nr">Schritt 02</p>
-        <h3>Themenschärfung</h3>
-        <p>Wir übersetzen Ihr Angebot in eine fachliche Fragestellung, die Entscheider interessiert. Sie erhalten Formate, Kanäle und Termine schriftlich.</p>
+      <li class="kanal">
+        <h3>VTM Briefing</h3>
+        <p>Der Newsletter für Entscheider. Exklusives Sponsoring, eine Marke pro Ausgabe, keine Anzeigenwand.</p>
+        <span class="reichweite">6.000+ Empfänger</span>
       </li>
-      <li class="schritt">
-        <p class="schritt__nr">Schritt 03</p>
-        <h3>Produktion</h3>
-        <p>Recherche, Interview, Text, Audio und Grafik übernimmt die Redaktion. Sie geben frei, bevor etwas erscheint.</p>
+      <li class="kanal">
+        <h3>Insurance Monday</h3>
+        <p>Ganze Podcast-Folgen zum eigenen Thema, Werbespots oder Quartalssponsoring, an echten Praxisfällen erzählt statt als Produktvortrag.</p>
+        <span class="reichweite">ca. 35.000 Downloads im Monat</span>
       </li>
-      <li class="schritt">
-        <p class="schritt__nr">Schritt 04</p>
-        <h3>Veröffentlichung und Auswertung</h3>
-        <p>Ausspielung über die vereinbarten Kanäle — danach ein Bericht mit den tatsächlichen Zahlen, auch wenn sie unter der Erwartung liegen.</p>
+      <li class="kanal">
+        <h3>LinkedIn-Netzwerk</h3>
+        <p>Beiträge über den VTM-Kanal und laufende Betreuung der Profile Ihrer Führungskräfte, dort wo die Branche täglich diskutiert.</p>
+        <span class="reichweite">Redaktioneller Kanal</span>
+      </li>
+      <li class="kanal">
+        <h3>Entscheider-Panel</h3>
+        <p>Befragungen im Führungskräfte-Netzwerk liefern zitierfähige Zahlen für Presse und Vertrieb. Fach-Webinare unter VTM-Flagge inklusive Anmeldeliste.</p>
+        <span class="reichweite">Individuell kalkuliert</span>
+      </li>
+      <li class="kanal">
+        <h3>Bühne und Netzwerk</h3>
+        <p>Sponsorslot, Tickets und Ausstellerpaket beim Hamburger Insurance Innovation Day, dazu ein gewachsenes Partnernetzwerk der Branche.</p>
+        <span class="reichweite">Event und Partner</span>
+      </li>
+    </ul>
+
+    <figure class="bleibild einlauf">
+      <img src="assets/bilder/motiv-datenstrom.jpg" alt="Viele blaue Lichtfasern, durch die eine einzelne goldene Faser verläuft." width="1600" height="893" loading="lazy">
+      <figcaption class="mono">Illustration</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ═══ 05 Was daraus wird ═══════════════════════════════════ -->
+<section class="block satz" id="formate">
+  <div class="aussage einlauf">
+    <h2 class="kapitel">Was daraus wird</h2>
+    <p class="stimme" style="margin-top: 1.75rem;">
+      Drei Kombinationen decken die häufigsten Ziele ab. Jede lässt sich anpassen, und jeder
+      Baustein ist auch einzeln buchbar.
+    </p>
+  </div>
+  <div class="marginalie einlauf">
+    <p class="quelle">
+      Alle Preise netto zzgl. gesetzlicher USt. Die Paketpreise entsprechen exakt der Summe
+      der Einzelpositionen inklusive Mengenrabatt, nachgerechnet gegen den Live-Konfigurator,
+      Stand 11.08.2026.
+    </p>
+  </div>
+
+  <div class="voll">
+    <ol class="staffel einlauf">
+      <li class="stufe">
+        <div>
+          <h3>Sichtbarkeits-Start</h3>
+          <p class="stufe__nutzen">Für den ersten belastbaren Auftritt in der Branche.</p>
+          <p class="stufe__teile">1 Fachartikel · 3 Monate Newsletter-Sponsoring · 5 Sponsored LinkedIn Posts</p>
+        </div>
+        <p class="stufe__preis">9.975 €<small>gesamt, netto</small></p>
+      </li>
+      <li class="stufe stufe--gewaehlt">
+        <div>
+          <p class="stufe__marke">Meistgewählt</p>
+          <h3>Thought-Leader-Paket</h3>
+          <p class="stufe__nutzen">Wenn Ihre Fachleute als Stimme der Branche wahrgenommen werden sollen.</p>
+          <p class="stufe__teile">1 Podcast-Episode · 1 Executive Interview · 2 Fachartikel · 6 Monate LinkedIn as a Service</p>
+        </div>
+        <p class="stufe__preis">21.500 €<small>gesamt, netto</small></p>
+      </li>
+      <li class="stufe">
+        <div>
+          <h3>Marktführer-Paket</h3>
+          <p class="stufe__nutzen">Dauerpräsenz über alle Hauptkanäle, für Anbieter, die ihre Kategorie besetzen wollen.</p>
+          <p class="stufe__teile">1 Quartal Insurance-Monday-Sponsoring · 3 Monate Newsletter-Sponsoring · 3 Monate Werbebanner Website und App · 1 Case Study inklusive Kontaktliste der Interessenten</p>
+        </div>
+        <p class="stufe__preis">44.700 €<small>gesamt, netto</small></p>
       </li>
     </ol>
-  </div>
-</section>
 
-<!-- ==========================================================
-     9 · Zusagen und Nicht-Zusagen
-     ========================================================== -->
-<section class="sektion" id="zusagen">
-  <div class="shell raster">
-    <div class="sp-7">
-      <p class="kicker">Verbindlich</p>
-      <h2 class="h2">Was wir zusagen — und was nicht</h2>
-
-      <h3 class="h4" style="margin-top: var(--vtm-space-32)">Das sagen wir zu</h3>
-      <ul class="zusagen zusagen--ja">
-        <li><span aria-hidden="true">✔</span><span>Fachliche Sichtbarkeit im redaktionellen Umfeld eines unabhängigen Mediums.</span></li>
-        <li><span aria-hidden="true">✔</span><span>Die vereinbarten Formate, Kanäle und Termine — schriftlich festgehalten.</span></li>
-        <li><span aria-hidden="true">✔</span><span>Sichtbare Kennzeichnung jeder bezahlten Platzierung, im Layout statt im Kleingedruckten.</span></li>
-        <li><span aria-hidden="true">✔</span><span>Eine Auswertung mit echten Zahlen, inklusive Quelle, Stand und Grenzen.</span></li>
-        <li><span aria-hidden="true">✔</span><span>Freigabe durch Sie, bevor ein Beitrag erscheint.</span></li>
+    <section class="jahre einlauf">
+      <h3>Jahresprogramme</h3>
+      <ul>
+        <li class="jahr">
+          <div>
+            <h4>VTM Startup Presence</h4>
+            <p>1 Podcast-Episode, 2 Fachartikel, ein Gründerinterview mit Startup-Porträt und 12 LinkedIn-Beiträge über den VTM-Kanal.</p>
+          </div>
+          <p class="jahr__preis">ab 12.000 €<br>pro Jahr, monatlich zahlbar</p>
+        </li>
+        <li class="jahr">
+          <div>
+            <h4>VTM Category Presence</h4>
+            <p>Positionierungs-Workshop, 2 Podcast-Folgen, 12 Monate Banner und Newsletter in der Kategorie, 2 Executive Interviews, ein Deep-Dive-Webinar und das „sponsored by“-Logo.</p>
+          </div>
+          <!-- PRÜFEN: Einstiegspreis war in der Angebotsvorlage nur teilweise lesbar. Vor Livegang gegen den Konfigurator abgleichen. -->
+          <p class="jahr__preis">ab 35.000 €<br>pro Jahr</p>
+        </li>
+        <li class="jahr">
+          <div>
+            <h4>VTM Authority Program</h4>
+            <p>Quartalsweiser Positionierungs-Workshop, 4 Podcast-Folgen, 12 Monate Banner auf Startseite und in der App, 4 große Fachformate, 2 Deep-Dive-Webinare, Auftritt beim Hamburger Insurance Innovation Day und 12 Monate LinkedIn as a Service.</p>
+          </div>
+          <p class="jahr__preis">ab 70.000 €<br>pro Jahr</p>
+        </li>
       </ul>
+    </section>
 
-      <h3 class="h4" style="margin-top: var(--vtm-space-32)">Das sagen wir nicht zu</h3>
-      <ul class="zusagen zusagen--nein">
-        <li><span aria-hidden="true">✕</span><span>Keine Abschlüsse, keine Umsatz- oder Vertriebsgarantien. VTM ist keine Leadagentur.</span></li>
-        <li><span aria-hidden="true">✕</span><span>Keinen Einfluss auf die redaktionelle Berichterstattung außerhalb gekennzeichneter Formate.</span></li>
-        <li><span aria-hidden="true">✕</span><span>Keine geschönten Reichweitenzahlen. Wo belastbare Werte fehlen, sagen wir das.</span></li>
+    <details class="klappe einlauf" style="margin-top: 4rem;">
+      <summary>
+        Alle Einzelbausteine und Preise
+        <svg class="zeichen zeichen--auf" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>
+        <svg class="zeichen zeichen--zu" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></svg>
+      </summary>
+      <div class="klappe__inhalt">
+
+        <section class="preisgruppe">
+          <h4>Schreiben lassen</h4>
+          <ul class="posten">
+            <li>
+              <h5>Fachartikel</h5>
+              <p>Redaktionell geschriebener Fachbeitrag auf Website, in der App und als Newsletter-Teaser.</p>
+              <span class="preis">900 € je Artikel</span>
+            </li>
+            <li>
+              <h5>Executive Interview</h5>
+              <p>Redaktionelles Interview mit einer Führungskraft.</p>
+              <span class="preis">1.200 € je Interview</span>
+            </li>
+            <li>
+              <h5>Case Study mit Kontaktliste</h5>
+              <p>Kundenprojekt als Erfolgsgeschichte, dazu die Kontaktliste aller Interessenten.</p>
+              <span class="preis">3.000 € je Case Study</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="preisgruppe">
+          <h4>Sprechen</h4>
+          <ul class="posten">
+            <li>
+              <h5>Einzelne Podcast-Episode</h5>
+              <p>Ganze Folge zum eigenen Thema, an echten Praxisfällen erzählt.</p>
+              <span class="preis">3.500 € je Episode</span>
+            </li>
+            <li>
+              <h5>Podcast-Werbespot</h5>
+              <p>Pre-Roll am Anfang von drei Episoden.</p>
+              <span class="preis">2.500 € je Paket</span>
+            </li>
+            <li>
+              <h5>Quartalssponsoring Insurance Monday</h5>
+              <p>Drei komplette Episoden zum eigenen Thema, Bewerbung auf LinkedIn und den Plattformen, eigener Audio-Werbespot in 30 weiteren Episoden, offizielle Sponsor-Nennung.</p>
+              <span class="preis">30.000 € je Quartal</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="preisgruppe">
+          <h4>Zeigen</h4>
+          <ul class="posten">
+            <li>
+              <h5>Website-Werbebanner</h5>
+              <p>Banner auf allen Seiten von versicherungstech-magazin.de, dauerhaft im redaktionellen Umfeld.</p>
+              <span class="preis">1.200 € im Monat</span>
+            </li>
+            <li>
+              <h5>Werbebanner Website und App</h5>
+              <p>Banner auf allen Webseiten und zusätzlich im Startbildschirm der App.</p>
+              <span class="preis">2.000 € im Monat</span>
+            </li>
+            <li>
+              <h5>Newsletter-Sponsoring</h5>
+              <p>Exklusive Präsenz im VTM Briefing, 6.000+ Empfänger, rund 50 % Öffnungsrate.</p>
+              <span class="preis">1.900 € im Monat</span>
+            </li>
+            <li>
+              <h5>LinkedIn as a Service</h5>
+              <p>Vier fertige LinkedIn-Beiträge pro Monat für Vertriebs- und Führungskräfte-Profile.</p>
+              <span class="preis">2.500 € im Monat</span>
+            </li>
+            <li>
+              <h5>Sponsored LinkedIn Post</h5>
+              <p>Beitrag über den VTM-Kanal. Mengenrabatt ab 5 Posts 10 %, ab 10 Posts 20 %.</p>
+              <span class="preis">750 € je Post</span>
+            </li>
+            <li>
+              <h5>Auf Anfrage kalkuliert</h5>
+              <p>Marktcheck im Entscheider-Panel, Fach-Webinar mit Teilnehmerliste, laufende Experten-Statements, Kategorie-Exklusivität.</p>
+              <span class="preis">Individuell</span>
+            </li>
+          </ul>
+        </section>
+
+        <p style="margin-top: 3rem;">
+          <a class="weiter" href="https://angebote.versicherungstech-magazin.de" target="_blank" rel="noopener">
+            Im Konfigurator selbst zusammenstellen
+            <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z"/></svg>
+          </a>
+        </p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ═══ 06 Arbeitsweise ══════════════════════════════════════ -->
+<section class="block satz" id="arbeit">
+  <div class="aussage einlauf">
+    <h2 class="kapitel">Wie wir arbeiten</h2>
+    <p class="stimme" style="margin-top: 1.75rem;">
+      Der redaktionelle Aufwand liegt bei uns. Von Ihnen brauchen wir das Thema, eine
+      Ansprechperson und die Freigabe.
+    </p>
+  </div>
+  <div class="marginalie einlauf">
+    <p class="notiz">Zwischen Gespräch und Veröffentlichung steht immer ein schriftlicher Redaktionsplan mit Terminen.</p>
+  </div>
+
+  <ol class="gaenge voll einlauf">
+    <li class="gang">
+      <h3>Zuhören</h3>
+      <p>30 Minuten. Sie schildern Thema und Ziel, wir sagen offen, was in dieser Branche trägt und was nicht.</p>
+    </li>
+    <li class="gang">
+      <h3>Zuspitzen</h3>
+      <p>Wir übersetzen Ihr Angebot in eine fachliche Fragestellung, die Entscheider interessiert.</p>
+    </li>
+    <li class="gang">
+      <h3>Produzieren</h3>
+      <p>Recherche, Interview, Text, Audio und Grafik übernimmt die Redaktion. Sie geben frei, bevor etwas erscheint.</p>
+    </li>
+    <li class="gang">
+      <h3>Auswerten</h3>
+      <p>Nach der Ausspielung ein Bericht mit den tatsächlichen Zahlen, auch wenn sie unter der Erwartung liegen.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ═══ 07 Grenzen ═══════════════════════════════════════════ -->
+<section class="block satz" id="grenze">
+  <div class="aussage einlauf">
+    <h2 class="kapitel">Was wir zusagen, und was nicht</h2>
+  </div>
+  <div class="marginalie einlauf">
+    <p class="notiz">Diese Trennung ist der Grund, warum das redaktionelle Umfeld für Sie überhaupt etwas wert ist.</p>
+  </div>
+
+  <div class="voll einlauf">
+    <div class="waage">
+      <div>
+        <h3>Das sagen wir zu</h3>
+        <ul>
+          <li>Fachliche Sichtbarkeit im redaktionellen Umfeld eines unabhängigen Mediums.</li>
+          <li>Die vereinbarten Formate, Kanäle und Termine, schriftlich festgehalten.</li>
+          <li>Sichtbare Kennzeichnung jeder bezahlten Platzierung, im Layout statt im Kleingedruckten.</li>
+          <li>Eine Auswertung mit echten Zahlen, inklusive Quelle, Stand und Grenzen.</li>
+          <li>Freigabe durch Sie, bevor ein Beitrag erscheint.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Das sagen wir nicht zu</h3>
+        <ul>
+          <li>Keine Abschlüsse, keine Umsatz- oder Vertriebsgarantien. VTM ist keine Leadagentur.</li>
+          <li>Keinen Einfluss auf die redaktionelle Berichterstattung außerhalb gekennzeichneter Formate.</li>
+          <li>Keine geschönten Reichweitenzahlen. Wo belastbare Werte fehlen, sagen wir das.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="kennzeichen">
+      <p>Bezahlte Inhalte sind in jedem Kanal als solche erkennbar. Diese Labels stehen im Layout: auf der Website, in der App, im Newsletter, im Podcast-Intro und im LinkedIn-Beitrag.</p>
+      <ul>
+        <li>Sponsored Content</li>
+        <li>Anzeige</li>
+        <li>In Partnerschaft mit …</li>
       </ul>
     </div>
+  </div>
+</section>
 
-    <div class="sp-5">
-      <div class="kennzeichnungsbox">
-        <p class="kicker" style="margin-bottom: var(--vtm-space-12)">Kennzeichnungsgrundsatz</p>
-        <p style="font-family: var(--vtm-font-serif); font-size: var(--vtm-size-l); line-height: 1.5">
-          Bezahlte Inhalte sind in jedem Kanal als solche erkennbar. Das ist keine
-          Einschränkung Ihrer Wirkung — es ist die Voraussetzung dafür, dass die
-          Branche überhaupt liest.
-        </p>
-        <p>
-          <span class="kennz-label">Sponsored Content</span>
-          <span class="kennz-label">Anzeige</span>
-          <span class="kennz-label">In Partnerschaft mit …</span>
-        </p>
-        <p>Diese Labels erscheinen im Layout — auf der Website, in der App, im
-        Newsletter, im Podcast-Intro und im LinkedIn-Beitrag.</p>
+<!-- ═══ 08 Menschen ══════════════════════════════════════════ -->
+<section class="block satz">
+  <div class="halb-links einlauf">
+    <blockquote class="zitat">„Wir verkaufen keine Reichweite auf Verdacht. Wir sehen uns Ihr Thema an und sagen Ihnen, ob es in dieser Branche trägt.“</blockquote>
+    <p class="zeichnung">Maximilian Hempel, Gründer und Herausgeber</p>
+    <figure class="portraet">
+      <img src="assets/team/maximilian-hempel.jpg" alt="Porträt von Maximilian Hempel" width="320" height="400" loading="lazy">
+    </figure>
+  </div>
+
+  <div class="halb-rechts leute einlauf">
+    <p class="stimme">
+      Hinter jedem Beitrag stehen Menschen mit Namen und Verantwortung. Sie erreichen uns
+      direkt, ohne Ticketsystem und ohne Zwischenebene.
+    </p>
+    <div class="person">
+      <img src="assets/team/lukas-haerle.jpg" alt="Porträt von Lukas Härle" width="320" height="400" loading="lazy">
+      <div>
+        <span class="name">Lukas Härle</span>
+        <span class="mono">Partnerbetreuung</span>
       </div>
-
-      <figure class="bildkarte" style="margin-top: var(--vtm-space-32)">
-        <img src="assets/bilder/motiv-rechenzentrum.jpg" alt="Serverreihen in einem Rechenzentrum, ein einzelner goldener Lichtakzent im Gang." width="1600" height="893" loading="lazy">
-        <figcaption class="mono">Motivklasse „Infrastruktur“ · Illustration</figcaption>
-      </figure>
+    </div>
+    <div class="person">
+      <img src="assets/team/johannes-oberhofer.jpg" alt="Porträt von Johannes Oberhofer" width="320" height="400" loading="lazy">
+      <div>
+        <span class="name">Johannes Oberhofer</span>
+        <span class="mono">Partnerbetreuung</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ==========================================================
-     10 · Menschen
-     ========================================================== -->
-<section class="sektion sektion--soft">
-  <div class="shell raster">
-    <div class="sp-7">
-      <p class="kicker">Ihre Ansprechpartner</p>
-      <h2 class="h2">Sie sprechen mit Menschen, nicht mit einer Agentur</h2>
-      <blockquote class="zitat" style="margin-top: var(--vtm-space-32)">
-        „Wir verkaufen keine Reichweite auf Verdacht. Wir schauen uns Ihr Thema an
-        und sagen Ihnen, ob es in dieser Branche trägt.“
-      </blockquote>
-      <div class="person person--gross">
-        <img src="assets/team/maximilian-hempel.jpg" alt="Porträt von Maximilian Hempel" width="320" height="400" loading="lazy">
-        <div>
-          <b>Maximilian Hempel</b>
-          <span class="mono">Gründer und Herausgeber</span>
-          <a href="mailto:info@versicherungstech-magazin.de">info@versicherungstech-magazin.de</a>
-        </div>
-      </div>
-    </div>
+<!-- ═══ 09 Fragen ════════════════════════════════════════════ -->
+<section class="block satz">
+  <div class="aussage einlauf">
+    <h2 class="kapitel">Was Interessenten zuerst fragen</h2>
 
-    <div class="sp-5 personen-neben">
-      <div class="person">
-        <img src="assets/team/lukas-haerle.jpg" alt="Porträt von Lukas Härle" width="320" height="400" loading="lazy">
-        <div>
-          <b>Lukas Härle</b>
-          <span class="mono">Partnerbetreuung</span>
-        </div>
-      </div>
-      <div class="person">
-        <img src="assets/team/johannes-oberhofer.jpg" alt="Porträt von Johannes Oberhofer" width="320" height="400" loading="lazy">
-        <div>
-          <b>Johannes Oberhofer</b>
-          <span class="mono">Partnerbetreuung</span>
-        </div>
-      </div>
-      <p class="fliess">
-        Hinter jedem Beitrag stehen Menschen mit Namen und Verantwortung. Sie erreichen
-        uns direkt — ohne Ticketsystem und ohne Zwischenebene.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ==========================================================
-     11 · Weitere Geschäftsfelder
-     ========================================================== -->
-<section class="sektion">
-  <div class="shell raster">
-    <div class="sp-4">
-      <h2 class="h2"><span class="strich" aria-hidden="true"></span>Über die Medienleistungen hinaus</h2>
-      <p class="fliess" style="margin-top: var(--vtm-space-24)">
-        Vier Felder, in denen wir unabhängig vom Medien-Konfigurator arbeiten —
-        individuell kalkuliert, oft als Ergänzung zu einem Jahresprogramm.
-      </p>
-    </div>
-    <dl class="sp-8 felder">
-      <div>
-        <dt>LinkedIn &amp; Personal Branding</dt>
-        <dd>Positionierung von Führungskräften auf LinkedIn als sichtbare und glaubwürdige Fachleute der Versicherungsbranche.</dd>
-      </div>
-      <div>
-        <dt>Markenpositionierung &amp; Markteintritt</dt>
-        <dd>Unterstützung für Tech-Unternehmen, sich klar im Versicherungsmarkt zu positionieren und nachhaltig Vertrauen aufzubauen.</dd>
-      </div>
-      <div>
-        <dt>Corporate Podcast Produktion</dt>
-        <dd>Entwicklung, Produktion und Vermarktung professioneller Podcasts für Unternehmen und Marken — unabhängig von Insurance Monday.</dd>
-      </div>
-      <div>
-        <dt>Social Selling &amp; B2B-Vertriebstraining</dt>
-        <dd>Befähigung von Vertriebsteams, Versicherungsentscheider gezielt anzusprechen und fachlich zu überzeugen.</dd>
-      </div>
-    </dl>
-  </div>
-</section>
-
-<!-- ==========================================================
-     12 · Fragen
-     ========================================================== -->
-<section class="sektion sektion--soft" id="fragen">
-  <div class="shell raster">
-    <div class="sp-4">
-      <p class="kicker">Häufige Fragen</p>
-      <h2 class="h2">Was Interessenten uns zuerst fragen</h2>
-    </div>
-    <div class="sp-8 faq">
-      <details>
-        <summary>Was kostet der Einstieg?</summary>
-        <p>Der kleinste Baustein ist ein Sponsored LinkedIn Post für 750&nbsp;€, der
-        kleinste redaktionelle Baustein ein Fachartikel für 900&nbsp;€. Die erste
-        vorkonfigurierte Kombination beginnt bei 9.975&nbsp;€, Jahresprogramme bei
-        12.000&nbsp;€ pro Jahr. Alle Preise netto zzgl. USt.</p>
+    <div class="fragen">
+      <details class="klappe">
+        <summary>
+          Was kostet der Einstieg?
+          <svg class="zeichen zeichen--auf" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>
+          <svg class="zeichen zeichen--zu" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></svg>
+        </summary>
+        <p>Der kleinste Baustein ist ein Sponsored LinkedIn Post für 750 €, der kleinste
+        redaktionelle Baustein ein Fachartikel für 900 €. Die erste vorkonfigurierte
+        Kombination beginnt bei 9.975 €, Jahresprogramme bei 12.000 € pro Jahr.</p>
       </details>
-      <details>
-        <summary>Kaufen wir uns damit wohlwollende Berichterstattung?</summary>
-        <p>Nein. Bezahlte Formate sind gekennzeichnet und werden von der
-        redaktionellen Berichterstattung getrennt. Redaktionelle Entscheidungen sind
-        bei VTM nicht käuflich — genau das macht das Umfeld für Sie wertvoll.</p>
+      <details class="klappe">
+        <summary>
+          Kaufen wir uns damit wohlwollende Berichterstattung?
+          <svg class="zeichen zeichen--auf" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>
+          <svg class="zeichen zeichen--zu" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></svg>
+        </summary>
+        <p>Nein. Bezahlte Formate werden gekennzeichnet und von der redaktionellen
+        Berichterstattung getrennt. Redaktionelle Entscheidungen sind bei VTM nicht käuflich.
+        Genau das macht das Umfeld für Sie wertvoll.</p>
       </details>
-      <details>
-        <summary>Wie messen Sie den Erfolg?</summary>
-        <p>Über die Kennzahlen, die tatsächlich vorliegen: Seitenaufrufe, Öffnungs-
-        und Klickraten des Newsletters, Podcast-Downloads, LinkedIn-Reichweite sowie
-        Anmelde- und Interessentenlisten bei Webinaren und Case Studies. Sie erhalten
-        die Werte mit Quelle und Stand — und ohne Hochrechnung auf Umsatz.</p>
+      <details class="klappe">
+        <summary>
+          Wie messen Sie den Erfolg?
+          <svg class="zeichen zeichen--auf" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>
+          <svg class="zeichen zeichen--zu" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></svg>
+        </summary>
+        <p>Über die Kennzahlen, die tatsächlich vorliegen: Seitenaufrufe, Öffnungs- und
+        Klickraten des Newsletters, Podcast-Downloads, LinkedIn-Reichweite sowie Anmelde- und
+        Interessentenlisten. Sie erhalten die Werte mit Quelle und Stand, ohne Hochrechnung
+        auf Umsatz.</p>
       </details>
-      <details>
-        <summary>Wer schreibt die Inhalte?</summary>
-        <p>Die VTM-Redaktion. Wir recherchieren, führen die Interviews und schreiben.
-        Sie liefern das Fachwissen und geben frei, bevor etwas erscheint.</p>
-      </details>
-      <details>
-        <summary>Können wir eine Kategorie exklusiv besetzen?</summary>
-        <p>Ja. Kategorie-Exklusivität ist ein eigener Programm-Baustein: Solange sie
-        läuft, nehmen wir keinen weiteren Werbepartner aus Ihrer Kategorie auf. Der
-        Preis hängt von Kategorie und Laufzeit ab.</p>
-      </details>
-      <details>
-        <summary>Wie schnell erscheint der erste Beitrag?</summary>
-        <p>Das hängt vom Format und vom Redaktionsplan ab — ein Fachartikel braucht
-        weniger Vorlauf als eine Podcast-Episode oder ein Webinar. Den konkreten
-        Termin legen wir im zweiten Schritt gemeinsam fest, bevor Sie sich binden.</p>
-      </details>
-      <details>
-        <summary>Wir sind noch unsicher, welches Format passt.</summary>
-        <p>Dann fangen Sie mit dem Gespräch an. Sie schildern Ihr Thema, wir sagen
-        Ihnen, welches Format dazu passt — und ob sich der Aufwand aus unserer Sicht
-        lohnt. Auch „im Moment nicht“ ist eine mögliche Antwort.</p>
+      <details class="klappe">
+        <summary>
+          Wir wissen noch nicht, welches Format passt.
+          <svg class="zeichen zeichen--auf" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>
+          <svg class="zeichen zeichen--zu" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></svg>
+        </summary>
+        <p>Dann fangen Sie mit dem Gespräch an. Sie schildern Ihr Thema, wir sagen Ihnen,
+        welches Format dazu passt und ob sich der Aufwand aus unserer Sicht lohnt. Auch
+        „im Moment nicht“ ist eine mögliche Antwort.</p>
       </details>
     </div>
   </div>
+  <div class="marginalie einlauf">
+    <p class="notiz">
+      Neben den Medienleistungen arbeiten wir an vier Feldern, die unabhängig davon
+      kalkuliert werden: LinkedIn und Personal Branding, Markenpositionierung und
+      Markteintritt, Corporate Podcast Produktion sowie Social Selling und
+      B2B-Vertriebstraining.
+    </p>
+  </div>
 </section>
 
-<!-- ==========================================================
-     13 · Kontakt — einziger Nachtblau-Anker, Hauptaktion
-     ========================================================== -->
-<section class="sektion anker-invers" id="kontakt">
-  <div class="shell raster">
-    <div class="sp-7">
-      <p class="kicker">Nächster Schritt</p>
-      <h2 class="h2">Erzählen Sie uns Ihr Thema</h2>
-      <p class="lead" style="margin-top: var(--vtm-space-16)">
-        Ein Satz genügt für den Anfang. Wir melden uns persönlich zurück und sagen
-        Ihnen, welche Kanäle dazu passen — oder dass wir gerade nicht die Richtigen sind.
+<!-- ═══ 10 Anfang ════════════════════════════════════════════ -->
+<section class="anfang" id="anfang">
+  <div class="block satz">
+    <div class="halb-links einlauf">
+      <h2 class="kapitel">Erzählen Sie uns Ihr Thema</h2>
+      <p class="stimme" style="margin-top: 1.5rem;">
+        Ein Satz genügt für den Anfang. Wir melden uns persönlich zurück und sagen Ihnen,
+        welche Kanäle dazu passen oder dass wir gerade nicht die Richtigen sind.
       </p>
 
-      <!-- Ohne Backend versendet das Formular per E-Mail-Programm.
-           Für den Produktivbetrieb das action-Attribut auf den
-           Formular-Endpunkt umstellen (siehe README). -->
-      <form class="formular" action="mailto:info@versicherungstech-magazin.de" method="post" enctype="text/plain">
-        <div class="feld-paar">
+      <!-- Ohne Backend öffnet das Formular das E-Mail-Programm.
+           Für den Produktivbetrieb action, method und enctype auf
+           den eigenen Endpunkt umstellen, siehe README. -->
+      <form class="bogen" action="mailto:info@versicherungstech-magazin.de" method="post" enctype="text/plain">
+        <div class="paar">
           <p class="feld">
-            <label for="f-name">Name<span aria-hidden="true"> *</span></label>
+            <label for="f-name">Name</label>
             <input id="f-name" name="Name" type="text" autocomplete="name" required>
           </p>
           <p class="feld">
-            <label for="f-firma">Unternehmen<span aria-hidden="true"> *</span></label>
+            <label for="f-firma">Unternehmen</label>
             <input id="f-firma" name="Unternehmen" type="text" autocomplete="organization" required>
           </p>
         </div>
-        <div class="feld-paar">
+        <div class="paar">
           <p class="feld">
-            <label for="f-mail">E-Mail<span aria-hidden="true"> *</span></label>
+            <label for="f-mail">E-Mail</label>
             <input id="f-mail" name="E-Mail" type="email" autocomplete="email" required>
           </p>
           <p class="feld">
-            <label for="f-tel">Telefon <span class="mono">(optional)</span></label>
+            <label for="f-tel">Telefon, freiwillig</label>
             <input id="f-tel" name="Telefon" type="tel" autocomplete="tel">
           </p>
         </div>
         <p class="feld">
-          <label for="f-thema">Ihr Thema in einem Satz<span aria-hidden="true"> *</span></label>
+          <label for="f-thema">Ihr Thema in einem Satz</label>
           <input id="f-thema" name="Thema" type="text" required aria-describedby="f-thema-hilfe"
-                 placeholder="z. B. Schadenautomatisierung im Regelbetrieb bei zwei Versicherern">
+                 placeholder="z. B. Schadenautomatisierung im Regelbetrieb">
           <span class="hilfe" id="f-thema-hilfe">Worüber sollen Entscheider von Ihnen lesen?</span>
         </p>
-        <fieldset class="feldsatz">
-          <legend>Woran haben Sie Interesse? <span class="mono">(Mehrfachauswahl möglich)</span></legend>
-          <div class="chips">
-            <label class="chip"><input type="checkbox" name="Interesse" value="Fachartikel und Content"> Fachartikel &amp; Content</label>
-            <label class="chip"><input type="checkbox" name="Interesse" value="Newsletter und Banner"> Newsletter &amp; Banner</label>
-            <label class="chip"><input type="checkbox" name="Interesse" value="Podcast"> Podcast</label>
-            <label class="chip"><input type="checkbox" name="Interesse" value="LinkedIn"> LinkedIn</label>
-            <label class="chip"><input type="checkbox" name="Interesse" value="Panel oder Webinar"> Panel &amp; Webinar</label>
-            <label class="chip"><input type="checkbox" name="Interesse" value="Jahresprogramm"> Jahresprogramm</label>
-            <label class="chip"><input type="checkbox" name="Interesse" value="Noch unklar"> Noch unklar</label>
-          </div>
+        <fieldset class="wahl">
+          <legend>Woran haben Sie Interesse? Mehrfachauswahl möglich.</legend>
+          <ul>
+            <li><label><input type="checkbox" name="Interesse" value="Content"> Fachartikel und Content</label></li>
+            <li><label><input type="checkbox" name="Interesse" value="Newsletter und Banner"> Newsletter und Banner</label></li>
+            <li><label><input type="checkbox" name="Interesse" value="Podcast"> Podcast</label></li>
+            <li><label><input type="checkbox" name="Interesse" value="LinkedIn"> LinkedIn</label></li>
+            <li><label><input type="checkbox" name="Interesse" value="Panel und Webinar"> Panel und Webinar</label></li>
+            <li><label><input type="checkbox" name="Interesse" value="Jahresprogramm"> Jahresprogramm</label></li>
+            <li><label><input type="checkbox" name="Interesse" value="Noch unklar"> Noch unklar</label></li>
+          </ul>
         </fieldset>
         <p class="feld">
-          <label for="f-nachricht">Nachricht <span class="mono">(optional)</span></label>
-          <textarea id="f-nachricht" name="Nachricht" rows="4"></textarea>
+          <label for="f-nachricht">Nachricht, freiwillig</label>
+          <textarea id="f-nachricht" name="Nachricht" rows="3"></textarea>
         </p>
-        <p class="zustimmung">
+        <p class="zustimmen">
           <input id="f-dsgvo" name="Einwilligung" type="checkbox" value="erteilt" required>
-          <label for="f-dsgvo">Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung
-          meiner Anfrage verarbeitet werden. Hinweise dazu in der
+          <label for="f-dsgvo">Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner
+          Anfrage verarbeitet werden. Hinweise dazu in der
           <a href="#datenschutz">Datenschutzerklärung</a>.</label>
         </p>
-        <p>
-          <button class="btn btn--invers" type="submit">Anfrage senden</button>
-        </p>
+        <p><button class="tat" type="submit">Anfrage senden</button></p>
       </form>
     </div>
 
-    <div class="sp-5">
-      <div class="kontaktkarte">
-        <div class="person">
-          <img src="assets/team/maximilian-hempel.jpg" alt="Porträt von Maximilian Hempel" width="320" height="400" loading="lazy">
-          <div>
-            <b>Maximilian Hempel</b>
-            <span class="mono">Gründer und Herausgeber</span>
-          </div>
-        </div>
-        <p class="fliess" style="margin-top: var(--vtm-space-16)">
-          Lieber direkt sprechen? Kein Formular nötig.
-        </p>
-        <div class="direktweg">
-          <a href="mailto:info@versicherungstech-magazin.de">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
-            info@versicherungstech-magazin.de
-          </a>
-          <a href="https://angebote.versicherungstech-magazin.de" target="_blank" rel="noopener">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"/><path d="m16 15 3 3 3-3"/></svg>
-            Leistungen selbst zusammenstellen
-          </a>
-        </div>
-        <p class="quelle" style="margin-top: var(--vtm-space-24)">
-          <span>Angebote gelten netto zzgl. gesetzlicher USt. Preisstand 11.08.2026,
-          verbindlich ist der Live-Konfigurator.</span>
-        </p>
+    <div class="halb-rechts einlauf">
+      <div class="draht">
+        <a href="mailto:info@versicherungstech-magazin.de">
+          <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></svg>
+          info@versicherungstech-magazin.de
+        </a>
+        <a href="https://angebote.versicherungstech-magazin.de" target="_blank" rel="noopener">
+          <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z"/></svg>
+          Leistungen selbst zusammenstellen
+        </a>
       </div>
+      <p class="notiz" style="margin-top: 2.5rem;">
+        Angebote gelten netto zzgl. gesetzlicher USt. Preisstand 11.08.2026, verbindlich
+        ist der Live-Konfigurator.
+      </p>
     </div>
   </div>
 </section>
@@ -1285,40 +1049,62 @@ table.preise tbody tr:hover { background: var(--tabelle-zeile-hover); }
 </main>
 
 <footer class="fuss">
-  <div class="shell fuss__inner">
-    <img src="assets/logo/vtm-logo-farbe.png" alt="VersicherungsTech Magazin" width="1007" height="177" loading="lazy">
-    <nav class="fuss__links" aria-label="Rechtliches und weitere Seiten">
-      <a href="https://versicherungstech-magazin.de">Magazin</a>
-      <a href="https://angebote.versicherungstech-magazin.de">Konfigurator</a>
-      <a href="#impressum">Impressum</a>
-      <a href="#datenschutz">Datenschutz</a>
+  <div class="fuss__satz">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/logo/vtm-logo-weiss.png">
+      <img src="assets/logo/vtm-logo-farbe.png" alt="VersicherungsTech Magazin" width="1007" height="177" loading="lazy">
+    </picture>
+    <nav aria-label="Weitere Seiten">
+      <ul>
+        <li><a href="https://versicherungstech-magazin.de">Magazin</a></li>
+        <li><a href="https://angebote.versicherungstech-magazin.de">Konfigurator</a></li>
+        <li><a href="#impressum">Impressum</a></li>
+        <li><a href="#datenschutz">Datenschutz</a></li>
+      </ul>
     </nav>
-    <p class="mono">Unabhängiges Fachmedium für KI, Automatisierung und digitale Technologien in der DACH-Versicherungsbranche.</p>
+    <p class="mono" style="max-width: 24rem;">Unabhängiges Fachmedium für KI, Automatisierung und digitale Technologien in der DACH-Versicherungsbranche.</p>
   </div>
 </footer>
 
 <script>
-/* Fortschrittliche Verbesserung — die Seite funktioniert vollständig ohne
-   dieses Skript. Es hebt lediglich den aktuellen Abschnitt in der Navigation
-   hervor und beendet die Beobachtung außerhalb des Viewports. */
+/* Zwei Verbesserungen, beide entbehrlich. Die Seite funktioniert
+   vollständig ohne dieses Skript.
+   1) Einlauf entlang der Leserichtung: Abschnitte erscheinen in der
+      Reihenfolge, in der sie gelesen werden. Das ordnet die
+      Aufmerksamkeit, es dekoriert nicht.
+   2) Der aktuelle Abschnitt wird in der Kopfzeile markiert.
+   Kein Scroll-Listener, ausschließlich IntersectionObserver. */
 (function () {
-  var links = Array.prototype.slice.call(document.querySelectorAll('.nav__links a'));
-  if (!links.length || !('IntersectionObserver' in window)) return;
+  var ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var laeufer = Array.prototype.slice.call(document.querySelectorAll('.einlauf'));
 
-  var ziele = links
-    .map(function (a) { return document.querySelector(a.getAttribute('href')); })
-    .filter(Boolean);
+  if (!ruhig && 'IntersectionObserver' in window && laeufer.length) {
+    document.documentElement.classList.add('bewegt');
+    var einlaufWache = new IntersectionObserver(function (eintraege) {
+      eintraege.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('da');
+        einlaufWache.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
+    laeufer.forEach(function (el, i) {
+      el.style.transitionDelay = (i % 3) * 70 + 'ms';
+      einlaufWache.observe(el);
+    });
+  }
 
-  var beobachter = new IntersectionObserver(function (eintraege) {
-    eintraege.forEach(function (eintrag) {
-      if (!eintrag.isIntersecting) return;
-      links.forEach(function (a) {
-        a.classList.toggle('ist-aktiv', a.getAttribute('href') === '#' + eintrag.target.id);
+  var wege = Array.prototype.slice.call(document.querySelectorAll('.wege a'));
+  if (!wege.length || !('IntersectionObserver' in window)) return;
+  var ziele = wege.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  var ortWache = new IntersectionObserver(function (eintraege) {
+    eintraege.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      wege.forEach(function (a) {
+        a.classList.toggle('hier', a.getAttribute('href') === '#' + e.target.id);
       });
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
-
-  ziele.forEach(function (ziel) { beobachter.observe(ziel); });
+  ziele.forEach(function (z) { ortWache.observe(z); });
 })();
 </script>
 
