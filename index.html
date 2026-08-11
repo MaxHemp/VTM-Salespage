@@ -82,7 +82,9 @@ a:hover { color: var(--sem-aktion); }
   color: var(--sem-text-gedaempft);
 }
 .h1 {
-  font-size: var(--vtm-size-7xl);
+  /* Display statt Display XL: Der Hero läuft über 7 von 12 Spalten —
+     bei 7xl bräche „Versicherungswelt“ mitten im Kernwort um. */
+  font-size: var(--vtm-size-6xl);
   font-weight: 800;
   line-height: var(--vtm-leading-display);
   letter-spacing: var(--vtm-tracking-display);
@@ -488,7 +490,7 @@ table.preise tbody tr:hover { background: var(--tabelle-zeile-hover); }
 @media (max-width: 40rem) {
   /* Schmale Geräte sind eine eigene Komposition, keine Verkleinerung:
      Display-Grad eine Stufe zurück, Kopfzeile auf das Nötigste. */
-  .h1 { font-size: var(--vtm-size-6xl); max-width: none; }
+  .h1 { font-size: var(--vtm-size-5xl); max-width: none; }
   .shell { padding-inline: 1rem; }
   .nav__inner { gap: var(--vtm-space-12); }
   .nav__logo img { height: 22px; }
@@ -531,7 +533,7 @@ table.preise tbody tr:hover { background: var(--tabelle-zeile-hover); }
      ========================================================== -->
 <section class="hero" id="top">
   <div class="shell raster hero__raster">
-    <div class="sp-7">
+    <div class="sp-8">
       <p class="kicker">Mediaangebot für Technologieanbieter, Beratungen und Versicherer</p>
       <h1 class="h1">Wir machen Ihr Thema in der Versicherungs&shy;welt sichtbar.</h1>
       <p class="lead hero__lead">
@@ -549,7 +551,7 @@ table.preise tbody tr:hover { background: var(--tabelle-zeile-hover); }
         <li>Keine Lead-Versprechen</li>
       </ul>
     </div>
-    <figure class="sp-5 bildkarte hero__bild">
+    <figure class="sp-4 bildkarte hero__bild">
       <img src="assets/bilder/motiv-datenstrom.jpg" alt="Viele blaue Lichtfasern, durch die eine einzelne goldene Faser verläuft." width="1600" height="893" fetchpriority="high">
       <figcaption class="mono">Motivklasse „Signal“ · Illustration</figcaption>
     </figure>
