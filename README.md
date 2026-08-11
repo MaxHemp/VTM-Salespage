@@ -32,7 +32,7 @@ python3 -m http.server 8000
 
 1. **Kennzahlen prüfen.** 6.000+ Newsletter-Empfänger, rund 50 % Öffnungsrate und
    ca. 35.000 Podcast-Downloads im Monat stammen aus dem Angebotsdokument vom
-   11.08.2026. Aktuelle Werte einsetzen und den Stand in der Marginalie anpassen.
+   11.08.2026. Aktuelle Werte einsetzen und den Stand in der Belegzeile anpassen.
 2. **Preis „VTM Category Presence"** (ab 35.000 € im Jahr) gegen den Konfigurator
    prüfen. Im Quelltext mit `<!-- PRÜFEN -->` markiert.
 3. **Formular-Endpunkt setzen.** Ohne Backend öffnet das Formular das
@@ -56,15 +56,16 @@ python3 -m http.server 8000
 
 Wer hier weiterarbeitet, hält diese sechs Regeln ein. Sie tragen den roten Faden.
 
-1. **Marginalie trägt nur Belege.** Quelle, Stand, Preisbasis, Einschränkung.
-   Niemals Werbetext, niemals ein Label über einer Überschrift.
-2. **Keine fetten Überschriften.** Newsreader 300 und 400, sonst nichts.
-   Hierarchie entsteht über Größe und Weißraum.
-3. **Ein Akzent.** Electric markiert Aktion, Link und Reichweite. Gold markiert
-   ausschließlich Belege. Sonst gibt es keine Farbe.
-4. **Radius 0.** Überall.
-5. **Kein Flächenwechsel zwischen Abschnitten.** Getrennt wird durch Maß und Linie.
-   Genau ein invertierter Block, am Ende.
+1. **Nachtblau ist der Grund, nicht der Akzent.** Die Seite ist einthemig dunkel.
+   Kein heller Abschnitt, kein Flächenwechsel zur Auflockerung.
+2. **Ein heißer Ton: Amber.** Er markiert genau zwei Dinge, Aktion und Beleg.
+   Sonst bekommt nichts Farbe.
+3. **Jeder Beleg hängt an einer Amberlinie unter seiner Aussage.** Quelle, Stand,
+   Preisbasis, Einschränkung. Niemals Werbetext an dieser Stelle.
+4. **Keine fetten Überschriften.** Newsreader 300 und 400. Betont wird über ein
+   einzelnes Wort in Amber, nie über Fettung oder einen Schriftwechsel.
+5. **Drei Radien, sonst keine.** 999 px für Bedienbares, 20 px für Flächen und
+   Medien, 8 px für kleine Marken.
 6. **Keine Geviertstriche.** Statt `—` einen Punkt, ein Komma oder einen Doppelpunkt.
 
 ## Barrierefreiheit und Technik
@@ -72,13 +73,13 @@ Wer hier weiterarbeitet, hält diese sechs Regeln ein. Sie tragen den roten Fade
 - WCAG 2.2 AA: alle Textpaare nachgerechnet (Tabelle in `KONZEPT.md`), Skip-Link,
   sichtbare Fokusringe, semantisches HTML, 44-px-Touchflächen, ein `h1`,
   Überschriften ohne Ebenensprünge
-- Vollständiger Dunkelmodus über `prefers-color-scheme`
+- Bewusst einthemig dunkel, `color-scheme: dark` gesetzt, alle Farben ausdrücklich
 - Ohne JavaScript vollständig sichtbar und bedienbar. Das einzige Skript blendet
   Abschnitte beim Scrollen ein und markiert den aktuellen Navigationspunkt,
   beides über IntersectionObserver, kein Scroll-Listener
 - `prefers-reduced-motion` schaltet jede Bewegung ab
 - Bilder mit `width`/`height` gegen Layoutsprünge, `loading="lazy"` unter dem Fold
-- Kein horizontales Scrollen von 320 bis 1920 px
+- Kein horizontales Scrollen von 320 bis 1920 px, keine Knopfbeschriftung bricht um
 
 ## Herkunft der Inhalte
 
