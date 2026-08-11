@@ -47,11 +47,12 @@ function initSzene() {
   const groessen = new Float32Array(ANZAHL);
   const phasen = new Float32Array(ANZAHL);
 
+  /* Token-Farben: Electric 500/400/300/700 und Gold 400 */
   const elektrisch = [
     new THREE.Color('#4A6FFF'),
     new THREE.Color('#7C96FF'),
     new THREE.Color('#A9BAFF'),
-    new THREE.Color('#2b53e6'),
+    new THREE.Color('#173BC4'),
   ];
   const gold = new THREE.Color('#E7C878');
 

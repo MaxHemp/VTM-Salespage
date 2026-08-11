@@ -1,6 +1,7 @@
 /* =============================================================
    VTM Salespage · aufbauend auf tokens.css (Design System 5.0)
-   Seitengrammatik: Aussage → Einordnung → Beleg → Handlung
+   Farben ausschließlich aus Token-Werten, Gradienten nur aus
+   Token-Farben. Typografie strikt nach DS-Skala.
    ============================================================= */
 
 *,
@@ -46,7 +47,23 @@ h1, h2, h3 { margin: 0; }
   border-radius: var(--vtm-radius-s);
 }
 .hero :focus-visible,
+.monday :focus-visible,
 .finale :focus-visible { box-shadow: var(--sem-fokus-ring-invers); }
+
+/* Akzent in Display-Überschriften: gleiche Familie, Farbe als
+   Electric-Gradient (nur Token-Farben, vom Auftraggeber erlaubt) */
+h1 em, h2 em {
+  font-style: normal;
+  background: linear-gradient(96deg, var(--vtm-electric-700), var(--vtm-electric-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.monday h2 em {
+  background: linear-gradient(96deg, var(--vtm-electric-400), var(--vtm-electric-300));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
 
 /* ---------------------------------------------------------------
    Buttons
@@ -74,11 +91,11 @@ h1, h2, h3 { margin: 0; }
 .btn--primaer:hover { background: var(--btn-primaer-bg-hover); }
 
 .btn--invers {
-  border: 1px solid rgb(255 255 255 / 0.38);
+  border: var(--vtm-linie-invers);
   color: var(--sem-text-invers);
-  background: rgb(255 255 255 / 0.04);
+  background: transparent;
 }
-.btn--invers:hover { background: rgb(255 255 255 / 0.12); border-color: rgb(255 255 255 / 0.6); }
+.btn--invers:hover { background: var(--vtm-nacht-700); border-color: var(--vtm-electric-400); }
 
 .btn--gross { height: 3.25rem; padding-inline: 1.75rem; font-size: var(--vtm-size-l); }
 
@@ -131,7 +148,7 @@ h1, h2, h3 { margin: 0; }
 .nav.is-hell .nav__links a { color: var(--sem-text-sekundaer); }
 .nav.is-hell .nav__links a:hover { color: var(--sem-text); }
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
   .nav__links { display: none; }
   .nav__cta { margin-left: auto; }
 }
@@ -145,7 +162,7 @@ h1, h2, h3 { margin: 0; }
   display: flex;
   align-items: center;
   background:
-    radial-gradient(120% 90% at 78% 18%, #14295c 0%, transparent 55%),
+    radial-gradient(120% 90% at 78% 18%, var(--vtm-nacht-800) 0%, transparent 55%),
     linear-gradient(168deg, var(--vtm-nacht-900) 0%, var(--vtm-nacht-950) 72%);
   overflow: hidden;
 }
@@ -173,16 +190,20 @@ h1, h2, h3 { margin: 0; }
 .hero__titel {
   font-family: var(--vtm-font-display);
   font-weight: 800;
-  /* Eigene Skala: "Versicherungswelt" muss auch bei 320 px in eine
-     Zeile passen, deshalb flacherer Verlauf als --vtm-size-6xl */
-  font-size: clamp(2rem, 0.85rem + 5vw, 3.75rem);
+  font-size: var(--vtm-size-7xl);
   line-height: var(--vtm-leading-display);
   letter-spacing: var(--vtm-tracking-display);
   color: var(--sem-text-invers);
 }
 .hero__zeile { display: block; }
 .hero__wort { display: inline-block; }
-.hero__wort--signal { color: var(--vtm-electric-400); position: relative; }
+.hero__wort--signal {
+  position: relative;
+  background: linear-gradient(94deg, var(--vtm-electric-500), var(--vtm-electric-300));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 .hero__wort--signal::after {
   content: "";
   position: absolute;
@@ -190,14 +211,19 @@ h1, h2, h3 { margin: 0; }
   right: 0.55em;
   bottom: -0.09em;
   height: 0.075em;
-  border-radius: 999px;
-  background: var(--vtm-electric-500);
+  border-radius: var(--vtm-radius-rund);
+  background: linear-gradient(90deg, var(--vtm-electric-600), var(--vtm-electric-400));
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 700ms var(--vtm-ease-eintritt);
 }
 .hero__wort--signal.is-markiert::after { transform: scaleX(1); }
-.hero__punkt { color: var(--vtm-gold-400); }
+.hero__punkt {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: var(--vtm-gold-400);
+}
 .hero__lead {
   margin: var(--vtm-space-24) 0 0;
   max-width: var(--vtm-measure-lead);
@@ -210,6 +236,12 @@ h1, h2, h3 { margin: 0; }
   display: flex;
   flex-wrap: wrap;
   gap: var(--vtm-space-12);
+}
+@media (max-width: 1100px) {
+  .hero__titel { font-size: var(--vtm-size-6xl); }
+}
+@media (max-width: 560px) {
+  .hero__titel { font-size: var(--vtm-size-5xl); }
 }
 
 /* ---------------------------------------------------------------
@@ -246,13 +278,50 @@ h1, h2, h3 { margin: 0; }
 }
 
 /* ---------------------------------------------------------------
+   Partner-Marquee · durchlaufendes Logoband
+   --------------------------------------------------------------- */
+.marquee {
+  overflow: hidden;
+  padding-block: clamp(1.75rem, 3.5vw, 2.75rem);
+  border-bottom: var(--vtm-linie-haar);
+  background: var(--sem-flaeche-seite);
+}
+.marquee__spur {
+  display: flex;
+  width: max-content;
+  animation: marquee-lauf 28s linear infinite;
+}
+.marquee:hover .marquee__spur { animation-play-state: paused; }
+.marquee__gruppe {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: clamp(3rem, 7vw, 6rem);
+  padding-right: clamp(3rem, 7vw, 6rem);
+}
+.marquee__gruppe img {
+  height: clamp(2.75rem, 5vw, 3.5rem);
+  width: auto;
+  mix-blend-mode: multiply;
+}
+@keyframes marquee-lauf {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.3333%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee__spur { animation: none; }
+}
+
+/* ---------------------------------------------------------------
    Abschnittsköpfe
    --------------------------------------------------------------- */
-.abschnittkopf { max-width: 46rem; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.abschnittkopf { max-width: 50rem; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
 .abschnittkopf h2 {
   font-family: var(--vtm-font-display);
-  font-weight: 700;
-  font-size: var(--vtm-size-4xl);
+  font-weight: 800;
+  font-size: var(--vtm-size-5xl);
   line-height: var(--vtm-leading-heading);
   letter-spacing: var(--vtm-tracking-heading);
 }
@@ -266,79 +335,219 @@ h1, h2, h3 { margin: 0; }
 section { scroll-margin-top: 5rem; }
 
 /* ---------------------------------------------------------------
-   Plattform · Bento
+   Plattform · horizontale Bühnen (Scroll-Hijack, Desktop)
    --------------------------------------------------------------- */
-.plattform { padding-block: clamp(4rem, 8vw, 7rem); }
+.plattform { padding-block: clamp(4rem, 8vw, 7rem) 0; }
 
-.bento {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(11rem, auto);
-  gap: var(--vtm-space-16);
-}
-.bento__zelle {
-  border-radius: var(--vtm-radius-l);
-  padding: var(--karte-pad);
-  position: relative;
-  overflow: hidden;
+.buehnen { overflow: hidden; }
+.buehnen__spur {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+  padding-block: clamp(2rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
+  width: max-content;
+  align-items: stretch;
+}
+@media (min-width: 901px) {
+  /* Gepinnte Bühne füllt den Viewport, Spur mittig */
+  .buehnen {
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+  }
+  .buehnen__spur { padding-block: 0; }
+  .buehne { min-height: min(30rem, 62vh); }
+}
+.buehne {
+  width: min(30rem, 78vw);
+  min-height: 24rem;
+  border-radius: var(--vtm-radius-xl);
   border: var(--vtm-linie-haar);
   background: var(--sem-flaeche-karte);
-  transition: transform var(--vtm-dauer-kurz) var(--vtm-ease-standard),
-              box-shadow var(--vtm-dauer-kurz) var(--vtm-ease-standard);
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
 }
-.bento__zelle:hover { transform: translateY(-3px); box-shadow: var(--karte-schatten-hover); }
-.bento__zelle h3 {
+.buehne__icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--vtm-radius-m);
+  display: grid;
+  place-items: center;
+  background: var(--sem-aktion-flaeche);
+  color: var(--sem-aktion);
+  margin-bottom: auto;
+}
+.buehne__icon svg { width: 1.6rem; height: 1.6rem; }
+.buehne h3 {
   font-family: var(--vtm-font-display);
-  font-size: var(--vtm-size-xl);
-  margin-bottom: var(--vtm-space-8);
+  font-weight: 700;
+  font-size: var(--vtm-size-3xl);
+  letter-spacing: var(--vtm-tracking-heading);
+  margin-top: var(--vtm-space-48);
 }
-.bento__zelle p { margin: 0; font-size: var(--vtm-size-s); line-height: var(--vtm-leading-ui); color: var(--sem-text-sekundaer); }
-
-.bento__zelle--magazin { grid-column: span 2; grid-row: span 2; padding: 0; border: none; }
-.bento__zelle--magazin img,
-.bento__zelle--event img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.buehne p {
+  margin: var(--vtm-space-12) 0 var(--vtm-space-24);
+  color: var(--sem-text-sekundaer);
+  line-height: var(--vtm-leading-ui);
+  max-width: 26rem;
 }
-.bento__text {
-  position: relative;
+.buehne__fakt {
   margin-top: auto;
-  padding: var(--karte-pad);
-  background: linear-gradient(180deg, transparent 0%, rgb(8 18 38 / 0.68) 34%, rgb(8 18 38 / 0.9) 100%);
+  font: 500 var(--vtm-size-s)/1.3 var(--vtm-font-mono);
+  letter-spacing: var(--vtm-tracking-mono);
+  color: var(--sem-text);
+  border-top: var(--vtm-linie-haar);
+  padding-top: var(--vtm-space-16);
+  font-variant-numeric: tabular-nums;
 }
-.bento__text h3 { color: var(--sem-text-invers); }
-.bento__text p { color: var(--sem-text-invers-sekundaer); }
 
-.bento__zelle--newsletter { background: var(--sem-flaeche-eis); border: none; grid-column: span 2; }
-.bento__zelle--podcast { background: var(--sem-flaeche-anker); border: none; }
-.bento__zelle--podcast h3 { color: var(--sem-text-invers); }
-.bento__zelle--podcast p { color: var(--sem-text-invers-sekundaer); }
-.bento__zelle--linkedin { background: var(--sem-aktion-flaeche); border: none; }
-.bento__zelle--event { grid-column: span 2; padding: 0; border: none; }
-
-@media (max-width: 980px) {
-  .bento { grid-template-columns: repeat(2, 1fr); }
-  .bento__zelle--magazin { grid-column: span 2; }
-  .bento__zelle--newsletter { grid-column: span 2; }
-  .bento__zelle--event { grid-column: span 2; }
+.buehne--anker {
+  background: linear-gradient(160deg, var(--vtm-nacht-800), var(--vtm-nacht-950));
+  border: none;
 }
-@media (max-width: 620px) {
-  .bento { grid-template-columns: 1fr; }
-  .bento__zelle,
-  .bento__zelle--magazin,
-  .bento__zelle--newsletter,
-  .bento__zelle--event { grid-column: span 1; }
-  .bento__zelle--magazin { min-height: 16rem; }
+.buehne--anker h3 { color: var(--sem-text-invers); }
+.buehne--anker p { color: var(--sem-text-invers-sekundaer); }
+.buehne--anker .buehne__fakt { color: var(--vtm-electric-300); border-top: var(--vtm-linie-invers); }
+.buehne--anker .buehne__icon { background: var(--vtm-nacht-700); color: var(--vtm-electric-400); }
+
+.buehne--electric {
+  background: linear-gradient(160deg, var(--vtm-electric-600), var(--vtm-electric-700));
+  border: none;
+}
+.buehne--electric h3 { color: var(--vtm-weiss); }
+.buehne--electric p { color: var(--vtm-electric-100); }
+.buehne--electric .buehne__fakt { color: var(--vtm-weiss); border-top: 1px solid rgb(255 255 255 / 0.22); }
+.buehne--electric .buehne__icon { background: rgb(255 255 255 / 0.14); color: var(--vtm-weiss); }
+
+.buehne--eis { background: var(--sem-flaeche-eis); border: none; }
+
+@media (max-width: 900px) {
+  .buehnen__spur {
+    width: auto;
+    flex-direction: column;
+  }
+  .buehne { width: 100%; min-height: 0; }
+  .buehne h3 { margin-top: var(--vtm-space-24); }
 }
 
 /* ---------------------------------------------------------------
-   Weg · Scrollytelling mit klebendem Visual
+   Insurance Monday · dunkler Showcase mit Equalizer
+   --------------------------------------------------------------- */
+.monday {
+  position: relative;
+  background: linear-gradient(170deg, var(--vtm-nacht-900) 0%, var(--vtm-nacht-950) 85%);
+  overflow: hidden;
+}
+.monday__equalizer {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  width: 100%;
+  height: 11rem;
+  opacity: 0.8;
+  pointer-events: none;
+}
+.monday__inner {
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(4rem, 8vw, 7rem) clamp(8rem, 14vw, 12rem);
+}
+.monday__kopf { max-width: 50rem; }
+.monday__kopf h2 {
+  font-family: var(--vtm-font-display);
+  font-weight: 800;
+  font-size: var(--vtm-size-5xl);
+  line-height: var(--vtm-leading-heading);
+  letter-spacing: var(--vtm-tracking-heading);
+  color: var(--sem-text-invers);
+}
+.monday__kopf p {
+  margin: var(--vtm-space-16) 0 0;
+  max-width: var(--vtm-measure-text);
+  color: var(--sem-text-invers-sekundaer);
+  font-size: var(--vtm-size-l);
+}
+.monday__raster {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+.leistungen--invers .leistungen__zeile + .leistungen__zeile { border-top: var(--vtm-linie-invers); }
+.leistungen--invers dt { color: var(--sem-text-invers); }
+.leistungen--invers dd { color: var(--vtm-electric-300); }
+
+.monday__hosts h3 {
+  font-family: var(--vtm-font-display);
+  font-weight: 700;
+  font-size: var(--vtm-size-xl);
+  color: var(--sem-text-invers);
+  margin-bottom: var(--vtm-space-24);
+}
+.hosts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--vtm-space-24) var(--vtm-space-16);
+}
+.hosts li { display: grid; justify-items: start; gap: var(--vtm-space-8); }
+.hosts img {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: var(--vtm-radius-rund);
+  object-fit: cover;
+  border: 2px solid var(--vtm-electric-400);
+}
+.hosts span {
+  font-size: var(--vtm-size-s);
+  font-weight: 500;
+  color: var(--sem-text-invers-sekundaer);
+}
+
+@media (max-width: 900px) {
+  .monday__raster { grid-template-columns: 1fr; }
+  .hosts { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------------------------------------------------------------
+   Claim · typografisches Statement
+   --------------------------------------------------------------- */
+.claim {
+  padding-block: clamp(5rem, 11vw, 9rem);
+  background: var(--sem-flaeche-seite);
+}
+.claim__satz {
+  margin: 0;
+  font-family: var(--vtm-font-display);
+  font-weight: 800;
+  font-size: var(--vtm-size-7xl);
+  line-height: var(--vtm-leading-display);
+  letter-spacing: var(--vtm-tracking-display);
+  color: var(--sem-text);
+  text-wrap: balance;
+}
+.claim__zeile { display: block; }
+.claim__zeile--akzent {
+  background: linear-gradient(96deg, var(--vtm-electric-700), var(--vtm-electric-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.claim__erlaeuterung {
+  margin: var(--vtm-space-32) 0 0;
+  max-width: var(--vtm-measure-artikel);
+  font-family: var(--vtm-font-serif);
+  font-size: var(--vtm-size-xl);
+  line-height: var(--vtm-leading-artikel);
+  color: var(--sem-text-sekundaer);
+}
+
+/* ---------------------------------------------------------------
+   Signalstärke · Scrollytelling mit klebendem Pegel
    --------------------------------------------------------------- */
 .weg {
   padding-block: clamp(4rem, 8vw, 7rem);
@@ -355,15 +564,9 @@ section { scroll-margin-top: 5rem; }
   max-width: 34rem;
 }
 .weg__schritt + .weg__schritt { border-top: var(--vtm-linie-haar); }
-.weg__marke {
-  font: 600 var(--vtm-size-xs)/1 var(--vtm-font-mono);
-  text-transform: uppercase;
-  letter-spacing: var(--vtm-tracking-label);
-  color: var(--sem-auswahl-text);
-}
 .weg__schritt h3 {
-  margin-top: var(--vtm-space-12);
   font-family: var(--vtm-font-display);
+  font-weight: 700;
   font-size: var(--vtm-size-3xl);
   letter-spacing: var(--vtm-tracking-heading);
 }
@@ -389,77 +592,57 @@ section { scroll-margin-top: 5rem; }
   font: 500 var(--vtm-size-s)/1.3 var(--vtm-font-mono);
   white-space: nowrap;
   color: var(--sem-text);
+  font-variant-numeric: tabular-nums;
 }
 
 .weg__visual {
   position: sticky;
   top: 7rem;
-  height: min(34rem, 72vh);
+  height: min(30rem, 68vh);
   border-radius: var(--vtm-radius-xl);
-  overflow: hidden;
+  background: linear-gradient(160deg, var(--vtm-nacht-800), var(--vtm-nacht-950));
   box-shadow: var(--vtm-schatten-l);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--vtm-space-32);
 }
-.weg__bild {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-  opacity: 0;
-  transition: opacity var(--vtm-dauer-mittel) var(--vtm-ease-standard);
+.pegel {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--vtm-space-16);
+  height: 12rem;
 }
-.weg__bild.is-aktiv { opacity: 1; }
-.weg__bild img { width: 100%; height: 100%; object-fit: cover; }
-.weg__bild--programm {
-  background:
-    radial-gradient(110% 80% at 20% 10%, #16305f 0%, transparent 60%),
-    linear-gradient(160deg, var(--vtm-nacht-800) 0%, var(--vtm-nacht-950) 80%);
+.pegel__balken {
+  width: 3.25rem;
+  border-radius: var(--vtm-radius-s);
+  background: var(--vtm-nacht-700);
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: flex-end;
 }
-.weg__programm { padding: clamp(1.5rem, 4vw, 2.5rem); }
-.weg__programm-titel {
-  font-family: var(--vtm-font-display);
-  font-weight: 700;
-  font-size: var(--vtm-size-2xl);
+.pegel__balken[data-pegel="0"] { height: 45%; }
+.pegel__balken[data-pegel="1"] { height: 70%; }
+.pegel__balken[data-pegel="2"] { height: 100%; }
+.pegel__balken span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, var(--vtm-electric-400), var(--vtm-electric-600));
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform var(--vtm-dauer-lang) var(--vtm-ease-eintritt);
+}
+.pegel__balken.is-aktiv span { transform: scaleY(1); }
+.pegel__wort {
+  margin: 0;
+  font: 600 var(--vtm-size-2xl)/1 var(--vtm-font-display);
+  letter-spacing: var(--vtm-tracking-heading);
   color: var(--sem-text-invers);
-  margin: 0 0 var(--vtm-space-16);
 }
-.weg__programm ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--vtm-space-8); }
-.weg__programm li {
-  color: var(--sem-text-invers-sekundaer);
-  font-size: var(--vtm-size-s);
-  padding-left: 1.1rem;
-  position: relative;
-}
-.weg__programm li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 0.45rem;
-  height: 2px;
-  background: var(--sem-beleg-marke-invers);
-}
-.weg__rail {
-  position: absolute;
-  top: 1.25rem;
-  left: 1.5rem;
-  display: flex;
-  gap: var(--vtm-space-12);
-}
-.weg__rail-punkt {
-  font: 600 var(--vtm-size-2xs)/1 var(--vtm-font-mono);
-  text-transform: uppercase;
-  letter-spacing: var(--vtm-tracking-label);
-  color: rgb(255 255 255 / 0.55);
-  background: rgb(8 18 38 / 0.55);
-  backdrop-filter: blur(6px);
-  padding: 0.4rem 0.6rem;
-  border-radius: var(--vtm-radius-rund);
-  transition: color var(--vtm-dauer-kurz), background-color var(--vtm-dauer-kurz);
-}
-.weg__rail-punkt.is-aktiv { color: var(--vtm-weiss); background: var(--sem-aktion); }
 
-@media (max-width: 980px) {
+@media (max-width: 900px) {
   .weg__buehne { grid-template-columns: 1fr; }
   .weg__visual { display: none; }
   .weg__schritt { padding-block: 2.5rem; }
@@ -527,13 +710,13 @@ section { scroll-margin-top: 5rem; }
   color: var(--sem-text-sekundaer);
 }
 .paket--anker {
-  background: var(--sem-flaeche-anker);
+  background: linear-gradient(160deg, var(--vtm-nacht-800), var(--vtm-nacht-950));
   border: none;
   box-shadow: var(--vtm-schatten-l);
 }
 .paket--anker h3,
 .paket--anker .paket__preis { color: var(--sem-text-invers); }
-.paket--anker .paket__preis span { color: rgb(255 255 255 / 0.6); }
+.paket--anker .paket__preis span { color: var(--sem-text-invers-sekundaer); }
 .paket--anker .paket__inhalt { border-top: var(--vtm-linie-invers); }
 .paket--anker .paket__inhalt li { color: var(--sem-text-invers-sekundaer); }
 .paket--anker .paket__inhalt li::before { background: var(--vtm-electric-400); }
@@ -545,7 +728,7 @@ section { scroll-margin-top: 5rem; }
   text-transform: uppercase;
   letter-spacing: var(--vtm-tracking-label);
   color: var(--vtm-weiss);
-  background: var(--sem-aktion);
+  background: linear-gradient(90deg, var(--vtm-electric-600), var(--vtm-electric-500));
   padding: var(--status-pad);
   border-radius: var(--status-radius);
 }
@@ -589,7 +772,7 @@ section { scroll-margin-top: 5rem; }
 }
 
 /* ---------------------------------------------------------------
-   Team & Partner
+   Team
    --------------------------------------------------------------- */
 .team { padding-block: clamp(4rem, 8vw, 7rem); }
 .team__raster {
@@ -600,7 +783,7 @@ section { scroll-margin-top: 5rem; }
   grid-template-columns: repeat(5, 1fr);
   gap: var(--vtm-space-16);
 }
-.team__person { display: grid; gap: var(--vtm-space-8); }
+.team__person { display: grid; gap: var(--vtm-space-8); align-content: start; }
 .team__person img {
   width: 100%;
   aspect-ratio: 4 / 5;
@@ -616,39 +799,12 @@ section { scroll-margin-top: 5rem; }
   .team__raster { grid-template-columns: repeat(2, 1fr); }
 }
 
-.partner { margin-top: clamp(3rem, 6vw, 5rem); }
-.partner__titel {
-  font: 600 var(--vtm-size-xs)/1 var(--vtm-font-mono);
-  text-transform: uppercase;
-  letter-spacing: var(--vtm-tracking-label);
-  color: var(--sem-text-gedaempft);
-  margin-bottom: var(--vtm-space-24);
-}
-.partner__raster {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: clamp(2rem, 5vw, 4rem);
-}
-.partner__raster img {
-  height: 3rem;
-  width: auto;
-  mix-blend-mode: multiply;
-  filter: grayscale(1);
-  opacity: 0.75;
-  transition: filter var(--vtm-dauer-kurz), opacity var(--vtm-dauer-kurz);
-}
-.partner__raster img:hover { filter: grayscale(0); opacity: 1; }
-
 /* ---------------------------------------------------------------
    Finaler CTA · dunkler Anker
    --------------------------------------------------------------- */
 .finale {
   background:
-    radial-gradient(110% 90% at 20% 0%, #14295c 0%, transparent 55%),
+    radial-gradient(110% 90% at 20% 0%, var(--vtm-nacht-800) 0%, transparent 55%),
     linear-gradient(160deg, var(--vtm-nacht-900) 0%, var(--vtm-nacht-950) 85%);
   padding-block: clamp(4.5rem, 9vw, 8rem);
 }
@@ -692,7 +848,6 @@ section { scroll-margin-top: 5rem; }
    Reveal-Zustände (werden von GSAP animiert; ohne JS sichtbar)
    --------------------------------------------------------------- */
 .js [data-reveal] { opacity: 0; transform: translateY(28px); }
-.js.gsap-bereit [data-reveal] { /* GSAP übernimmt */ }
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal] { opacity: 1; transform: none; }
 }
