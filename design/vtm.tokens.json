@@ -1,0 +1,33 @@
+{
+  "$schema": "https://www.designtokens.org/tr/drafts/format/",
+  "meta": { "name": "VTM Design System", "edition": "03", "updated": "2026-08-11", "principle": "Signal → Kontext → Beleg → Handlung" },
+  "color": {
+    "surface": {
+      "ice": { "$type": "color", "$value": "#F3F7FD" },
+      "paper": { "$type": "color", "$value": "#F8FBFF" },
+      "white": { "$type": "color", "$value": "#FFFFFF" },
+      "night": { "$type": "color", "$value": "#0A1638" }
+    },
+    "content": {
+      "ink": { "$type": "color", "$value": "#0F1C3D" },
+      "muted": { "$type": "color", "$value": "#5C6C89" },
+      "inverse": { "$type": "color", "$value": "#FFFFFF" }
+    },
+    "action": {
+      "electric": { "$type": "color", "$value": "#2468E8" },
+      "core": { "$type": "color", "$value": "#123FA6" },
+      "soft": { "$type": "color", "$value": "#E9F1FD" }
+    },
+    "evidence": { "$type": "color", "$value": "#D9A53C" },
+    "line": { "$type": "color", "$value": "#D6E1F0" }
+  },
+  "typography": {
+    "display": { "family": "Bricolage Grotesque", "weight": 400, "trackingEm": -0.045 },
+    "body": { "family": "Instrument Sans", "weight": 400 },
+    "voice": { "family": "Newsreader", "weight": 400, "style": "italic" },
+    "structure": { "family": "IBM Plex Mono", "weight": 600, "trackingEm": 0.13, "transform": "uppercase" }
+  },
+  "shape": { "controlRadius": "8px", "cardRadius": "13px", "boardRadius": "20px" },
+  "motion": { "imageTransitionMs": 1150, "imageHoldMs": 6500, "ease": "ease", "reducedMotion": "static-equivalent-required", "maxLeadMotionsPerView": 1, "allowed": ["crossfade", "subtle-image-drift", "short-video"] },
+  "rules": { "goldUsage": "evidence-only", "darkSurfaceUsage": "compact-anchor-only", "displayWeight": "regular", "imageDisclosure": "generated-images-labeled-illustration", "accessibility": "WCAG-2.2-AA" }
+}

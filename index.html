@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VTM · Wir machen Ihr Thema in der Versicherungswelt sichtbar</title>
-  <meta name="description" content="Magazin, App, Newsletter, Podcast, LinkedIn: Das VersicherungsTech Magazin ist die Plattform, die Ihr Thema bei den Entscheidern der Versicherungsbranche sichtbar macht.">
+  <meta name="description" content="Das VersicherungsTech Magazin verbindet Magazin, App, Podcast, Events, LinkedIn und Coaching zu einer Plattform. Fachwissen trifft Reichweite bei den Entscheidern der Versicherungsbranche.">
   <meta property="og:title" content="Wir machen Ihr Thema in der Versicherungswelt sichtbar.">
-  <meta property="og:description" content="Die Plattform für Sichtbarkeit in der Versicherungsbranche: Magazin, App, Newsletter, Podcast, LinkedIn und Programme.">
+  <meta property="og:description" content="Als einziges Medienhaus der Branche verbinden wir Magazin, App, Podcast, Events, LinkedIn und Coaching zu einer Plattform.">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="assets/img/logo/vtm-logo-farbe.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400&family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -22,133 +22,206 @@
   <header class="nav" id="nav">
     <div class="nav__inner">
       <a class="nav__brand" href="#top" aria-label="VersicherungsTech Magazin, zum Seitenanfang">
-        <img class="nav__logo nav__logo--invers" src="assets/img/logo/vtm-logo-weiss.png" alt="VersicherungsTech Magazin" width="176" height="36">
-        <img class="nav__logo nav__logo--farbe" src="assets/img/logo/vtm-logo-farbe.png" alt="" aria-hidden="true" width="176" height="31">
+        <img class="nav__logo" src="assets/img/logo/vtm-logo-farbe.png" alt="VersicherungsTech Magazin" width="176" height="31">
       </a>
       <nav class="nav__links" aria-label="Hauptnavigation">
         <a href="#plattform">Plattform</a>
         <a href="#podcast">Podcast</a>
-        <a href="#weg">Leistungen</a>
+        <a href="#strecke">Leistungen</a>
         <a href="#pakete">Pakete</a>
         <a href="#team">Team</a>
       </nav>
-      <a class="btn btn--primaer nav__cta" href="https://angebote.versicherungstech-magazin.de" target="_blank" rel="noopener">Angebot konfigurieren</a>
+      <a class="btn btn--primary nav__cta" href="https://angebote.versicherungstech-magazin.de" target="_blank" rel="noopener">Angebot konfigurieren</a>
     </div>
   </header>
 
   <main id="top">
 
     <!-- ============================= HERO ============================= -->
-    <section class="hero" id="hero" aria-label="Einstieg">
-      <canvas class="hero__canvas" id="hero-canvas" aria-hidden="true"></canvas>
-      <div class="hero__schleier" aria-hidden="true"></div>
-      <div class="hero__inner">
-        <h1 class="hero__titel">
-          <span class="hero__zeile"><span class="hero__wort">Wir</span> <span class="hero__wort">machen</span> <span class="hero__wort">Ihr</span> <span class="hero__wort">Thema</span></span>
-          <span class="hero__zeile"><span class="hero__wort">in</span> <span class="hero__wort">der</span> <span class="hero__wort">Versicherungswelt</span></span>
-          <span class="hero__zeile"><span class="hero__wort hero__wort--signal">sichtbar<span class="hero__punkt">.</span></span></span>
-        </h1>
-        <p class="hero__lead">Das einzige Medienhaus der Branche, das Magazin, App, Podcast, Events, LinkedIn und Coaching zu einer Plattform verbindet.</p>
-        <div class="hero__aktionen">
-          <a class="btn btn--primaer btn--gross" href="https://angebote.versicherungstech-magazin.de" target="_blank" rel="noopener">Angebot konfigurieren</a>
-          <a class="btn btn--invers btn--gross" href="mailto:info@versicherungstech-magazin.de?subject=Erstgespr%C3%A4ch%20Sichtbarkeit">Erstgespräch vereinbaren</a>
+    <section class="hero" aria-label="Einstieg">
+      <div class="container hero__inner">
+
+        <div class="hero__text">
+          <h1 class="hero__title">
+            <span class="hero__line">Wir machen Ihr Thema</span>
+            <span class="hero__line">in der Versicherungswelt</span>
+            <span class="hero__line"><span class="hero__signal">sichtbar.</span></span>
+          </h1>
+          <p class="hero__lead">Als einziges Medienhaus der Branche verbinden wir Magazin, App, Podcast, Events, LinkedIn und Coaching zu einer Plattform.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--large" href="https://angebote.versicherungstech-magazin.de" target="_blank" rel="noopener">Angebot konfigurieren</a>
+            <a class="btn btn--secondary btn--large" href="mailto:info@versicherungstech-magazin.de?subject=Erstgespr%C3%A4ch%20Sichtbarkeit">Erstgespräch vereinbaren</a>
+          </div>
+        </div>
+
+        <!-- Leitmotiv der Ansicht: das Signal bündelt sich zum Beleg -->
+        <aside class="board" aria-label="So führt das VTM Ihr Thema zum Ergebnis">
+          <p class="board__label">Der Weg Ihres Themas</p>
+          <ol class="rail">
+            <li class="rail__station">
+              <span class="rail__name">Signal</span>
+              <span class="rail__note">Ihr Thema erscheint im redaktionellen Umfeld der Branche.</span>
+            </li>
+            <li class="rail__station">
+              <span class="rail__name">Kontext</span>
+              <span class="rail__note">Redaktion ordnet ein, statt zu bewerben.</span>
+            </li>
+            <li class="rail__station rail__station--evidence">
+              <span class="rail__name">Beleg</span>
+              <span class="rail__note">Zahlen, Zitate und Teilnehmerlisten, die Ihr Vertrieb nutzt.</span>
+            </li>
+            <li class="rail__station">
+              <span class="rail__name">Handlung</span>
+              <span class="rail__note">Aus Aufmerksamkeit werden Gespräche.</span>
+            </li>
+          </ol>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ============================= BELEG ============================= -->
+    <section class="evidence" aria-label="Reichweite in Zahlen">
+      <div class="container evidence__grid">
+        <div class="evidence__item">
+          <strong class="evidence__value">6.000+</strong>
+          <span class="evidence__caption">Empfänger des VTM Briefings</span>
+          <span class="evidence__source">Quelle VTM Briefing · Stand 08/2026</span>
+        </div>
+        <div class="evidence__item">
+          <strong class="evidence__value">≈50&thinsp;%</strong>
+          <span class="evidence__caption">Öffnungsrate je Ausgabe</span>
+          <span class="evidence__source">Quelle VTM Briefing · Stand 08/2026</span>
+        </div>
+        <div class="evidence__item">
+          <strong class="evidence__value">35.000</strong>
+          <span class="evidence__caption">Podcast-Downloads pro Monat</span>
+          <span class="evidence__source">Quelle Insurance Monday · Stand 08/2026</span>
         </div>
       </div>
     </section>
 
-    <!-- ============================= BELEG-LEISTE ============================= -->
-    <section class="beleg" aria-label="Reichweite in Zahlen">
-      <div class="container beleg__raster">
-        <div class="beleg__wert">
-          <strong class="beleg__zahl"><span data-zaehler="6000">6.000</span>+</strong>
-          <span class="beleg__label">Empfänger des VTM Briefings</span>
-        </div>
-        <div class="beleg__wert">
-          <strong class="beleg__zahl">≈<span data-zaehler="50">50</span>&thinsp;%</strong>
-          <span class="beleg__label">Öffnungsrate im Newsletter</span>
-        </div>
-        <div class="beleg__wert">
-          <strong class="beleg__zahl"><span data-zaehler="35000">35.000</span></strong>
-          <span class="beleg__label">Podcast-Downloads pro Monat, Insurance Monday</span>
+    <!-- ============================= ÖKOSYSTEM-BAND ============================= -->
+    <aside class="marquee" aria-label="Partner im VTM Ökosystem">
+      <p class="marquee__label">Ökosystempartner</p>
+      <div class="marquee__viewport">
+        <div class="marquee__track">
+          <ul class="marquee__group">
+            <li><img src="assets/img/partner/partner-frida.jpg" alt="FRIDA e.V." loading="lazy"></li>
+            <li><img src="assets/img/partner/partner-insurtech-werft.png" alt="InsurTech Werft" loading="lazy"></li>
+            <li><img src="assets/img/partner/partner-insurlab.png" alt="InsurLab Germany" loading="lazy"></li>
+            <li><img src="assets/img/partner/partner-insurance-monday.jpg" alt="Insurance Monday" loading="lazy"></li>
+          </ul>
+          <ul class="marquee__group" aria-hidden="true">
+            <li><img src="assets/img/partner/partner-frida.jpg" alt="" loading="lazy"></li>
+            <li><img src="assets/img/partner/partner-insurtech-werft.png" alt="" loading="lazy"></li>
+            <li><img src="assets/img/partner/partner-insurlab.png" alt="" loading="lazy"></li>
+            <li><img src="assets/img/partner/partner-insurance-monday.jpg" alt="" loading="lazy"></li>
+          </ul>
+          <ul class="marquee__group" aria-hidden="true">
+            <li><img src="assets/img/partner/partner-frida.jpg" alt="" loading="lazy"></li>
+            <li><img src="assets/img/partner/partner-insurtech-werft.png" alt="" loading="lazy"></li>
+            <li><img src="assets/img/partner/partner-insurlab.png" alt="" loading="lazy"></li>
+            <li><img src="assets/img/partner/partner-insurance-monday.jpg" alt="" loading="lazy"></li>
+          </ul>
         </div>
       </div>
-    </section>
-
-    <!-- ============================= PARTNER-MARQUEE ============================= -->
-    <aside class="marquee" aria-label="Partner des VersicherungsTech Magazins">
-      <div class="marquee__spur">
-        <ul class="marquee__gruppe">
-          <li><img src="assets/img/partner/partner-frida.jpg" alt="FRIDA e.V." loading="lazy"></li>
-          <li><img src="assets/img/partner/partner-insurtech-werft.png" alt="InsurTech Werft" loading="lazy"></li>
-          <li><img src="assets/img/partner/partner-insurlab.png" alt="InsurLab Germany" loading="lazy"></li>
-          <li><img src="assets/img/partner/partner-insurance-monday.jpg" alt="Insurance Monday Podcast" loading="lazy"></li>
-        </ul>
-        <ul class="marquee__gruppe" aria-hidden="true">
-          <li><img src="assets/img/partner/partner-frida.jpg" alt="" loading="lazy"></li>
-          <li><img src="assets/img/partner/partner-insurtech-werft.png" alt="" loading="lazy"></li>
-          <li><img src="assets/img/partner/partner-insurlab.png" alt="" loading="lazy"></li>
-          <li><img src="assets/img/partner/partner-insurance-monday.jpg" alt="" loading="lazy"></li>
-        </ul>
-        <ul class="marquee__gruppe" aria-hidden="true">
-          <li><img src="assets/img/partner/partner-frida.jpg" alt="" loading="lazy"></li>
-          <li><img src="assets/img/partner/partner-insurtech-werft.png" alt="" loading="lazy"></li>
-          <li><img src="assets/img/partner/partner-insurlab.png" alt="" loading="lazy"></li>
-          <li><img src="assets/img/partner/partner-insurance-monday.jpg" alt="" loading="lazy"></li>
-        </ul>
-      </div>
+      <button class="marquee__toggle" type="button" id="marquee-toggle" aria-pressed="false">
+        <span class="marquee__toggle-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+        </span>
+        <span class="marquee__toggle-text">Bewegung anhalten</span>
+      </button>
     </aside>
 
-    <!-- ============================= PLATTFORM · HORIZONTALE BÜHNEN ============================= -->
-    <section class="plattform" id="plattform">
-      <div class="container">
-        <header class="abschnittkopf" data-reveal>
-          <h2>Nicht nur Fachmagazin.<br>Eine Plattform mit <em>sechs Bühnen</em>.</h2>
-          <p>Als einziges Medienunternehmen der Branche bündeln wir alle Kanäle, auf denen Entscheider lesen, hören und diskutieren. Scrollen Sie durch die Bühnen, auf denen Ihr Thema auftritt.</p>
-        </header>
+    <!-- ============================= CLAIM ============================= -->
+    <section class="claim" aria-label="Unser Prinzip">
+      <div class="container claim__inner">
+        <p class="claim__statement">
+          Fachwissen trifft <span class="claim__accent">Reichweite</span>.
+        </p>
+        <p class="claim__voice">Fachmedien erklären. Werbeplätze liefern Reichweite. Beides zusammen gibt es in der Versicherungsbranche nur hier.</p>
       </div>
-      <div class="buehnen" id="buehnen">
-        <div class="buehnen__spur" id="buehnen-spur">
+    </section>
 
-          <article class="buehne buehne--anker">
-            <span class="buehne__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M88,112a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H96A8,8,0,0,1,88,112Zm8,40h80a8,8,0,0,0,0-16H96a8,8,0,0,0,0,16ZM232,64V184a24,24,0,0,1-24,24H32A24,24,0,0,1,8,184.11V88a8,8,0,0,1,16,0v96a8,8,0,0,0,16,0V64A16,16,0,0,1,56,48H216A16,16,0,0,1,232,64Zm-16,0H56V184a23.84,23.84,0,0,1-1.37,8H208a8,8,0,0,0,8-8Z"/></svg></span>
-            <h3>Magazin &amp; App</h3>
-            <p>Dauerhaft redaktionelles Umfeld auf versicherungstech-magazin.de und im Startbildschirm der VTM App.</p>
-            <span class="buehne__fakt">Banner ab 1.200&nbsp;€/Monat</span>
+    <!-- ============================= PLATTFORM ============================= -->
+    <section class="platform" id="plattform">
+      <div class="container">
+        <header class="section-head">
+          <h2>Eine Plattform, sieben Kanäle.</h2>
+          <p>Andere Anbieter verkaufen einen Kanal. Wir verbinden alle Orte, an denen Entscheider der Versicherungsbranche lesen, hören, lernen und sich vernetzen.</p>
+        </header>
+
+        <div class="channels" data-reveal-group>
+
+          <article class="channel" data-reveal>
+            <span class="channel__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></span>
+            <div class="channel__body">
+              <p class="channel__kind">Redaktion</p>
+              <h3>Magazin &amp; App</h3>
+              <p class="channel__text">Ihr Thema steht im redaktionellen Umfeld von versicherungstech-magazin.de und im Startbildschirm der VTM App.</p>
+            </div>
+            <p class="channel__fact">ab 1.200 €/Monat</p>
           </article>
 
-          <article class="buehne buehne--eis">
-            <span class="buehne__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></svg></span>
-            <h3>VTM Briefing</h3>
-            <p>Der Newsletter, den die Branche wirklich öffnet: über 6.000 Empfänger, rund die Hälfte liest jede Ausgabe.</p>
-            <span class="buehne__fakt">Sponsoring 1.900&nbsp;€/Monat</span>
+          <article class="channel" data-reveal>
+            <span class="channel__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
+            <div class="channel__body">
+              <p class="channel__kind">Direktkanal</p>
+              <h3>VTM Briefing</h3>
+              <p class="channel__text">Der Newsletter, den die Branche wirklich öffnet. Ihre Marke steht neben dem, was Entscheider ohnehin lesen.</p>
+            </div>
+            <p class="channel__fact">1.900 €/Monat</p>
           </article>
 
-          <article class="buehne buehne--electric">
-            <span class="buehne__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z"/></svg></span>
-            <h3>Insurance Monday</h3>
-            <p>Der Podcast der Branche als größter Medienpartner: rund 35.000 Downloads im Monat.</p>
-            <span class="buehne__fakt">Episode 3.500&nbsp;€, Quartal 30.000&nbsp;€</span>
+          <article class="channel channel--lead" data-reveal>
+            <span class="channel__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></span>
+            <div class="channel__body">
+              <p class="channel__kind"><span class="channel__mark" aria-hidden="true"></span>Größter Medienpartner</p>
+              <h3><a href="#podcast">Insurance Monday</a></h3>
+              <p class="channel__text">Der Podcast der Branche. Ihr Thema wird zur ganzen Folge, an echten Praxisfällen erzählt.</p>
+            </div>
+            <p class="channel__fact">ab 3.500 €/Episode</p>
           </article>
 
-          <article class="buehne">
-            <span class="buehne__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"/></svg></span>
-            <h3>LinkedIn</h3>
-            <p>Sponsored Posts über den VTM-Kanal und fertige Beiträge für Ihre eigenen Vertriebs- und Führungsprofile.</p>
-            <span class="buehne__fakt">Posts ab 750&nbsp;€, Service 2.500&nbsp;€/Monat</span>
+          <article class="channel" data-reveal>
+            <span class="channel__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></span>
+            <div class="channel__body">
+              <p class="channel__kind">Soziale Reichweite</p>
+              <h3>LinkedIn</h3>
+              <p class="channel__text">Beiträge über den VTM-Kanal und fertige Posts für die Profile Ihrer Führungskräfte und Ihres Vertriebs.</p>
+            </div>
+            <p class="channel__fact">ab 750 €/Post</p>
           </article>
 
-          <article class="buehne buehne--eis">
-            <span class="buehne__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></svg></span>
-            <h3>Entscheider-Panel</h3>
-            <p>Marktchecks im Führungskräfte-Netzwerk liefern zitierfähige Zahlen für Presse und Vertrieb.</p>
-            <span class="buehne__fakt">Individuell kalkuliert</span>
+          <article class="channel" data-reveal>
+            <span class="channel__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+            <div class="channel__body">
+              <p class="channel__kind">Begegnung</p>
+              <h3>Events &amp; Webinare</h3>
+              <p class="channel__text">Fach-Webinare unter VTM-Flagge bis zum Hamburger Insurance Innovation Day. Die Anmeldeliste geht an Ihren Vertrieb.</p>
+            </div>
+            <p class="channel__fact">auf Anfrage</p>
           </article>
 
-          <article class="buehne buehne--anker">
-            <span class="buehne__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H136V24a8,8,0,0,0-16,0V40H40A16,16,0,0,0,24,56V176a16,16,0,0,0,16,16H79.36L57.75,219a8,8,0,0,0,12.5,10l29.59-37h56.32l29.59,37a8,8,0,1,0,12.5-10l-21.61-27H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,136H40V56H216V176ZM104,120v24a8,8,0,0,1-16,0V120a8,8,0,0,1,16,0Zm32-16v40a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm32-16v56a8,8,0,0,1-16,0V88a8,8,0,0,1,16,0Z"/></svg></span>
-            <h3>Webinare &amp; Events</h3>
-            <p>Fach-Webinare unter VTM-Flagge mit vollständiger Teilnehmerliste, bis zum Hamburger Insurance Innovation Day.</p>
-            <span class="buehne__fakt">Teilnehmerliste inklusive</span>
+          <article class="channel" data-reveal>
+            <span class="channel__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
+            <div class="channel__body">
+              <p class="channel__kind">Befähigung</p>
+              <h3>Coaching &amp; Markteintritt</h3>
+              <p class="channel__text">Sales- und Marketing-Coaching für Tech-Unternehmen, die im Versicherungsmarkt ankommen wollen.</p>
+            </div>
+            <p class="channel__fact">auf Anfrage</p>
+          </article>
+
+          <article class="channel" data-reveal>
+            <span class="channel__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+            <div class="channel__body">
+              <p class="channel__kind">Netzwerk</p>
+              <h3>Ökosystempartner</h3>
+              <p class="channel__text">Zugang zu Initiativen, Laboren und Verbänden der Branche, mit denen wir dauerhaft zusammenarbeiten.</p>
+            </div>
+            <p class="channel__fact">Teil jedes Programms</p>
           </article>
 
         </div>
@@ -157,30 +230,46 @@
 
     <!-- ============================= INSURANCE MONDAY ============================= -->
     <section class="monday" id="podcast">
-      <canvas class="monday__equalizer" id="equalizer" aria-hidden="true"></canvas>
-      <div class="container monday__inner">
-        <div class="monday__kopf" data-reveal>
-          <h2>Der größte Medienpartner:<br><em>Insurance Monday.</em></h2>
-          <p>Der Podcast der Versicherungsbranche, rund 35.000 Downloads im Monat. Ihr Thema wird zur ganzen Folge, an echten Praxisfällen erzählt, dort, wo die Branche zuhört.</p>
-        </div>
-        <div class="monday__raster">
-          <div class="monday__angebote" data-reveal>
-            <dl class="leistungen leistungen--invers">
-              <div class="leistungen__zeile">
-                <dt>Quartalssponsoring: 3 Episoden zum eigenen Thema, Audio-Spot in 30 weiteren, offizielle Sponsor-Nennung</dt>
-                <dd>30.000&nbsp;€/Quartal</dd>
+      <div class="container">
+        <header class="section-head">
+          <h2>Unser größter Medienpartner.</h2>
+          <p>Insurance Monday ist der Podcast, in dem die Versicherungsbranche einander zuhört. Ihr Thema läuft dort nicht als Werbung, sondern als Folge.</p>
+        </header>
+
+        <div class="monday__anchor">
+          <div class="monday__offer">
+            <dl class="services services--inverse">
+              <div class="services__row">
+                <dt>Quartalssponsoring: 3 Episoden zum eigenen Thema, Audio-Spot in 30 weiteren Folgen, offizielle Sponsor-Nennung</dt>
+                <dd>30.000 €/Quartal</dd>
               </div>
-              <div class="leistungen__zeile">
-                <dt>Einzelne Podcast-Episode zum eigenen Thema</dt>
-                <dd>3.500&nbsp;€/Episode</dd>
+              <div class="services__row">
+                <dt>Einzelne Episode zum eigenen Thema, an echten Praxisfällen erzählt</dt>
+                <dd>3.500 €/Episode</dd>
               </div>
-              <div class="leistungen__zeile">
-                <dt>Podcast-Werbespot (Pre-Roll), 3 Episoden</dt>
-                <dd>2.500&nbsp;€/Paket</dd>
+              <div class="services__row">
+                <dt>Werbespot als Pre-Roll in drei Episoden</dt>
+                <dd>2.500 €/Paket</dd>
               </div>
             </dl>
+
+            <figure class="compare">
+              <figcaption class="compare__title">Monatliche Reichweite im Vergleich</figcaption>
+              <div class="compare__row">
+                <span class="compare__name">VTM Briefing</span>
+                <span class="compare__bar"><span style="width:17.1%"></span></span>
+                <span class="compare__value">6.000</span>
+              </div>
+              <div class="compare__row compare__row--top">
+                <span class="compare__name">Insurance Monday</span>
+                <span class="compare__bar"><span style="width:100%"></span></span>
+                <span class="compare__value">35.000</span>
+              </div>
+              <p class="compare__source">Empfänger je Ausgabe und Downloads je Monat · Stand 08/2026</p>
+            </figure>
           </div>
-          <div class="monday__hosts" data-reveal>
+
+          <div class="monday__hosts">
             <h3>Die Hosts</h3>
             <ul class="hosts">
               <li><img src="assets/img/hosts/dominik-badarne-128.png" alt="Porträt von Dominik Badarne" loading="lazy" width="128" height="128"><span>Dominik Badarne</span></li>
@@ -195,145 +284,124 @@
       </div>
     </section>
 
-    <!-- ============================= CLAIM ============================= -->
-    <section class="claim" aria-label="Unser Prinzip">
+    <!-- ============================= STRECKE · VIER STATIONEN ============================= -->
+    <section class="track" id="strecke">
       <div class="container">
-        <p class="claim__satz">
-          <span class="claim__zeile" data-reveal>Fachwissen</span>
-          <span class="claim__zeile claim__zeile--akzent" data-reveal>trifft Reichweite.</span>
-        </p>
-        <p class="claim__erlaeuterung" data-reveal>Redaktionelle Tiefe eines Fachmagazins, verbunden mit der Reichweite von Newsletter, Podcast, LinkedIn und Events. Diese Kombination gibt es in der Versicherungsbranche nur einmal.</p>
-      </div>
-    </section>
-
-    <!-- ============================= SIGNALSTÄRKE (SCROLLYTELLING) ============================= -->
-    <section class="weg" id="weg">
-      <div class="container">
-        <header class="abschnittkopf" data-reveal>
-          <h2>Wählen Sie Ihre <em>Signalstärke</em>.</h2>
-          <p>Drei Stufen, frei kombinierbar: von der ersten Reichweite über redaktionelle Substanz bis zur dauerhaften Präsenz. Alle Preise transparent im Konfigurator.</p>
+        <header class="section-head">
+          <h2>Vier Stationen bis zum Gespräch.</h2>
+          <p>Jede Leistung hat ihren Platz auf dieser Strecke. Sie können an jeder Station einsteigen und alle Bausteine frei kombinieren.</p>
         </header>
       </div>
-      <div class="weg__buehne container">
-        <div class="weg__schritte">
 
-          <article class="weg__schritt" data-schritt="0">
-            <h3>Gesehen werden.</h3>
-            <p>Ihre Marke steht dauerhaft im redaktionellen Umfeld, nicht im Anzeigenblock. Reichweite, die nicht weggeklickt wird.</p>
-            <dl class="leistungen">
-              <div class="leistungen__zeile"><dt>Website-Werbebanner</dt><dd>1.200&nbsp;€/Monat</dd></div>
-              <div class="leistungen__zeile"><dt>Werbebanner Website + VTM App</dt><dd>2.000&nbsp;€/Monat</dd></div>
-              <div class="leistungen__zeile"><dt>Newsletter-Sponsoring im VTM Briefing</dt><dd>1.900&nbsp;€/Monat</dd></div>
-            </dl>
-          </article>
-
-          <article class="weg__schritt" data-schritt="1">
-            <h3>Substanz zeigen.</h3>
-            <p>Redaktionell erzählte Inhalte geben Ihrem Thema Tiefe: als Fachbeitrag, Interview oder Erfolgsgeschichte mit Kontakten aller Interessenten.</p>
-            <dl class="leistungen">
-              <div class="leistungen__zeile"><dt>Fachartikel, redaktionell geschrieben</dt><dd>900&nbsp;€/Artikel</dd></div>
-              <div class="leistungen__zeile"><dt>Executive Interview</dt><dd>1.200&nbsp;€/Interview</dd></div>
-              <div class="leistungen__zeile"><dt>Case Study inkl. Lead-Liste</dt><dd>3.000&nbsp;€/Case Study</dd></div>
-              <div class="leistungen__zeile"><dt>LinkedIn as a Service, 4 Beiträge/Monat</dt><dd>2.500&nbsp;€/Monat</dd></div>
-              <div class="leistungen__zeile"><dt>Sponsored LinkedIn Post, Mengenrabatt ab 5</dt><dd>750&nbsp;€/Post</dd></div>
-            </dl>
-          </article>
-
-          <article class="weg__schritt" data-schritt="2">
-            <h3>Präsent bleiben.</h3>
-            <p>Sichtbarkeit ist kein Sprint. Jahresprogramme halten Ihr Thema über zwölf Monate im Markt, individuell zugeschnitten und gemeinsam kalkuliert.</p>
-            <dl class="leistungen">
-              <div class="leistungen__zeile"><dt>VTM Startup Presence, monatlich zahlbar</dt><dd>ab 12.000&nbsp;€/Jahr</dd></div>
-              <div class="leistungen__zeile"><dt>VTM Category Presence, Kategorie-Exklusivität</dt><dd>auf Anfrage</dd></div>
-              <div class="leistungen__zeile"><dt>VTM Authority Program, Branchenautorität</dt><dd>ab 70.000&nbsp;€/Jahr</dd></div>
-            </dl>
-          </article>
-
+      <div class="container track__stage">
+        <div class="track__progress" aria-hidden="true">
+          <span class="track__line"><span class="track__fill" id="track-fill"></span></span>
         </div>
-        <div class="weg__visual" aria-hidden="true">
-          <div class="pegel">
-            <div class="pegel__balken" data-pegel="0"><span></span></div>
-            <div class="pegel__balken" data-pegel="1"><span></span></div>
-            <div class="pegel__balken" data-pegel="2"><span></span></div>
-          </div>
-          <p class="pegel__wort" id="pegel-wort">Reichweite</p>
+
+        <div class="track__stations">
+
+          <article class="station" data-station="0">
+            <p class="station__label">Station 01 · Signal</p>
+            <h3>Gesehen werden.</h3>
+            <p class="station__text">Ihre Marke steht dauerhaft im redaktionellen Umfeld, nicht im Anzeigenblock.</p>
+            <dl class="services">
+              <div class="services__row"><dt>Website-Werbebanner</dt><dd>1.200 €/Monat</dd></div>
+              <div class="services__row"><dt>Werbebanner Website und VTM App</dt><dd>2.000 €/Monat</dd></div>
+              <div class="services__row"><dt>Newsletter-Sponsoring im VTM Briefing</dt><dd>1.900 €/Monat</dd></div>
+            </dl>
+          </article>
+
+          <article class="station" data-station="1">
+            <p class="station__label">Station 02 · Kontext</p>
+            <h3>Eingeordnet werden.</h3>
+            <p class="station__text">Unsere Redaktion erklärt Ihr Thema, statt es zu bewerben. Das ist der Unterschied zwischen Anzeige und Autorität.</p>
+            <dl class="services">
+              <div class="services__row"><dt>Fachartikel, redaktionell geschrieben</dt><dd>900 €/Artikel</dd></div>
+              <div class="services__row"><dt>Executive Interview mit einer Führungskraft</dt><dd>1.200 €/Interview</dd></div>
+              <div class="services__row"><dt>LinkedIn as a Service, 4 Beiträge im Monat</dt><dd>2.500 €/Monat</dd></div>
+              <div class="services__row"><dt>Sponsored LinkedIn Post, Mengenrabatt ab 5 Posts</dt><dd>750 €/Post</dd></div>
+            </dl>
+          </article>
+
+          <article class="station" data-station="2">
+            <p class="station__label">Station 03 · Beleg</p>
+            <h3>Belegt werden.</h3>
+            <p class="station__text">Hier entstehen die Zahlen und Namen, mit denen Ihr Vertrieb am Montag arbeitet.</p>
+            <dl class="services">
+              <div class="services__row"><dt>Case Study inklusive Kontaktliste aller Interessenten</dt><dd>3.000 €/Case Study</dd></div>
+              <div class="services__row"><dt>Podcast-Episode bei Insurance Monday</dt><dd>3.500 €/Episode</dd></div>
+              <div class="services__row"><dt>Marktcheck im Entscheider-Panel, zitierfähig für Presse</dt><dd>auf Anfrage</dd></div>
+              <div class="services__row"><dt>Fach-Webinar mit vollständiger Teilnehmerliste</dt><dd>auf Anfrage</dd></div>
+            </dl>
+          </article>
+
+          <article class="station" data-station="3">
+            <p class="station__label">Station 04 · Handlung</p>
+            <h3>Präsent bleiben.</h3>
+            <p class="station__text">Sichtbarkeit ist kein Sprint. Jahresprogramme halten Ihr Thema zwölf Monate im Markt.</p>
+            <dl class="services">
+              <div class="services__row"><dt>VTM Startup Presence, monatlich zahlbar</dt><dd>ab 12.000 €/Jahr</dd></div>
+              <div class="services__row"><dt>VTM Category Presence mit Kategorie-Exklusivität</dt><dd>auf Anfrage</dd></div>
+              <div class="services__row"><dt>VTM Authority Program für Branchenautorität</dt><dd>ab 70.000 €/Jahr</dd></div>
+            </dl>
+          </article>
+
         </div>
       </div>
     </section>
 
     <!-- ============================= PAKETE ============================= -->
-    <section class="pakete" id="pakete">
+    <section class="packages" id="pakete">
       <div class="container">
-        <header class="abschnittkopf" data-reveal>
-          <h2>Drei Pakete, ein Prinzip:<br>der Preis ist die <em>Summe seiner Teile</em>.</h2>
-          <p>Vorkonfiguriert und frei anpassbar. Jeder Paketpreis entspricht exakt der Summe der Einzelleistungen inklusive Mengenrabatt.</p>
+        <header class="section-head">
+          <h2>Drei fertige Wege.</h2>
+          <p>Vorkonfiguriert und frei anpassbar. Jeder Paketpreis entspricht exakt der Summe seiner Einzelleistungen inklusive Mengenrabatt.</p>
         </header>
-        <div class="pakete__raster" data-reveal-gruppe>
-          <article class="paket" data-reveal>
+
+        <div class="packages__grid" data-reveal-group>
+          <article class="package" data-reveal>
             <h3>Sichtbarkeits-Start</h3>
-            <p class="paket__preis">9.975&nbsp;€ <span>gesamt</span></p>
-            <ul class="paket__inhalt">
+            <p class="package__price">9.975 €</p>
+            <p class="package__unit">gesamt, einmalig</p>
+            <ul class="package__items">
               <li>1 Fachartikel</li>
               <li>3 Monate Newsletter-Sponsoring</li>
               <li>5 Sponsored LinkedIn Posts</li>
             </ul>
-            <p class="paket__fuer">Für den ersten sichtbaren Auftritt im Markt.</p>
+            <p class="package__for">Für den ersten sichtbaren Auftritt im Markt.</p>
           </article>
-          <article class="paket paket--anker" data-reveal>
-            <p class="paket__badge">Meistgewählt</p>
+
+          <article class="package package--featured" data-reveal>
+            <p class="package__badge">Meistgewählt</p>
             <h3>Thought-Leader-Paket</h3>
-            <p class="paket__preis">21.500&nbsp;€ <span>gesamt</span></p>
-            <ul class="paket__inhalt">
+            <p class="package__price">21.500 €</p>
+            <p class="package__unit">gesamt, einmalig</p>
+            <ul class="package__items">
               <li>1 Podcast-Episode</li>
               <li>1 Executive Interview</li>
               <li>2 Fachartikel</li>
               <li>6 Monate LinkedIn as a Service</li>
             </ul>
-            <p class="paket__fuer">Für Führungskräfte, die zur Stimme ihres Themas werden.</p>
+            <p class="package__for">Für Führungskräfte, die zur Stimme ihres Themas werden.</p>
           </article>
-          <article class="paket" data-reveal>
+
+          <article class="package" data-reveal>
             <h3>Marktführer-Paket</h3>
-            <p class="paket__preis">44.700&nbsp;€ <span>gesamt</span></p>
-            <ul class="paket__inhalt">
+            <p class="package__price">44.700 €</p>
+            <p class="package__unit">gesamt, einmalig</p>
+            <ul class="package__items">
               <li>1 Quartal Insurance-Monday-Sponsoring</li>
               <li>3 Monate Newsletter-Sponsoring</li>
-              <li>3 Monate Werbebanner Website + App</li>
-              <li>1 Case Study inkl. Lead-Liste</li>
+              <li>3 Monate Werbebanner Website und App</li>
+              <li>1 Case Study inklusive Kontaktliste</li>
             </ul>
-            <p class="paket__fuer">Für Marken, die eine Kategorie besetzen wollen.</p>
+            <p class="package__for">Für Marken, die eine Kategorie besetzen wollen.</p>
           </article>
         </div>
-        <div class="pakete__aktion" data-reveal>
-          <a class="btn btn--primaer btn--gross" href="https://angebote.versicherungstech-magazin.de" target="_blank" rel="noopener">Angebot konfigurieren</a>
-          <p class="pakete__hinweis">Alle Preise netto zzgl. gesetzlicher USt. Quelle: Live-Konfigurator, Stand 11.08.2026.</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- ============================= DARÜBER HINAUS ============================= -->
-    <section class="streams" id="streams">
-      <div class="container">
-        <header class="abschnittkopf" data-reveal>
-          <h2>Die Plattform endet nicht bei Medien.</h2>
-          <p>Sales- und Marketing-Coaching für den Markteintritt gehört genauso dazu wie unser Ökosystem aus Partnern: vier Geschäftsfelder, parallel zum Medien-Konfigurator.</p>
-        </header>
-        <div class="streams__raster" data-reveal-gruppe>
-          <article class="stream" data-reveal>
-            <h3>LinkedIn &amp; Personal Branding</h3>
-            <p>Positionierung von Führungskräften als sichtbare, glaubwürdige Experten der Versicherungsbranche.</p>
-          </article>
-          <article class="stream" data-reveal>
-            <h3>Markenpositionierung &amp; Markteintritt</h3>
-            <p>Unterstützung für Tech-Unternehmen, sich klar im Versicherungsmarkt zu positionieren und nachhaltig Vertrauen aufzubauen.</p>
-          </article>
-          <article class="stream" data-reveal>
-            <h3>Corporate Podcast Produktion</h3>
-            <p>Entwicklung, Produktion und Vermarktung professioneller Podcasts für Unternehmen und Marken.</p>
-          </article>
-          <article class="stream" data-reveal>
-            <h3>Social Selling &amp; B2B-Vertriebstraining</h3>
-            <p>Befähigung von Vertriebsteams, Versicherungsentscheider gezielter anzusprechen und erfolgreicher zu überzeugen.</p>
-          </article>
+        <div class="packages__action">
+          <a class="btn btn--primary btn--large" href="https://angebote.versicherungstech-magazin.de" target="_blank" rel="noopener">Angebot konfigurieren</a>
+          <p class="packages__note">Alle Preise netto zzgl. gesetzlicher USt. · Quelle Live-Konfigurator · Stand 11.08.2026</p>
         </div>
       </div>
     </section>
@@ -341,15 +409,15 @@
     <!-- ============================= TEAM ============================= -->
     <section class="team" id="team">
       <div class="container">
-        <header class="abschnittkopf" data-reveal>
-          <h2>Menschen zuerst.</h2>
+        <header class="section-head">
+          <h2>Menschen, die den Markt kennen.</h2>
           <p>Hinter jedem Signal stehen Redakteure, Berater und Branchenkenner, die den Versicherungsmarkt seit Jahren begleiten.</p>
         </header>
-        <ul class="team__raster" data-reveal-gruppe>
+        <ul class="team__grid" data-reveal-group>
           <li class="team__person" data-reveal>
             <img src="assets/img/team/maximilian-hempel-320.jpg" alt="Porträt von Maximilian Hempel" loading="lazy" width="320" height="400">
             <span class="team__name">Maximilian Hempel</span>
-            <span class="team__rolle">Herausgeber</span>
+            <span class="team__role">Herausgeber</span>
           </li>
           <li class="team__person" data-reveal>
             <img src="assets/img/team/maximilian-dahmen-320.jpg" alt="Porträt von Maximilian Dahmen" loading="lazy" width="320" height="400">
@@ -371,14 +439,16 @@
       </div>
     </section>
 
-    <!-- ============================= FINALER CTA ============================= -->
-    <section class="finale" id="kontakt">
-      <div class="container finale__inner" data-reveal>
-        <h2>Machen wir Ihr Thema sichtbar.</h2>
-        <p>Stellen Sie Ihr Angebot im Konfigurator zusammen oder sprechen Sie zuerst mit uns über Ihr Thema.</p>
-        <div class="finale__aktionen">
-          <a class="btn btn--primaer btn--gross" href="https://angebote.versicherungstech-magazin.de" target="_blank" rel="noopener">Angebot konfigurieren</a>
-          <a class="btn btn--invers btn--gross" href="mailto:info@versicherungstech-magazin.de?subject=Erstgespr%C3%A4ch%20Sichtbarkeit">Erstgespräch vereinbaren</a>
+    <!-- ============================= HANDLUNG ============================= -->
+    <section class="closing" id="kontakt">
+      <div class="container">
+        <div class="closing__anchor">
+          <h2>Machen wir Ihr Thema sichtbar.</h2>
+          <p>Stellen Sie Ihr Angebot im Konfigurator zusammen oder sprechen Sie zuerst mit uns über Ihr Thema.</p>
+          <div class="closing__actions">
+            <a class="btn btn--primary btn--large" href="https://angebote.versicherungstech-magazin.de" target="_blank" rel="noopener">Angebot konfigurieren</a>
+            <a class="btn btn--ghost btn--large" href="mailto:info@versicherungstech-magazin.de?subject=Erstgespr%C3%A4ch%20Sichtbarkeit">Erstgespräch vereinbaren</a>
+          </div>
         </div>
       </div>
     </section>
@@ -386,23 +456,22 @@
   </main>
 
   <!-- ============================= FOOTER ============================= -->
-  <footer class="fuss">
-    <div class="container fuss__inner">
-      <img class="fuss__logo" src="assets/img/logo/vtm-logo-farbe.png" alt="VersicherungsTech Magazin" width="176" height="31">
-      <nav class="fuss__links" aria-label="Weiterführende Links">
+  <footer class="footer">
+    <div class="container footer__inner">
+      <img class="footer__logo" src="assets/img/logo/vtm-logo-farbe.png" alt="VersicherungsTech Magazin" width="176" height="31">
+      <nav class="footer__links" aria-label="Weiterführende Links">
         <a href="https://versicherungstech-magazin.de" target="_blank" rel="noopener">Magazin</a>
         <a href="https://angebote.versicherungstech-magazin.de" target="_blank" rel="noopener">Konfigurator</a>
         <a href="mailto:info@versicherungstech-magazin.de">Kontakt</a>
         <a href="https://versicherungstech-magazin.de/impressum" target="_blank" rel="noopener">Impressum</a>
         <a href="https://versicherungstech-magazin.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
       </nav>
-      <p class="fuss__notiz">Alle Preise netto zzgl. gesetzlicher USt. Leistungsstand: Live-Konfigurator, 11.08.2026.</p>
+      <p class="footer__note">Alle Preise netto zzgl. gesetzlicher USt. · Leistungsstand Live-Konfigurator · 11.08.2026</p>
     </div>
   </footer>
 
   <script src="assets/vendor/gsap.min.js"></script>
   <script src="assets/vendor/ScrollTrigger.min.js"></script>
-  <script type="module" src="js/hero-scene.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

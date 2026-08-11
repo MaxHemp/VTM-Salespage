@@ -1,214 +1,123 @@
-/* Scroll-Choreografie der Seite: Hero-Einstieg, Zähler, horizontale
-   Bühnen, Insurance-Monday-Equalizer, Signalstärke-Pegel und Reveals.
-   Ohne JavaScript bleibt die Seite vollständig lesbar. */
+/* Bewegung der Seite. Genau eine Leitbewegung pro Ansicht:
+     Ökosystem-Band  laufendes Logoband, pausierbar
+     Strecke         Signallinie füllt sich mit dem Scrollfortschritt
+   Alles andere sind ruhige Eintritte. Ohne JavaScript und bei
+   reduzierter Bewegung ist jede Ansicht statisch gleichwertig. */
 
 (function () {
   'use strict';
 
   document.documentElement.classList.add('js');
 
-  var reduziert = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var nav = document.getElementById('nav');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ----- Equalizer im Insurance-Monday-Abschnitt ----- */
-  function equalizerStarten() {
-    var canvas = document.getElementById('equalizer');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    if (!ctx) return;
+  /* ----- Ökosystem-Band anhalten und fortsetzen ----- */
+  (function marqueeControl() {
+    var marquee = document.querySelector('.marquee');
+    var toggle = document.getElementById('marquee-toggle');
+    if (!marquee || !toggle) return;
 
-    var breite = 0;
-    var hoehe = 0;
-    var sichtbar = true;
+    var label = toggle.querySelector('.marquee__toggle-text');
+    var icon = toggle.querySelector('.marquee__toggle-icon');
+    var pauseIcon = icon.innerHTML;
+    var playIcon =
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" ' +
+      'stroke="currentColor" stroke-width="1.6" stroke-linecap="round" ' +
+      'stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
 
-    function anpassen() {
-      breite = canvas.clientWidth;
-      hoehe = canvas.clientHeight;
-      var dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = breite * dpr;
-      canvas.height = hoehe * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    anpassen();
-    window.addEventListener('resize', anpassen);
+    toggle.addEventListener('click', function () {
+      var paused = marquee.classList.toggle('is-paused');
+      toggle.setAttribute('aria-pressed', String(paused));
+      label.textContent = paused ? 'Bewegung fortsetzen' : 'Bewegung anhalten';
+      icon.innerHTML = paused ? playIcon : pauseIcon;
+    });
+  })();
 
-    /* Token-Farben: Electric 600 / 500 / 400 */
-    var farben = ['#1F4EFF', '#4A6FFF', '#7C96FF'];
+  /* ----- Navigation trennt sich sichtbar, sobald gescrollt wird ----- */
+  (function navState() {
+    var nav = document.getElementById('nav');
+    var hero = document.querySelector('.hero');
+    if (!nav || !hero) return;
 
-    function zeichnen(zeit) {
-      ctx.clearRect(0, 0, breite, hoehe);
-      var balkenBreite = 10;
-      var abstand = 8;
-      var anzahl = Math.ceil(breite / (balkenBreite + abstand));
-      for (var i = 0; i < anzahl; i += 1) {
-        var puls =
-          Math.sin(zeit * 1.9 + i * 0.35) * 0.32 +
-          Math.sin(zeit * 0.7 + i * 0.11) * 0.4 +
-          0.55;
-        var h = Math.max(0.06, puls) * hoehe * 0.9;
-        ctx.fillStyle = farben[i % farben.length];
-        ctx.globalAlpha = 0.28 + 0.3 * Math.max(0, puls);
-        var x = i * (balkenBreite + abstand);
-        ctx.fillRect(x, hoehe - h, balkenBreite, h);
-      }
-      ctx.globalAlpha = 1;
-    }
+    new IntersectionObserver(function (entries) {
+      nav.classList.toggle('is-scrolled', !entries[0].isIntersecting);
+    }, { rootMargin: '-72px 0px 0px 0px', threshold: 0 }).observe(hero);
+  })();
 
-    if (reduziert) {
-      zeichnen(2.4);
-      return;
-    }
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  var stations = Array.prototype.slice.call(document.querySelectorAll('.station'));
+  var fill = document.getElementById('track-fill');
 
-    new IntersectionObserver(function (eintraege) {
-      sichtbar = eintraege[0].isIntersecting;
-    }).observe(canvas);
-
-    var start = performance.now();
-    function bild(jetzt) {
-      if (sichtbar) zeichnen((jetzt - start) / 1000);
-      requestAnimationFrame(bild);
-    }
-    requestAnimationFrame(bild);
-  }
-  equalizerStarten();
-
-  /* ----- Ohne GSAP: alles sofort sichtbar ----- */
-  if (!window.gsap || !window.ScrollTrigger) {
-    document.querySelectorAll('[data-reveal]').forEach(function (el) {
+  function showEverything() {
+    reveals.forEach(function (el) {
       el.style.opacity = 1;
       el.style.transform = 'none';
     });
-    document.querySelectorAll('.pegel__balken span').forEach(function (el) {
-      el.style.transform = 'scaleY(1)';
-    });
-    var beleg = document.querySelector('.beleg');
-    if (beleg) {
-      new IntersectionObserver(function (eintraege) {
-        nav.classList.toggle('is-hell', eintraege[0].boundingClientRect.top < 80);
-      }, { rootMargin: '-80px 0px 0px 0px' }).observe(beleg);
-    }
+    stations.forEach(function (el) { el.classList.add('is-active'); });
+    if (fill) fill.style.transform = 'scaleY(1)';
+  }
+
+  if (reduced || !window.gsap || !window.ScrollTrigger) {
+    showEverything();
     return;
   }
 
   gsap.registerPlugin(ScrollTrigger);
 
-  ScrollTrigger.create({
-    trigger: '#hero',
-    start: 'bottom top+=80',
-    onEnter: function () { nav.classList.add('is-hell'); },
-    onLeaveBack: function () { nav.classList.remove('is-hell'); },
-  });
+  /* ----- Strecke: die Signallinie folgt dem Lesefortschritt ----- */
+  (function trackProgress() {
+    var stage = document.querySelector('.track__stage');
+    if (!stage || !fill) return;
 
-  if (reduziert) {
-    document.querySelectorAll('[data-reveal]').forEach(function (el) {
-      el.style.opacity = 1;
-      el.style.transform = 'none';
+    gsap.fromTo(fill,
+      { scaleY: 0 },
+      {
+        scaleY: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: stage,
+          start: 'top 60%',
+          end: 'bottom 75%',
+          scrub: 0.6,
+        },
+      });
+
+    stations.forEach(function (station) {
+      ScrollTrigger.create({
+        trigger: station,
+        start: 'top 70%',
+        end: 'bottom 30%',
+        onEnter: function () { station.classList.add('is-active'); },
+        onEnterBack: function () { station.classList.add('is-active'); },
+      });
     });
-    document.querySelectorAll('.pegel__balken').forEach(function (el) {
-      el.classList.add('is-aktiv');
-    });
-    document.querySelectorAll('[data-zaehler]').forEach(function (el) {
-      el.textContent = Number(el.getAttribute('data-zaehler')).toLocaleString('de-DE');
-    });
-    return;
-  }
+  })();
 
-  /* ----- Hero: Worte treten auf, "sichtbar" schärft sich zuletzt ----- */
-  var heroWorte = gsap.utils.toArray('.hero__wort');
-  gsap.set(heroWorte, { yPercent: 60, opacity: 0 });
-  gsap.set('.hero__lead, .hero__aktionen', { y: 24, opacity: 0 });
-
-  var heroAblauf = gsap.timeline({ delay: 0.25 });
-  heroAblauf
-    .to(heroWorte, {
-      yPercent: 0,
-      opacity: 1,
-      duration: 0.9,
-      stagger: 0.07,
-      ease: 'power3.out',
-    })
-    .fromTo('.hero__wort--signal',
-      { filter: 'blur(10px)', letterSpacing: '0.06em' },
-      { filter: 'blur(0px)', letterSpacing: '0em', duration: 1.1, ease: 'power2.out' },
-      '-=0.55')
-    .add(function () {
-      /* Unterstreichung des Signalworts über CSS-Klasse, da GSAP
-         Pseudo-Elemente nicht direkt animieren kann */
-      var signalWort = document.querySelector('.hero__wort--signal');
-      if (signalWort) signalWort.classList.add('is-markiert');
-    })
-    .to('.hero__lead', { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, '-=0.7')
-    .to('.hero__aktionen', { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, '-=0.5');
-
-  /* ----- Beleg-Leiste: Zahlen zählen hoch, sobald sichtbar ----- */
-  gsap.utils.toArray('[data-zaehler]').forEach(function (el) {
-    var ziel = Number(el.getAttribute('data-zaehler'));
-    var stand = { wert: 0 };
-    el.textContent = '0';
-    gsap.to(stand, {
-      wert: ziel,
-      duration: 1.6,
-      ease: 'power2.out',
-      scrollTrigger: { trigger: el, start: 'top 85%', once: true },
-      onUpdate: function () {
-        el.textContent = Math.round(stand.wert).toLocaleString('de-DE');
-      },
-    });
-  });
-
-  /* ----- Plattform: vertikales Scrollen wird horizontales Gleiten ----- */
-  var mm = gsap.matchMedia();
-  mm.add('(min-width: 901px)', function () {
-    var spur = document.getElementById('buehnen-spur');
-    var huelle = document.getElementById('buehnen');
-    if (!spur || !huelle) return;
-    var tween = gsap.to(spur, {
-      x: function () { return -(spur.scrollWidth - window.innerWidth); },
-      ease: 'none',
-      scrollTrigger: {
-        trigger: huelle,
-        start: 'top top',
-        end: function () { return '+=' + (spur.scrollWidth - window.innerWidth); },
-        pin: true,
-        scrub: 1,
-        invalidateOnRefresh: true,
-      },
-    });
-    return function () { tween.scrollTrigger && tween.scrollTrigger.kill(); tween.kill(); };
-  });
-
-  /* ----- Signalstärke: Pegel wächst mit den Stufen ----- */
-  var balken = gsap.utils.toArray('.pegel__balken');
-  var pegelWort = document.getElementById('pegel-wort');
-  var wortListe = ['Reichweite', 'Inhalte', 'Programme'];
-
-  function pegelAktivieren(index) {
-    balken.forEach(function (b, i) {
-      b.classList.toggle('is-aktiv', i <= index);
-    });
-    if (pegelWort) pegelWort.textContent = wortListe[index] || wortListe[0];
-  }
-
-  gsap.utils.toArray('.weg__schritt').forEach(function (schritt, index) {
-    ScrollTrigger.create({
-      trigger: schritt,
-      start: 'top 55%',
-      end: 'bottom 55%',
-      onEnter: function () { pegelAktivieren(index); },
-      onEnterBack: function () { pegelAktivieren(index); },
-    });
-  });
-
-  /* ----- Reveals: Abschnitte treten ruhig auf ----- */
-  gsap.utils.toArray('[data-reveal]').forEach(function (el) {
+  /* ----- Ruhige Eintritte ----- */
+  reveals.forEach(function (el) {
     gsap.fromTo(el,
-      { opacity: 0, y: 28 },
+      { opacity: 0, y: 16 },
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+        duration: 0.55,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 90%', once: true },
       });
   });
+
+  /* ----- Reichweitenvergleich wächst einmal ein ----- */
+  (function compareBars() {
+    var bars = Array.prototype.slice.call(document.querySelectorAll('.compare__bar > span'));
+    if (!bars.length) return;
+    gsap.fromTo(bars,
+      { scaleX: 0 },
+      {
+        scaleX: 1,
+        duration: 0.9,
+        stagger: 0.1,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: '.compare', start: 'top 85%', once: true },
+      });
+  })();
 })();
